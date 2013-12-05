@@ -1,10 +1,9 @@
 module Test.ReverseTopo (tests) where
 
-import Graph.Arbitrary
+import Graph.Arbitrary ()
 import Graph.Base
+import Graph.Order
 
-import Test.QuickCheck
-import Debug.Trace
 import Data.Maybe
 
 import Test.Framework
@@ -12,6 +11,7 @@ import Test.Framework.TH
 
 import Test.Framework.Providers.QuickCheck2
 
+tests :: Test
 tests = $(testGroupGenerator)
 
 -- | Generator should only generate dags with a topo ordering

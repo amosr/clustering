@@ -6,9 +6,11 @@ import qualified Test.ReverseTopo as T_RT
 import System.Environment (getArgs)
 
 
+all_tests :: [Test]
 all_tests
  = [ T_RT.tests ]
 
+main :: IO ()
 main = do
     args <- getArgs
     let args' = ["--maximum-generated-tests", "1000"] ++ args
