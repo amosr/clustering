@@ -10,9 +10,18 @@ import           Control.Monad
 
 
 
--- | Find topological ordering of DAG
-graphTopoOrder :: Ord k => Graph k na ea -> Maybe [k]
-graphTopoOrder (Graph graph)
+-- | Find topological ordering of DAG.
+-- Assume it's a dag - otherwise return empty list.
+graphTopoOrder :: Ord k => Graph k na ea -> [k]
+graphTopoOrder g
+ | Just o <- graphTopoOrder_maybe g
+ = o
+ | otherwise
+ = []
+
+-- | Find topological ordering of DAG, or return Nothing if cycles found
+graphTopoOrder_maybe :: Ord k => Graph k na ea -> Maybe [k]
+graphTopoOrder_maybe (Graph graph)
  = reverse <$> go (Just ([], Map.keysSet graph, Set.empty))
  where
   go Nothing

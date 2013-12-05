@@ -33,3 +33,23 @@ instance (Arbitrary k, Integral k, Arbitrary na, Arbitrary ea)
         return (num', edgeA)
 
 
+graphNode :: Ord k => Graph k na ea -> Gen (Maybe k)
+graphNode (Graph gmap)
+ | Map.null gmap
+ = return Nothing
+ | otherwise
+ = Just <$> (elements $ Map.keys gmap)
+
+
+graphEdge :: Ord k => Graph k na ea -> Gen (Maybe ((k,k),ea))
+graphEdge g@(Graph gmap)
+ = do   n <- graphNode g
+        case n of
+         Nothing
+          -> return Nothing
+         Just j
+          -> do let (_,es) = gmap Map.! j
+                if   null es
+                then return Nothing
+                else elements es >>= \(i,ea) -> return $ Just ((i,j),ea)
+
