@@ -67,3 +67,9 @@ isTopoOrder (Graph g) order
    | otherwise
    = Nothing
 
+
+-- | Check if there are cycles in the graph.
+isCyclic :: Ord k => Graph k na ea -> Bool
+isCyclic g
+ = maybe True (const False)
+ $ graphTopoOrder_maybe g

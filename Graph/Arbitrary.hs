@@ -5,9 +5,10 @@ import           Graph.Base
 import qualified Data.Map as Map
 
 import           Control.Applicative
+import           Data.List
 import           Test.QuickCheck
 
-instance (Arbitrary k, Integral k, Arbitrary na, Arbitrary ea)
+instance (Arbitrary k, Integral k, Arbitrary na, Arbitrary ea, Eq ea)
        => Arbitrary (Graph k na ea) where
  arbitrary
   = sized $ \n ->
@@ -21,7 +22,7 @@ instance (Arbitrary k, Integral k, Arbitrary na, Arbitrary ea)
         nodeA <- arbitrary
         NonNegative num   <- arbitrary
         let num' = num `mod` (i+1)
-        edges <- mapM (mkEdge i) [0..num'-1]
+        edges <- nub <$> mapM (mkEdge i) [0..num'-1]
         return (i, (nodeA, edges))
 
    mkEdge i _n

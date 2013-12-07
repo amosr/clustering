@@ -8,7 +8,7 @@ import           Data.Tuple
 
 newtype Graph k na ea
  = Graph (Map k (na, [(k, ea)]))
- deriving (Show)
+ deriving (Show,Read,Eq)
 
 type Simple
  = Graph Int () ()
@@ -25,6 +25,28 @@ graphNumEdges (Graph g)
  = Map.fold (+)            0
  $ Map.map  (length . snd) g
 
+
+hasNode :: Ord k => Graph k na ea -> k -> Bool
+hasNode (Graph gmap) k
+ = k `Map.member` gmap
+
+hasEdge :: Ord k => Graph k na ea -> (k,k) -> Bool
+hasEdge g (i,j)
+ = i `elem` nodeInputs g j
+
+nodeInputs :: Ord k => Graph k na ea -> k -> [k]
+nodeInputs g k
+ = map fst
+ $ nodeInEdges g k
+
+nodeInEdges :: Ord k => Graph k na ea -> k -> [(k,ea)]
+nodeInEdges (Graph gmap) k
+ | Just (_,es) <- Map.lookup k gmap
+ = es
+ | otherwise
+ = []
+
+-- TODO nodeOutputs, nodeOutEdges
 
 -- | Convert @Graph@ to a lists of nodes and a list of edges
 listOfGraph :: Ord k => Graph k na ea -> ([(k,na)], [((k,k),ea)])

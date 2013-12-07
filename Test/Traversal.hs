@@ -16,8 +16,8 @@ prop_traversal_const_1_is_LE_number_nodes g
 -- | For some edge @(i,j)@, @i@ is earlier in graph traversal so will have lower weight than @j@.
 prop_traversal_const_1_edge_implies_src_LT_dst :: Graph Int () () -> Property
 prop_traversal_const_1_edge_implies_src_LT_dst graph
- =  forAllMaybe (graphEdge graph) $ \((i,j),_)
- -> trav Map.! i < trav Map.! j
+ =  forAllMaybe (graphEdge graph) $ \((i,j),_) ->
+     trav Map.! i < trav Map.! j
  where
   trav = traversalMax (const 1) graph
 
