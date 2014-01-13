@@ -20,20 +20,20 @@ traversal_early = traversalMax delta
 traversal_latest :: Ord k => Graph' k -> Map k Int
 traversal_latest g
  = let early  = traversal_early g
-       length = Map.fold max 0 early
+       len    = Map.fold max 0 early
        g'     = reverseGraph    g
-   in  traversal min length (negate . delta) g'
+   in  traversal min len (negate . delta) g'
 
 traversal_minedges :: Ord k => Graph' k -> Map k Int
 traversal_minedges = traversal_minBy graphNumEdges
 
 traversal_minBy :: Ord k => (Graph' k -> Int) -> Graph' k -> Map k Int
 traversal_minBy f g
- = minimumBy (compare `on` (f . mergeClusters g)) all
+ = minimumBy (compare `on` (f . mergeClusters g)) alls
  where
-  all = filter (legal g)
-      $ map Map.fromList
-      $ gen nodes
+  alls = filter (legal g)
+       $ map Map.fromList
+       $ gen nodes
 
   gen ((n,(minn,maxn)):ns)
    = [ (n,i) : gs

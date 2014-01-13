@@ -56,4 +56,4 @@ graphEdge g@(Graph gmap)
 
 sqrt' :: Int -> Int
 sqrt' i
- = truncate $ sqrt $ fromIntegral i
+ = truncate (sqrt $ fromIntegral i :: Double)

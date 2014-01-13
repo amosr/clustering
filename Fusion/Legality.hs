@@ -5,13 +5,11 @@ import Graph
 import qualified Data.Map as Map
 import           Data.Map   (Map)
 
-import Data.Monoid
-
 
 -- | Check if a partitioning
 -- legal :: (Ord k, Eq c) => Graph k na ea -> Map k c -> Bool
 -- ...
-legal :: (Ord k, Ord c, Monoid t, Eq t) => Graph k t Bool -> Map k c -> Bool
+legal :: (Ord k, Ord c, Eq t) => Graph k t Bool -> Map k c -> Bool
 legal g c
  =  fusionPreventing g c
  && precedence       g c
@@ -38,7 +36,7 @@ typeConstraint (Graph gmap) c
 -- Nodes with fusion-preventing edges between them cannot be in same cluster.
 --
 -- \forall (u,v) \in Non-Fusible Edges. C(v) >= C(u) + 1
-fusionPreventing :: (Ord k, Ord c, Monoid na) => Graph k na Bool -> Map k c -> Bool
+fusionPreventing :: (Ord k, Ord c) => Graph k na Bool -> Map k c -> Bool
 fusionPreventing g c
  = let m      = mergeClusters g c
        (_,es) = listOfGraph m
@@ -52,7 +50,7 @@ fusionPreventing g c
 -- Self-loops are allowed, however - they do not affect scheduling of clusters.
 --
 -- \forall (u,v) \in Fusible Edges. C(v) >= C(u)
-precedence :: (Ord k, Ord c, Monoid na) => Graph k na Bool -> Map k c -> Bool
+precedence :: (Ord k, Ord c) => Graph k na Bool -> Map k c -> Bool
 precedence g c
  = let m   = mergeClusters g c
        m'  = removeSelfLoops m

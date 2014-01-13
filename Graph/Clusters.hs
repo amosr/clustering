@@ -10,17 +10,17 @@ import qualified Data.Map as Map
 import           Data.Map ( Map )
 
 import           Data.List
-import           Data.Monoid
 
 
 
 -- | Merge graph based on a clustering
 -- Merged nodes will take name of first element of cluster by @Ord@.
 -- Any nodes not mentioned in @clusters@ are not modified.
+-- The node attributes @na@ are just taken from an arbitrary node.
 --
 -- @Ord c@ is required only because it is used as a @Map@ key.
 -- @Eq ea@ is used to @nub@ edges, but edges with same @src@ and @dst@ but different annotations are kept.
-mergeClusters :: (Ord k, Ord c, Monoid na, Eq ea) => Graph k na ea -> Map k c -> Graph k na ea
+mergeClusters :: (Ord k, Ord c, Eq ea) => Graph k na ea -> Map k c -> Graph k na ea
 mergeClusters graph@(Graph gmap) clusters
  = Graph
  $ foldl go Map.empty
@@ -36,7 +36,7 @@ mergeClusters graph@(Graph gmap) clusters
   merge node k m
    | Just (na, edges) <- Map.lookup node gmap
    = let edges' = nubEdges $ map (\(n,f) -> (name n, f)) edges
-     in  Map.insertWith (\(xna,xs) (yna,ys) -> (xna `mappend` yna, nubEdges $ xs ++ ys)) k (na, edges') m
+     in  Map.insertWith (\(xna,xs) (_yna,ys) -> (xna, nubEdges $ xs ++ ys)) k (na, edges') m
    | otherwise
    = m
 
