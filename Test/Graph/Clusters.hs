@@ -1,4 +1,4 @@
-module Test.Clusters (tests) where
+module Test.Graph.Clusters (tests) where
 
 import Test.Base
 

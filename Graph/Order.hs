@@ -11,13 +11,13 @@ import           Control.Monad
 
 
 -- | Find topological ordering of DAG.
--- Assume it's a dag - otherwise return empty list.
+-- Assume it's a dag - otherwise ERROR!!!
 graphTopoOrder :: Ord k => Graph k na ea -> [k]
 graphTopoOrder g
  | Just o <- graphTopoOrder_maybe g
  = o
  | otherwise
- = []
+ = error "Graph not dag!"
 
 -- | Find topological ordering of DAG, or return Nothing if cycles found
 graphTopoOrder_maybe :: Ord k => Graph k na ea -> Maybe [k]
@@ -41,7 +41,8 @@ graphTopoOrder_maybe (Graph graph)
    -- If we haven't added this to the list yet
    | True              <- Set.member m unvisited
    , Just (_an, edges) <- Map.lookup m graph
-   = let pres           = map fst edges
+   = let pres           = filter (/= m) -- Knock out self loops
+                        $ map fst edges
          s'             = Set.delete m unvisited
          visiting'      = Set.insert m visiting
      in do  (l',s'', _)<- foldM visit (l,s',visiting') pres

@@ -1,9 +1,8 @@
-module Test.Traversal (tests) where
+module Test.Graph.Traversal (tests) where
 
 import Test.Base
 
 import qualified Data.Map as Map
--- import Data.Maybe
 
 tests :: Test
 tests = $(testGroupGenerator)
@@ -20,4 +19,11 @@ prop_traversal_const_1_edge_implies_src_LT_dst graph
      trav Map.! i < trav Map.! j
  where
   trav = traversalMax (const 1) graph
+
+-- | Result of traversal should contain all nodes
+prop_traversal_contains_all_keys :: Graph Int () () -> Bool
+prop_traversal_contains_all_keys g@(Graph gmap)
+ = let keys  = Map.keys $ traversalMax (const 1) g
+       nodes = Map.keys   gmap
+   in  keys == nodes
 

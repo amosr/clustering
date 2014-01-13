@@ -46,6 +46,14 @@ nodeInEdges (Graph gmap) k
  | otherwise
  = []
 
+
+nodeAttribute :: Ord k => Graph k na ea -> k -> Maybe na
+nodeAttribute (Graph gmap) k
+ | Just (na,_) <- Map.lookup k gmap
+ = Just na
+ | otherwise
+ = Nothing
+
 -- TODO nodeOutputs, nodeOutEdges
 
 -- | Convert @Graph@ to a lists of nodes and a list of edges

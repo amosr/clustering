@@ -1,4 +1,4 @@
-module Test.Untyped (tests) where
+module Test.Fusion.Untyped (tests) where
 
 import Test.Base
 

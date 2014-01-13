@@ -1,4 +1,4 @@
-module Test.GraphOrder (tests) where
+module Test.Graph.GraphOrder (tests) where
 
 import Test.Base
 

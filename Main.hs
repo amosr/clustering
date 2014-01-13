@@ -1,21 +1,23 @@
 module Main where
 
 import Test.Framework
-import qualified Test.GraphOrder as T_Order
-import qualified Test.Traversal  as T_Traversal
-import qualified Test.Clusters   as T_Clusters
+import qualified Test.Graph.GraphOrder as TG_Order
+import qualified Test.Graph.Traversal  as TG_Traversal
+import qualified Test.Graph.Clusters   as TG_Clusters
 
-import qualified Test.Untyped    as T_Untyped
+import qualified Test.Fusion.Untyped   as TF_Untyped
+import qualified Test.Fusion.Typed     as TF_Typed
 
 import System.Environment (getArgs)
 
 
 all_tests :: [Test]
 all_tests
- = [ T_Order.tests
-   , T_Traversal.tests
-   , T_Clusters.tests
-   , T_Untyped.tests
+ = [ TG_Order.tests
+   , TG_Traversal.tests
+   , TG_Clusters.tests
+   , TF_Untyped.tests
+   , TF_Typed.tests
    ]
 
 main :: IO ()
