@@ -11,6 +11,11 @@ import Data.Monoid
 -- | Check if a partitioning
 -- legal :: (Ord k, Eq c) => Graph k na ea -> Map k c -> Bool
 -- ...
+legal :: (Ord k, Ord c, Monoid t, Eq t) => Graph k t Bool -> Map k c -> Bool
+legal g c
+ =  fusionPreventing g c
+ && precedence       g c
+ && typeConstraint   g c
 
 -- | Check validity of clustering: type constraint.
 -- Two verticies of different types cannot belong to the same cluster.
@@ -19,7 +24,8 @@ import Data.Monoid
 typeConstraint :: (Ord k, Eq t, Eq c) => Graph k t e -> Map k c -> Bool
 typeConstraint (Graph gmap) c
  = and 
-   [ gT u /= gT v || not (gC u /= gC v)
+   -- Either type is the same, or in different cluster
+   [ gT u == gT v || gC u /= gC v
    | u <- Map.keys gmap
    , v <- Map.keys gmap
    ]
@@ -51,5 +57,4 @@ precedence g c
  = let m   = mergeClusters g c
        m'  = removeSelfLoops m
    in  not $ isCyclic m'
-
 

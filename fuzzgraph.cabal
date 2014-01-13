@@ -27,7 +27,7 @@ executable fuzzgraph
         test-framework-th,
         test-framework-quickcheck2
   -- hs-source-dirs:      
-  ghc-options: -Wall -fno-warn-orphans -O2
+  ghc-options: -Wall -fno-warn-orphans -O2 -threaded
   default-language:    Haskell2010
   extensions:
         TemplateHaskell

@@ -13,7 +13,7 @@ instance (Arbitrary k, Integral k, Arbitrary na, Arbitrary ea, Eq ea)
  arbitrary
   = sized $ \n ->
     do  num     <- choose (0,n)
-        let num' = fromIntegral $ num
+        let num' = fromIntegral $ sqrt' num
         Graph  <$> Map.fromList <$> mapM mk [0..num'-1]
 
   where
@@ -54,3 +54,6 @@ graphEdge g@(Graph gmap)
                 then return Nothing
                 else elements es >>= \(i,ea) -> return $ Just ((i,j),ea)
 
+sqrt' :: Int -> Int
+sqrt' i
+ = truncate $ sqrt $ fromIntegral i
