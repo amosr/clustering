@@ -5,7 +5,6 @@ import Test.Base
 import Fusion.Untyped
 import Fusion.Legality
 
-import Data.Map (Map)
 
 -- import Data.Maybe
 
@@ -61,18 +60,5 @@ prop_optimal_minedges_same_as_traversal_minedges g
    in 
         graphNumNodes moe == graphNumNodes mtb
    .&&. graphNumEdges moe == graphNumEdges mtb
-
-
-check_same_length :: (Graph Int () Bool -> Map Int Int)
-                  -> (Graph Int () Bool -> Map Int Int)
-                  -> Graph Int () Bool
-                  -> Bool
-check_same_length a b g
- = let ca = a g
-       cb = b g
-       mca = mergeClusters g ca
-       mcb = mergeClusters g cb
-   in 
-        graphNumNodes mca == graphNumNodes mcb
 
 

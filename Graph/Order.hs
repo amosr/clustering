@@ -74,3 +74,28 @@ isCyclic :: Ord k => Graph k na ea -> Bool
 isCyclic g
  = maybe True (const False)
  $ graphTopoOrder_maybe g
+
+
+-- | Check if dag is roughly tree-like.
+-- Assumes it's a DAG.
+--
+-- Start with empty set.
+-- Go through dag in topological order, checking if any edges point to members of set.
+-- If edges are in set, that means they already have a parent - and not a tree.
+-- If edges aren't in set, add them to set as we have found their parent.
+-- Since we're going through in topological order, we don't have to worry about the current node.
+isTree :: Ord k => Graph k na ea -> Bool
+isTree g
+ = maybe False (const True)
+ $ foldM check Set.empty
+ $ graphTopoOrder g
+ where
+  Graph rev = reverseGraph g
+  check s o
+   | Just (_,ks) <- Map.lookup o rev
+   , all (not . flip Set.member s) (map fst ks)
+   = Just
+   $ foldl (flip Set.insert) s (map fst ks)
+
+   | otherwise
+   = Nothing
