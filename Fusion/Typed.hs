@@ -5,6 +5,7 @@ module Fusion.Typed
  , exhaustive_all
  , traversal_minnodes
  , traversal_all
+ , solve_linear
  ) where
 
 import Fusion.Typed.Base
@@ -12,3 +13,5 @@ import Fusion.Typed.Ordered
 import Fusion.Typed.Exhaustive
 
 import Fusion.Typed.Traversal
+
+import Fusion.Typed.Linear

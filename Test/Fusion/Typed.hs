@@ -45,3 +45,13 @@ zprop_traversal_first_better_than_ordered :: Graph Int Type Bool -> Bool
 zprop_traversal_first_better_than_ordered
  = check_leq_length  ordered_fusion (head . traversal_all)
 
+prop_solve_linear_legal :: Graph Int Type Bool -> Bool
+prop_solve_linear_legal g
+ = legal g $ solve_linear g
+
+prop_solve_linear_same_length_as_exhaustive :: Graph Int Type Bool -> Bool
+prop_solve_linear_same_length_as_exhaustive
+ = check_same_length solve_linear exhaustive_minnodes
+
+
+
