@@ -39,20 +39,20 @@ prop_traversal_minedges_legal g
 
 prop_schedule_exists :: Graph Int () Bool -> Bool
 prop_schedule_exists g
- = not $ null $ allschedules g
+ = not $ null $ exhaustive_all g
 
-zprop_optimal_legal :: Graph Int () Bool -> Bool
-zprop_optimal_legal g
- = legal g $ optimal_minnodes g
+zprop_exhaustive_legal :: Graph Int () Bool -> Bool
+zprop_exhaustive_legal g
+ = legal g $ exhaustive_minnodes g
 
 
-prop_optimal_minnodes_same_as_traversal_early :: Graph Int () Bool -> Bool
-prop_optimal_minnodes_same_as_traversal_early
- = check_same_length traversal_early optimal_minnodes
+prop_exhaustive_minnodes_same_as_traversal_early :: Graph Int () Bool -> Bool
+prop_exhaustive_minnodes_same_as_traversal_early
+ = check_same_length traversal_early exhaustive_minnodes
 
-prop_optimal_minedges_same_as_traversal_minedges :: Graph Int () Bool -> Property
-prop_optimal_minedges_same_as_traversal_minedges g
- = let oe = optimal_minedges g
+prop_exhaustive_minedges_same_as_traversal_minedges :: Graph Int () Bool -> Property
+prop_exhaustive_minedges_same_as_traversal_minedges g
+ = let oe = exhaustive_minedges g
        tb = traversal_minedges  g
 
        moe = mergeClusters g oe
@@ -60,5 +60,13 @@ prop_optimal_minedges_same_as_traversal_minedges g
    in 
         graphNumNodes moe == graphNumNodes mtb
    .&&. graphNumEdges moe == graphNumEdges mtb
+
+prop_solve_linear_legal :: Graph Int () Bool -> Bool
+prop_solve_linear_legal g
+ = legal g $ solve_linear g
+
+prop_solve_linear_same_length_as_traversal :: Graph Int () Bool -> Bool
+prop_solve_linear_same_length_as_traversal
+ = check_same_length solve_linear traversal_early
 
 
