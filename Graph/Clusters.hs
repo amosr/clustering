@@ -1,6 +1,7 @@
 module Graph.Clusters
  ( mergeClusters 
  , removeSelfLoops
+ , invertMap
  ) where
 
 import Graph.Base

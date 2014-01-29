@@ -1,9 +1,10 @@
 module Fusion.Typed.Linear
- (solve_linear
+ (solve_linear_minedges
  ) where
 
 import Graph
 import Fusion.Typed.Base
+import Fusion.Typed.Ordered
 
 import qualified Data.Map as Map
 --import           Data.Map   (Map)
@@ -13,7 +14,7 @@ import Data.LinearProgram
 --import Data.LinearProgram.GLPK
 
 import System.IO.Unsafe (unsafePerformIO)
--- import Debug.Trace
+--import Debug.Trace
 
 -- | Variable type for linear program
 -- Cluster    - {0..} all nodes with same number are clustered together
@@ -52,21 +53,23 @@ setKinds ns
 
 -- | Create constraints for
 addConstraints :: Ord k => Int -> Graph' k -> [((k,k),Bool)] -> LPM (GVar k) Int ()
-addConstraints bigN g arcs
+addConstraints _bigN g arcs
  = mapM_ add arcs
  where
-  add ((u,v),fusible)
+  add ((v,u),fusible)
    | Just uT <- nodeAttribute g u
    , Just vT <- nodeAttribute g v
-   = case compare uT vT of
-      LT -> geqTo (var (Cluster v) ^-^ var (Cluster u)) 0
-      GT -> geqTo (var (Cluster v) ^-^ var (Cluster u)) 1
+   =  let uMv = var (Cluster u) ^-^ var (Cluster v)
+   in case compare uT vT of
+      LT -> leqTo uMv 0
+      GT -> leqTo uMv (-1)
       EQ -> if fusible
-            then do geqTo (var (Cluster v) ^-^ var (Cluster u)) 0
-                    geqTo (bigN *^ var (Contracted u) ^-^ (var (Cluster v) ^-^ var (Cluster u))) 0
-            else    geqTo (var (Cluster v) ^-^ var (Cluster u)) 1
+            then do leqTo uMv 0
+                    -- leqTo (bigN *^ var (Contracted u) ^-^ uMv) 0
+            else    leqTo uMv (-1)
    | otherwise
    = error ("Node not in graph! Impossible...")
+
 
 addMaxConstraints :: Ord k => [k] -> LPM (GVar k) Int ()
 addMaxConstraints names
@@ -95,8 +98,8 @@ lp g
    numNodes
      = length names
 
-solve_linear :: (Show k, Ord k) => Graph' k -> Clustering k
-solve_linear g
+solve_linear_minedges :: (Show k, Ord k) => Graph' k -> Clustering k
+solve_linear_minedges g
  -- GLPK has a fit if we give it a problem with no constraints
  | null names || null arcs
  = fixMap
@@ -108,7 +111,7 @@ solve_linear g
        res  = unsafePerformIO $ glpSolveVars opts' lp' -- $ trace (show lp') lp'
    in  case res of
         (Success, Just (_, m))
-         -> fixMap m
+         -> fixWithOrdered $ fixMap m
         _
          -> error (show res)
  where
@@ -118,7 +121,7 @@ solve_linear g
   go k v m
    | Cluster n <- k
    , Just ty   <- nodeAttribute g n
-   = Map.insert n (ty, truncate v) m
+   = Map.insert n (ty, truncate v :: Int) m
    | otherwise
    = m
 
@@ -127,3 +130,22 @@ solve_linear g
   arcs
      =           snd $ listOfGraph g
 
+  -- Perform ordered typed fusion on the result, to fix up any leftovers
+  fixWithOrdered m
+   = let g' = mergeClusters  g m
+         -- The clustering will only contain some of the keys,
+         -- because they have been merged together
+         m' = ordered_fusion g'
+         -- So we have a list of lists of keys that were grouped together.
+         -- When the ordered clustering @m'@ results in one of these keys, we include all of them
+         mR = Map.elems $ invertMap      m
+
+         -- 
+         ins k v macc
+          -- This key will be mentioned somewhere in mR
+          | (keys:_) <- filter (elem k) mR
+          = foldl (\mm kk -> Map.insert kk v mm) macc keys
+          | otherwise
+          = error "Impossible!"
+
+     in  Map.foldWithKey ins Map.empty m'

@@ -36,8 +36,8 @@ zprop_exhaustive_more_possibilities_than_traversal g
  = length (exhaustive_all g) <= length (traversal_all g)
 
 
-prop_exhaustive_same_as_traversal :: Graph Int Type Bool -> Bool
-prop_exhaustive_same_as_traversal
+zprop_exhaustive_same_as_traversal :: Graph Int Type Bool -> Bool
+zprop_exhaustive_same_as_traversal
  = check_same_length exhaustive_minnodes traversal_minnodes
 
 
@@ -45,13 +45,22 @@ zprop_traversal_first_better_than_ordered :: Graph Int Type Bool -> Bool
 zprop_traversal_first_better_than_ordered
  = check_leq_length  ordered_fusion (head . traversal_all)
 
-prop_solve_linear_legal :: Graph Int Type Bool -> Bool
-prop_solve_linear_legal g
- = legal g $ solve_linear g
+prop_solve_linear_minedges_legal :: Graph Int Type Bool -> Bool
+prop_solve_linear_minedges_legal g
+ = legal g $ solve_linear_minedges g
 
-prop_solve_linear_same_length_as_exhaustive :: Graph Int Type Bool -> Bool
-prop_solve_linear_same_length_as_exhaustive
- = check_same_length solve_linear exhaustive_minnodes
+zprop_solve_linear_minedges_same_length_as_exhaustive :: Graph Int Type Bool -> Bool
+zprop_solve_linear_minedges_same_length_as_exhaustive
+ -- = check_same_length solve_linear exhaustive_minnodes
+ = check_leq_length solve_linear_minedges ordered_fusion
 
 
+prop_solve_linear_minnodes_legal :: Graph Int Type Bool -> Bool
+prop_solve_linear_minnodes_legal g
+ = legal g $ solve_linear_minnodes g
+
+
+prop_solve_linear_minnodes_same_length_as_exhaustive :: Graph Int Type Bool -> Bool
+prop_solve_linear_minnodes_same_length_as_exhaustive
+ = check_leq_edges solve_linear_minnodes exhaustive_minedges
 

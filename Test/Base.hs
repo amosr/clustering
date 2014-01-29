@@ -8,6 +8,9 @@ module Test.Base
  , forAllMaybe 
  , check_same_length
  , check_leq_length
+
+ , check_same_edges
+ , check_leq_edges
  ) where
 
 import Graph
@@ -45,6 +48,23 @@ check_leq_length  :: (Ord c, Ord k, Eq ea)
                   -> Bool
 check_leq_length
  = check_merge2 ((<=) `on` graphNumNodes)
+
+check_same_edges  :: (Ord c, Ord k, Eq ea)
+                  => (Graph k na ea -> Map k c)
+                  -> (Graph k na ea -> Map k c)
+                  -> Graph k na ea
+                  -> Bool
+check_same_edges
+ = check_merge2 ((==) `on` graphNumEdges)
+
+
+check_leq_edges   :: (Ord c, Ord k, Eq ea)
+                  => (Graph k na ea -> Map k c)
+                  -> (Graph k na ea -> Map k c)
+                  -> Graph k na ea
+                  -> Bool
+check_leq_edges
+ = check_merge2 ((<=) `on` graphNumEdges)
 
 
 

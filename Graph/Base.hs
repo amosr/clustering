@@ -8,7 +8,11 @@ import           Data.Tuple
 
 newtype Graph k na ea
  = Graph (Map k (na, [(k, ea)]))
- deriving (Show,Read,Eq)
+ deriving (Read,Eq)
+
+instance (Ord k, Show k, Show na, Show ea) => Show (Graph k na ea) where
+ show g
+  = "graphOfList " ++ show (listOfGraph g)
 
 type Simple
  = Graph Int () ()
