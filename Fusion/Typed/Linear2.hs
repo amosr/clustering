@@ -51,7 +51,7 @@ setKinds ns ws
         setVarKind (SameCluster i j) BinVar
 
 
--- | Create constraints for
+-- | Create constraints for edges and weights
 addConstraints :: Ord k
                => Int -> Graph' k
                -> [((k,k),Bool)]
@@ -61,20 +61,24 @@ addConstraints bigN g arcs ws
  = do   mapM_ addP arcs
         mapM_ addW ws
  where
-  -- For noncontractible edges (u,v), add a constraint
+  -- Edge constraints:
+  --
+  -- For nonfusible edges (u,v), add a constraint
   --    pi(v) - pi(u) >= 1
   -- which is equivalent to
   --    pi(v) > pi(u)
   -- or "v must be scheduled after u"
+  -- This will disallow u and v from being in the same cluster, as other
+  -- constraints require x(u,v) = 0 can only be true if pi(u) = pi(v).
   --
-  -- For contractible edges (u,v)
-  --  if they are merged together, x(u,v) = 0 and pi(v) = pi(u)
-  --  otherwise,                   x(u,v) = 1 and pi(v) > pi(u)
+  -- For fusible edges (u,v)
+  --    if they are merged together,    x(u,v) = 0 and pi(v) = pi(u)
+  --    otherwise,                      x(u,v) = 1 and pi(v) > pi(u)
   -- This is achieved with the constraint
   --    x(u,v) <= pi(v) - pi(u) <= n * x(u,v)
   --
-  -- Note that arcs are reversed in graph, so (v,u).
-
+  --
+  -- Note that arcs are reversed in graph, so (v,u) below is actually an edge from u to v.
   addP ((v,u), fusible)
    -- Fusible and between same type
    | Just uT <- nodeAttribute g u
@@ -82,23 +86,34 @@ addConstraints bigN g arcs ws
    , fusible && uT == vT
    = do let pis = var (Pi v) ^-^ var (Pi u)
         let x   = var (SameCluster u v)
-        leq x pis
+        -- x(u,v)         <= pi(v) - pi(u)
+        leq x    pis
+        -- pi(v) - pi(u)  <= n * x(u,v)
         leq pis (bigN *^ x)
 
-   -- Non-fusible edge
+   -- Non-fusible edge, or nodes are different types
    | otherwise
+        -- pi(v) - pi(u) >= 1
    = geqTo (var (Pi v) ^-^ var (Pi u)) 1
 
+
+  -- Weights between other nodes:
+  --
   -- For any two nodes that may be scheduled together,
-  -- we must make sure that if they are together, their pis are the same.
-  -- Otherwise, their pis may be different or the same.
-  -- This constraint is not necessary if there is a contractible edge,
-  -- but does not conflict and can be added anyway.
+  -- we must make sure that if they are together, their pis *must* be the same.
+  -- If they are not together, their pis are unconstrained.
   --
   --    -n * x(u,v) <= pi(v) - pi(u) <= n * x(u,v)
-  -- That is, if x(u,v) = 0, then pi(v) - pi(u) must equal 0.
+  --
+  -- That is, if u and v are in the same cluster (x(u,v)=0)
+  -- then     pi(v) - pi(u) = 0, or pi(v) = pi(u)
+  --
   -- Otherwise, pi(v) - pi(u) has a large enough range to be practically unbounded.
   -- 
+  -- This constraint is not necessary if there is a fusible edge between the two,
+  -- as a more restrictive constraint will be added by addP, but it does not
+  -- conflict so it can be added anyway.
+  --
   addW (_,u,v)
    = do let pis = var (Pi v) ^-^ var (Pi u)
         let x   = var (SameCluster u v)
@@ -106,41 +121,50 @@ addConstraints bigN g arcs ws
         leq pis  (bigN *^ x)
 
 
--- | Create program for graph
-lp :: Ord k => Graph' k -> LP (GVar k) Int
-lp g
- = execLPM
- $ do   setDirection Min
-        setObjective $ gobjective weights
-
-        addConstraints numNodes g arcs weights
-
-        setKinds names weights
+-- | Get list of all nodes that might be clustered together,
+-- and the weighted benefit of doing so.
+clusterings :: Ord k => [((k,k),Bool)] -> [(k,Type)] -> [(Int, k,k)]
+clusterings arcs ns
+ = go ns
  where
-   names
-     = map fst $ fst $ listOfGraph g
-
-   arcs
-     =           snd $ listOfGraph g
-
-   -- TODO
-   weights
-     = mkWeights $ fst $ listOfGraph g
-   -- = []
-
-   mkWeights ((u,ty):rest)
-     = [ (weight u v,u,v)
+   -- For some node, find all later nodes of same type, and calculate benefit
+   go ((u,ty):rest)
+    =  [ (weight u v,u,v)
        | (v,ty') <- rest, ty == ty']
-     ++ mkWeights rest
-   mkWeights []
-     = []
+    ++ go rest
+   go []
+    = []
 
+   -- Simple trick:
+   -- if there is an edge between the two,
+   --   there will be some cache locality benefit from merging
+   -- otherwise, 
+   --   the only benefit is reducing loop overhead
+   --
+   -- Another heuristic would be to count nodes with shared parents as having a locality benefit
    weight u v
     | (_:_) <- filter (\((i,j),_) -> (u,v) == (i,j) || (v,u) == (i,j)) arcs
     = 5
     | otherwise
     = 1
    
+
+
+-- | Create linear program for graph, and put all the pieces together.
+lp :: Ord k => Graph' k -> LP (GVar k) Int
+lp g
+ = execLPM
+ $ do   setDirection Min
+        setObjective $ gobjective weights
+        addConstraints numNodes g arcs weights
+        setKinds names weights
+ where
+   g'    = listOfGraph g
+   names = map fst $ fst g'
+   arcs  =           snd g'
+
+   -- TODO
+   weights = mkWeights $ fst g'
 
    numNodes
      = length names
@@ -198,9 +222,3 @@ solve_linear_minnodes g
    = ( n + 1
      , Map.insert k (ty, n) m)
 
-{-
-  names
-     = map fst $ fst $ listOfGraph g
-  arcs
-     =           snd $ listOfGraph g
--}
