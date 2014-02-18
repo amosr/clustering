@@ -164,7 +164,7 @@ lp g
    arcs  =           snd g'
 
    -- TODO
-   weights = mkWeights $ fst g'
+   weights = clusterings arcs $ fst g'
 
    numNodes
      = length names

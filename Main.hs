@@ -8,6 +8,8 @@ import qualified Test.Graph.Clusters   as TG_Clusters
 import qualified Test.Fusion.Untyped   as TF_Untyped
 import qualified Test.Fusion.Typed     as TF_Typed
 
+import qualified Test.Program.Simple   as TP_Simple
+
 import System.Environment (getArgs)
 
 
@@ -18,6 +20,7 @@ all_tests
    , TG_Clusters.tests
    , TF_Untyped.tests
    , TF_Typed.tests
+   , TP_Simple.tests
    ]
 
 main :: IO ()
