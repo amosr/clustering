@@ -39,9 +39,9 @@ mkGraph p r
   binds
    = _pBinds p
 
-  inputs
+  _inputs
    = _pInputs p
-  outputs
+  _outputs
    = _pOutputs p
 
   nodes

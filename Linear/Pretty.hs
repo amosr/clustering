@@ -32,7 +32,7 @@ pprLP p
      LBound a   -> ">= " ++ show a
      UBound a   -> "<= " ++ show a
      Equ    a   -> "== " ++ show a
-     Bound  a b -> ">= " ++ show a ++ " <=  " ++ show b
+     Bound  l u -> ">= " ++ show l ++ " <=  " ++ show u
 
   
 

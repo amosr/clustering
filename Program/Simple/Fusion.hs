@@ -55,7 +55,7 @@ setKinds ns ws
  where
   setP n
    = do varGeq     (Pi n) 0
-        setVarKind (Pi n) IntVar
+        setVarKind (Pi n) ContVar
   setW (_,i,j)
    = do -- varGeq     (SameCluster i j) 0
         setVarKind (mkSameCluster i j) BinVar
@@ -68,7 +68,7 @@ addConstraints :: Int -> Graph'
                -> Program
                -> Map AId Rate
                -> LPM GVar Int ()
-addConstraints bigN g arcs ws p r
+addConstraints bigN g arcs ws _p _r
  = do   mapM_ addP arcs
         mapM_ addW ws
  where
@@ -222,14 +222,14 @@ solve_linear' p g r
  | null $ constraints lp'
  = Map.fromList
    [ (k, n)
-   | ((k,ty),n) <- (fst $ listOfGraph g) `zip` [0..]]
+   | ((k,_ty),n) <- (fst $ listOfGraph g) `zip` [0..]]
 
  | otherwise
- = let opts'= mipDefaults { msgLev = MsgOff }
+ = let opts'= mipDefaults { msgLev = MsgAll }
        res  = unsafePerformIO $ glpSolveVars opts' $ trace (pprLP lp') lp'
    in  case res of
         (Success, Just (_, m))
-         -> fixMap (trace (show m) m)
+         -> fixMap m -- (trace (show m) m)
         _
          -> error (show res)
  where
@@ -263,7 +263,7 @@ solve_linear' p g r
   fill (n, m)
    = foldr goFill (n, m) (fst $ listOfGraph g)
 
-  goFill (k,ty) (n, m)
+  goFill (k,_ty) (n, m)
    | Map.member k m
    = (n, m)
    | otherwise

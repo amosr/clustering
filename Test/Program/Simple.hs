@@ -2,6 +2,7 @@ module Test.Program.Simple (tests) where
 
 import Test.Base
 
+import Fusion.Legality
 import Program.Simple
 import Program.Simple.Fusion
 import Debug.Trace
@@ -20,7 +21,17 @@ prop_graph_acyclic :: ValidProgram -> Bool
 prop_graph_acyclic (ValidProgram _p g)
  = not $ isCyclic g
 
+prop_legalish :: ValidProgram -> Bool
+prop_legalish (ValidProgram p g)
+ = case solve_linear p of
+   Nothing
+    -> error "What?"
+   Just c
+    -> trace (prettyProgram p)
+     $ precedence g c && fusionPreventing g c
 
+
+ztest_specific :: (Bool, [(Name, Int)])
 ztest_specific
  = (sol == Map.fromList
     [ (NAId filt,  0)
@@ -35,6 +46,7 @@ ztest_specific
   Just sol
    = solve_linear ztest_prog
 
+ztest_prog :: Program
 ztest_prog
  = prog
  where
@@ -52,11 +64,17 @@ ztest_prog
      , ABind as'   $ MapN   (Fun [s2]) [as]
      ]
 
+as :: AId
 as    = AId 0
+filt :: AId
 filt  = AId 1
+as' :: AId
 as'   = AId 2
+filt' :: AId
 filt' = AId 3
 
+s1 :: SId
 s1    = SId 0
+s2 :: SId
 s2    = SId 1
 
