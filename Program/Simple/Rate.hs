@@ -11,7 +11,7 @@ import           Data.Set   (Set)
 
 import Control.Arrow
 
-newtype Rate = Rate [Int]
+newtype Rate = Rate [AId]
  deriving (Eq, Show)
 
 
@@ -44,13 +44,13 @@ mkRates (ins, _) bs clo filts
   rate aid
    | Just super <- Map.lookup aid filts
    =  r aid : rate super
+   | Just super <- Map.lookup (r aid) filts
+   =  r aid : rate super
    | otherwise
    = [r aid]
 
   r aid
-   = unAId $ canonName clo aid
-  
-  unAId (AId i) = i
+   = canonName clo aid
 
 
 

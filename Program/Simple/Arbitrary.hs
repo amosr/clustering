@@ -2,9 +2,26 @@ module Program.Simple.Arbitrary where
 
 import Graph
 import Program.Simple.Base
+import Program.Simple.Graph
 import Test.QuickCheck
 
 import Control.Applicative
+import Data.Maybe
+
+data ValidProgram
+ = ValidProgram Program Graph'
+ deriving (Show,Eq)
+
+instance Arbitrary ValidProgram where
+ arbitrary
+  = do
+        p <- arbitrary `suchThat` (isJust . graphOfProgram)
+        case graphOfProgram p of
+         Nothing -> error "IMPOSSIBLE arbitrary ValidProgram"
+         Just g  -> return $ ValidProgram p g
+
+
+ 
 
 instance Arbitrary Program where
  arbitrary
@@ -99,3 +116,5 @@ data Scope
  , _sAIdFresh :: Int
  , _sSIdFresh :: Int
  }
+
+

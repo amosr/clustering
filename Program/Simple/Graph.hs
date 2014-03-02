@@ -1,7 +1,7 @@
 module Program.Simple.Graph
  ( graphOfProgram
  , Graph'
- , Name
+ , Name(..)
  ) where
 
 import Program.Simple.Base
@@ -15,8 +15,9 @@ import           Data.Map   (Map)
 data Name  
  = NAId AId
  | NSId SId
- | NOut
+-- | NOut
  deriving (Eq,Ord,Show)
+
 type Graph' = Graph Name Rate Bool
 
 
@@ -38,17 +39,27 @@ mkGraph p r
   binds
    = _pBinds p
 
+  inputs
+   = _pInputs p
+  outputs
+   = _pOutputs p
+
   nodes
-   = concatMap getNode binds 
-   ++ [(NOut, Rate [])]
-  
+  -- =  map getIn (fst inputs)
+   =  map getNode binds 
+   -- ++ [(NOut, Rate [])]
+
   getNode (ABind aid _)
-   = [(NAId  aid, r Map.! aid)]
+   = (NAId  aid, r Map.! aid)
   getNode (SBind sid (Reduce _ aid))
-   = [(NSId  sid, r Map.! aid)]
+   = (NSId  sid, r Map.! aid)
+
+  -- getIn aid
+  -- = (NAId  aid, r Map.! aid)
 
   edges
-   = concatMap getEdges binds
+   =  concatMap getEdges binds
+  -- ++ map getOutEdge (fst outputs)
 
   getEdges (ABind aid x)
    = case x of
@@ -71,6 +82,10 @@ mkGraph p r
   -- Because the only way to create an SId is with a reduce, and output of reduce is non-fusible, all these edges must be non-fusible.
   funEdges nm (Fun ls)
    = map (\sid -> ((nm, NSId sid), edge_blocking)) ls
+
+  -- All outputs must be made manifest, ie no fusion is possible
+  --getOutEdge aid
+  -- = ((NAId aid, NOut), edge_blocking)
 
   edge_blocking = False
   edge_fusible  = True
