@@ -169,12 +169,26 @@ clusterings arcs ns
     =  filter noweight0
        [ (weight u v,u,v)
        | (v,ty') <- rest
+       , noFusionPreventingPath u v
        , typeComparable ty ty']
     ++ go rest
    go []
     = []
 
    noweight0 (w,_,_) = w > 0
+
+   -- \forall paths p from u to v, fusion preventing \not\in p
+   noFusionPreventingPath u v
+    -- for all paths, for all nodes in path, is fusible
+    = all (all snd) paths u v
+
+   -- list of all paths from u to v
+   paths u v
+    | u == v
+    = [[]]
+    | otherwise
+    = let outs = filter (\((i,j),f) -> i == u) arcs
+      in  concatMap (\((u',j),f) -> map (((u',j),f):) (path j v)) outs
    
    -- Simple trick:
    -- if there is an edge between the two,
