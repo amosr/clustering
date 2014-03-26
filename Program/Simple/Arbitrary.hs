@@ -3,6 +3,7 @@ module Program.Simple.Arbitrary where
 import Graph
 import Program.Simple.Base
 import Program.Simple.Graph
+import Program.Simple.Pretty
 import Test.QuickCheck
 
 import Control.Applicative
@@ -10,7 +11,10 @@ import Data.Maybe
 
 data ValidProgram
  = ValidProgram Program Graph'
- deriving (Show,Eq)
+ deriving (Eq)
+instance Show ValidProgram where
+ show (ValidProgram p _g)
+  = prettyProgram p
 
 instance Arbitrary ValidProgram where
  arbitrary
@@ -65,7 +69,8 @@ instance Arbitrary Program where
      = do
         f     <- mkFun         $ _sSIds scope
         ins   <- sublist 1 3   $ _sAIds scope
-        return $ mkABind scope $ MapN f ins
+        ins' <- if ins == [] then {- error $ "But...!" ++ show scope -} return $ _sAIds scope else return ins
+        return $ mkABind scope $ MapN f ins'
 
     mkFilter scope
      = do
@@ -116,5 +121,6 @@ data Scope
  , _sAIdFresh :: Int
  , _sSIdFresh :: Int
  }
+ deriving (Show)
 
 

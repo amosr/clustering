@@ -166,13 +166,16 @@ clusterings arcs ns
  where
    -- For some node, find all later nodes of same type, and calculate benefit
    go ((u,ty):rest)
-    =  [ (weight u v,u,v)
+    =  filter noweight0
+       [ (weight u v,u,v)
        | (v,ty') <- rest
        , typeComparable ty ty']
     ++ go rest
    go []
     = []
 
+   noweight0 (w,_,_) = w > 0
+   
    -- Simple trick:
    -- if there is an edge between the two,
    --   there will be some cache locality benefit from merging
@@ -184,7 +187,7 @@ clusterings arcs ns
     | (_:_) <- filter (\((i,j),_) -> (u,v) == (i,j) || (v,u) == (i,j)) arcs
     = 5
     | otherwise
-    = 1
+    = 1 -- XXX hack, set to 0 to remove non-edge ones
    
 
 
@@ -238,6 +241,14 @@ solve_linear' p g r
   fixMap m
    = snd $ fill $ Map.foldWithKey go (0, Map.empty) m
 
+  -- TODO: XXX this is wrong;
+  -- it relies too much on the order of the variables coming out.
+  -- If we had, say,
+  -- > Cluster 0 1 = 0
+  -- > Cluster 2 3 = 0
+  -- > Cluster 0 2 = 0
+  -- then 0, 1, 2 and 3 should all clustered together in 0,
+  -- but this wrong algo will give 0,1=0 and 2,3=1. damn!
   go k v (n, m)
    | SameCluster i j <- k
    , 0               <- v
@@ -246,8 +257,10 @@ solve_linear' p g r
    -- TODO: This should raise an error if it's false
    , ty `typeComparable` ty'
    = case (Map.lookup i m, Map.lookup j m) of
-     (Just _, Just _)
-      -> (n, m)
+     (Just iC, Just jC)
+      -> if   iC == jC
+         then (n, m)
+         else (n, Map.map (\x -> if x == iC then jC else x) m)
      (Just iC, Nothing)
       -> (n, Map.insert j iC m)
      (Nothing, Just jC)
