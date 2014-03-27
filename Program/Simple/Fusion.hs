@@ -8,7 +8,8 @@ import Graph
 import Program.Simple.Base
 import Program.Simple.Graph
 import Program.Simple.Rate
-import Linear.Pretty
+import Program.Simple.Pretty
+--import Linear.Pretty
 
 import qualified Data.List as List
 import qualified Data.Map  as Map
@@ -160,16 +161,18 @@ typeComparable (Rate ls) (Rate rs)
 
 -- | Get list of all nodes that might be clustered together,
 -- and the weighted benefit of doing so.
-clusterings :: [((Name,Name),Bool)] -> [(Name,Rate)] -> [(Int, Name,Name)]
-clusterings arcs ns
- = go ns
+clusterings :: Bool -> [((Name,Name),Bool)] -> [(Name,Rate)] -> [(Int, Name,Name)]
+clusterings simp arcs ns
+ = let gs  = go ns
+       gs' = filter (\(w,u,v) -> noFusionPreventingPath u v) gs
+   in  if simp then gs' else gs
  where
    -- For some node, find all later nodes of same type, and calculate benefit
    go ((u,ty):rest)
     =  filter noweight0
-       [ (weight u v,u,v)
+       [ (weight u v ty ty',u,v)
        | (v,ty') <- rest
-       , noFusionPreventingPath u v
+       --, noFusionPreventingPath u v
        , typeComparable ty ty']
     ++ go rest
    go []
@@ -180,15 +183,15 @@ clusterings arcs ns
    -- \forall paths p from u to v, fusion preventing \not\in p
    noFusionPreventingPath u v
     -- for all paths, for all nodes in path, is fusible
-    = all (all snd) paths u v
+    = all (all snd) (paths u v)
 
    -- list of all paths from u to v
    paths u v
     | u == v
     = [[]]
     | otherwise
-    = let outs = filter (\((i,j),f) -> i == u) arcs
-      in  concatMap (\((u',j),f) -> map (((u',j),f):) (path j v)) outs
+    = let outs = filter (\((i,_j),_f) -> i == u) arcs
+      in  concatMap (\((u',j),f) -> map (((u',j),f):) (paths j v)) outs
    
    -- Simple trick:
    -- if there is an edge between the two,
@@ -197,17 +200,20 @@ clusterings arcs ns
    --   the only benefit is reducing loop overhead
    --
    -- Another heuristic would be to count nodes with shared parents as having a locality benefit
-   weight u v
+   weight u v ty ty'
     | (_:_) <- filter (\((i,j),_) -> (u,v) == (i,j) || (v,u) == (i,j)) arcs
     = 5
+    | ty == ty'
+    = 1
+    -- types not exactly same so require complicated constraint; ignore
     | otherwise
     = 1 -- XXX hack, set to 0 to remove non-edge ones
    
 
 
 -- | Create linear program for graph, and put all the pieces together.
-lp :: Program -> Graph' -> Map AId Rate -> LP GVar Int
-lp p g r
+lp :: Program -> Graph' -> Map AId Rate -> Bool -> LP GVar Int
+lp p g r simp
  = execLPM
  $ do   setDirection Min
         setObjective $ gobjective weights
@@ -219,7 +225,7 @@ lp p g r
    arcs  =           snd g'
 
    -- TODO
-   weights = clusterings arcs $ fst g'
+   weights = clusterings simp arcs $ fst g'
 
    numNodes
      = length names
@@ -242,15 +248,22 @@ solve_linear' p g r
    | ((k,_ty),n) <- (fst $ listOfGraph g) `zip` [0..]]
 
  | otherwise
- = let opts'= mipDefaults { msgLev = MsgAll }
-       res  = unsafePerformIO $ glpSolveVars opts' $ trace (pprLP lp') lp'
+ = let opts'= mipDefaults { msgLev = MsgOff, brTech = DrTom, btTech = LocBound, cuts = [Cov] }
+       res  = unsafePerformIO $ do
+                let pre = "lps/lp-" ++ (show $ length $ constraints lp') ++ "-"
+                writeLP (pre ++ "unopt.lp") lp'unopt
+                writeLP (pre ++ "simp.lp") lp'simp
+                writeFile (pre ++ "prog.p") (prettyProgram p)
+                glpSolveVars opts' $ {-trace (pprLP lp')-} lp'
    in  case res of
         (Success, Just (_, m))
          -> fixMap m -- (trace (show m) m)
         _
          -> error (show res)
  where
-  lp'  = lp p g r
+  lp'simp  = lp p g r True
+  lp'unopt  = lp p g r False
+  lp' = lp'simp
 
   fixMap m
    = snd $ fill $ Map.foldWithKey go (0, Map.empty) m
