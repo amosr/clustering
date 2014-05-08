@@ -1,0 +1,17 @@
+# core of quadtree creation
+param array pts
+
+# find minimum, maximum of x and y
+minx = reduce {} pts
+maxx = reduce {} pts
+miny = reduce {} pts
+maxy = reduce {} pts
+
+# find middle point
+{xm ym} = external {minx maxx miny maxy}
+
+# now filter into four quadrants
+tl   = filter {xm ym} pts
+tr   = filter {xm ym} pts
+bl   = filter {xm ym} pts
+br   = filter {xm ym} pts
