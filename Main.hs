@@ -9,19 +9,22 @@ import qualified Test.Fusion.Untyped   as TF_Untyped
 import qualified Test.Fusion.Typed     as TF_Typed
 
 import qualified Test.Program.Simple   as TP_Simple
+import qualified Test.Program.Paper    as TP_Paper
 
 import System.Environment (getArgs)
 
 
 all_tests :: [Test]
 all_tests
- = [ TG_Order.tests
-   , TG_Traversal.tests
-   , TG_Clusters.tests
-   , TF_Untyped.tests
-   , TF_Typed.tests
-   , TP_Simple.tests
-   ]
+   = [TP_Paper.tests]
+--  = [ TG_Order.tests
+--    , TG_Traversal.tests
+--    , TG_Clusters.tests
+--    , TF_Untyped.tests
+--    , TF_Typed.tests
+--    , TP_Simple.tests
+--    , TP_Paper.tests
+--    ]
 
 main :: IO ()
 main = do

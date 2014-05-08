@@ -1,0 +1,19 @@
+param array pts
+
+{pivot}  = external pts
+
+aboves   = filter {pivot} pts
+belows   = filter {pivot} pts
+
+{above'} = external aboves
+{below'} = external belows
+{border} = external {above' below'}
+
+aboveB   = filter {pivot border} pts
+belowB   = filter {pivot border} pts
+cs       = cross aboveB belowB
+bord     = reduce {} cs
+
+{min'}   = external {above' below' bord}
+
+return min'

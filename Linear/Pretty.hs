@@ -1,8 +1,12 @@
 module Linear.Pretty where
 
+import Common.Pretty
 import Data.LinearProgram
 import qualified Data.List as List
 import qualified Data.Map  as Map
+
+instance (Show v, Show c) => Pretty (LP v c) where
+ ppr = pprLP
 
 pprLP :: (Show v, Show c) => LP v c -> String
 pprLP p

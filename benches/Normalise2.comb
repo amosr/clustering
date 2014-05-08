@@ -1,0 +1,11 @@
+param array us
+
+sum1 = reduce {} us
+gts  = filter {} us
+sum2 = reduce {} gts
+
+nor1 = mapN   {sum1} us
+nor2 = mapN   {sum2} us
+
+return nor1
+return nor2
