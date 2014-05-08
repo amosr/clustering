@@ -1,19 +1,32 @@
+# Closest pairs
 param array pts
 
+# pivot = median pts
 {pivot}  = external pts
 
-aboves   = filter {pivot} pts
-belows   = filter {pivot} pts
+# filter above pivot
+aboves   = filter {pivot} pts                   # -- A
+# filter below pivot
+belows   = filter {pivot} pts                   # -- A
 
+# recurse into aboves
 {above'} = external aboves
+# recurse into belows
 {below'} = external belows
+# minimum of above' and below'
 {border} = external {above' below'}
 
-aboveB   = filter {pivot border} pts
-belowB   = filter {pivot border} pts
-cs       = cross aboveB belowB
-bord     = reduce {} cs
+# find those near the border, above
+aboveB   = filter {pivot border} pts            # -- B
+# find those near the border, below
+belowB   = filter {pivot border} pts            # -- B
 
+# cross them together
+cs       = cross aboveB belowB                  # -- C
+# and find the minimum
+bord     = reduce {} cs                         # -- C
+
+# minimum of above', below' and those near border
 {min'}   = external {above' below' bord}
 
 return min'
