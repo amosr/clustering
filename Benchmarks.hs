@@ -17,7 +17,7 @@ main
  = do   args <- getArgs
         case args of
          [file] -> go file
-         _ -> error "Usage: bench <file>"
+         _ -> error "Usage: bench <file>. Show a clustering of combinators"
 
  where
   go file
@@ -32,13 +32,17 @@ main
                  Nothing
                   -> error "Could not solve?"
                  Just solved'
-                  -> do let strs = stringify pr $ invertMap solved'
-                        mapM_ (putStrLn . showCluster) strs
+                  -> do let strs = stringify pr solved'
+                        strs `seq` putStrLn "Clustering:"
+                        putStrLn ("Found a " ++ show (length strs) ++ "-length clustering")
+                        -- Would be nice to count number of manifest arrays etc
+                        mapM_ (putStrLn . showCluster) (strs `zip` [1..])
                         -- print $ invertMap solved'
                         -- print $ graphOfProgram $ _prProgram pr
 
-stringify :: ParseResult -> Map Int [Name] -> [[String]]
+stringify :: ParseResult -> Map (Int,Int) [Name] -> [[String]]
 stringify pr sol
+ -- Assuming Map.elems comes out in natural key order
  = map (map str)
  $ Map.elems sol
  where
@@ -57,6 +61,6 @@ stringify pr sol
    = maybe "Unknown" id
    $ lookup n (_prSNames pr)
 
-showCluster :: [String] -> String
-showCluster ss = "{ " ++ (concatMap (++ " ") ss) ++ "}"
+showCluster :: ([String], Int) -> String
+showCluster (ss,i) = show i ++ ": { " ++ (concatMap (++ " ") ss) ++ "}"
 

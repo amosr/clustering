@@ -10,6 +10,7 @@ import Program.Paper.Graph
 import Program.Paper.Rate
 import Program.Paper.Pretty
 --import Linear.Pretty
+import Graph.Clusters (invertMap)
 
 import qualified Data.List as List
 import qualified Data.Map  as Map
@@ -265,7 +266,7 @@ lp p g trans simp
    numNodes
      = length names
 
-solve_linear :: Program -> Maybe (Map Name Int)
+solve_linear :: Program -> Maybe (Map (Int,Int) [Name])
 solve_linear p
  | Just r <- ratesOfProgram p
  , Just g <- graphOfProgram p
@@ -274,12 +275,12 @@ solve_linear p
  | otherwise
  = Nothing
 
-solve_linear' :: Program -> Graph' -> (TauMap, TransducerMap) -> Map Name Int
+solve_linear' :: Program -> Graph' -> (TauMap, TransducerMap) -> Map (Int,Int) [Name]
 solve_linear' p g (_,trans)
  -- GLPK has a fit if we give it a problem with no constraints
  | null $ constraints lp'
  = Map.fromList
-   [ (k, n)
+   [ ((0,n), [k])
    | ((k,_ty),n) <- (fst $ listOfGraph g) `zip` [0..]]
 
  | otherwise
@@ -301,7 +302,7 @@ solve_linear' p g (_,trans)
   lp' = lp'simp
 
   fixMap m
-   = snd $ fill $ Map.foldWithKey go (0, Map.empty) m
+   = reorder m $ snd $ fill $ Map.foldWithKey go (0, Map.empty) m
 
   -- TODO: XXX this is wrong;
   -- it relies too much on the order of the variables coming out.
@@ -346,3 +347,13 @@ solve_linear' p g (_,trans)
      , Map.insert k n m)
 
 
+  reorder mOrig m
+   = Map.fromList
+   $ map (reorder' mOrig)
+   $ Map.toList $ invertMap m
+
+  reorder' mOrig (k,v:vs)
+   | Just k' <- Map.lookup (Pi v) mOrig
+   = ((truncate k', k), v:vs)
+   | otherwise
+   = ((0, k), v:vs)
