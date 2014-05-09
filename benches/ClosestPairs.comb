@@ -26,7 +26,6 @@ cs       = cross aboveB belowB                  # -- C
 # and find the minimum
 bord     = reduce {} cs                         # -- C
 
-# minimum of above', below' and those near border
 {min'}   = external {above' below' bord}
 
 return min'
