@@ -1,0 +1,1036 @@
+[1 of 2] Compiling Common           ( Common.hs, Common.o )
+
+==================== CorePrep ====================
+Result size of CorePrep = {terms: 230, types: 265, coercions: 48}
+
+Common.seed3 :: GHC.Int.Int32
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+Common.seed3 = GHC.Int.I32# 1
+
+Common.seed2 :: System.Random.StdGen
+[GblId]
+Common.seed2 =
+  let { (# ww1_s2Pu, ww2_s2Pv #) ~ _
+  <- System.Random.$wmkStdGen32 Common.seed3
+  } in
+  System.Random.StdGen ww1_s2Pu ww2_s2Pv
+
+Common.seed1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Str=DmdType L, Unf=OtherCon []]
+Common.seed1 =
+  \ (eta_s2PA :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    let { GHC.STRef.STRef var#_s2Pz ~ _
+    <- System.Random.theStdGen
+       `cast` (<GHC.IORef.NTCo:IORef> <System.Random.StdGen>
+               :: GHC.IORef.IORef System.Random.StdGen
+                    ~#
+                  GHC.STRef.STRef GHC.Prim.RealWorld System.Random.StdGen)
+    } in
+    let { __DEFAULT ~ s2#_s2PC
+    <- GHC.Prim.writeMutVar#
+         @ GHC.Prim.RealWorld
+         @ System.Random.StdGen
+         var#_s2Pz
+         Common.seed2
+         eta_s2PA
+    } in
+    (# s2#_s2PC, GHC.Tuple.() #)
+
+Common.seed :: GHC.Types.IO ()
+[GblId, Arity=1, Str=DmdType L, Unf=OtherCon []]
+Common.seed =
+  (\ (eta_B1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+     Common.seed1 eta_B1)
+  `cast` (Sym <(GHC.Types.NTCo:IO <()>)>
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+lvl_r2Pq :: [GHC.Types.Char]
+[GblId]
+lvl_r2Pq = GHC.CString.unpackCString# "Usage: bench <data-size>"
+
+Common.get_size5 :: GHC.Types.IO GHC.Types.Int
+[GblId, Str=DmdType b]
+Common.get_size5 =
+  GHC.Err.error @ (GHC.Types.IO GHC.Types.Int) lvl_r2Pq
+
+Common.get_size3 :: GHC.Types.Int
+[GblId, Str=DmdType b]
+Common.get_size3 =
+  GHC.Err.error @ GHC.Types.Int Text.Read.readEither4
+
+Common.get_size2 :: GHC.Types.Int
+[GblId, Str=DmdType b]
+Common.get_size2 =
+  GHC.Err.error @ GHC.Types.Int Text.Read.readEither2
+
+Common.get_size4 :: Text.ParserCombinators.ReadP.P GHC.Types.Int
+[GblId]
+Common.get_size4 =
+  GHC.Read.$fReadInt5
+    GHC.Read.$fReadInt_$sconvertInt
+    Text.ParserCombinators.ReadPrec.minPrec
+    @ GHC.Types.Int
+    (Text.Read.readEither5 @ GHC.Types.Int)
+
+Common.get_size1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Types.Int #)
+[GblId, Arity=1, Str=DmdType L, Unf=OtherCon []]
+Common.get_size1 =
+  \ (eta_s2PE :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    let { (# ipv_s2PP, ipv1_s2PI #) ~ _
+    <- System.Environment.getArgs1 eta_s2PE
+    } in
+    case ipv1_s2PI of _ {
+      [] -> case Common.get_size5 of wild1_s2Rw { };
+      : sz_s2PQ ds_s2PN ->
+        case ds_s2PN of _ {
+          [] ->
+            let {
+              sat_s2Rl :: GHC.Types.Int
+              [LclId]
+              sat_s2Rl =
+                let { __DEFAULT ~ sat_s2Rk
+                <- Text.ParserCombinators.ReadP.run
+                     @ GHC.Types.Int Common.get_size4 sz_s2PQ
+                } in
+                case Text.Read.readEither6 @ GHC.Types.Int sat_s2Rk of _ {
+                  [] -> Common.get_size3;
+                  : x_s2PX ds2_s2PV ->
+                    case ds2_s2PV of _ {
+                      [] -> x_s2PX;
+                      : ipv2_s2RA ipv3_s2RB -> Common.get_size2
+                    }
+                } } in
+            (# ipv_s2PP, sat_s2Rl #);
+          : ipv2_s2RC ipv3_s2RD -> case Common.get_size5 of wild2_s2RE { }
+        }
+    }
+
+Common.get_size :: GHC.Types.IO GHC.Types.Int
+[GblId, Arity=1, Str=DmdType L, Unf=OtherCon []]
+Common.get_size =
+  (\ (eta_B1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+     Common.get_size1 eta_B1)
+  `cast` (Sym <(GHC.Types.NTCo:IO <GHC.Types.Int>)>
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Types.Int #))
+               ~#
+             GHC.Types.IO GHC.Types.Int)
+
+Common.$wa
+  :: GHC.Prim.Int#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           Data.Vector.Unboxed.Base.Vector GHC.Types.Int #)
+[GblId, Arity=2, Str=DmdType LL, Unf=OtherCon []]
+Common.$wa =
+  \ (ww_s2Qe :: GHC.Prim.Int#)
+    (w_s2Qa :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    let {
+      $j_s2Rb
+        :: GHC.Prim.Int#
+           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                 Data.Vector.Unboxed.Base.Vector GHC.Types.Int #)
+      [LclId, Arity=1, Str=DmdType L, Unf=OtherCon []]
+      $j_s2Rb =
+        \ (x_s2Q8 :: GHC.Prim.Int#) ->
+          let { __DEFAULT ~ sat_s2Rn <- GHC.Prim.*# x_s2Q8 8 } in
+          let { (# ipv_s2Qh, ipv1_s2Qg #) ~ _
+          <- GHC.Prim.newByteArray#
+               @ (Control.Monad.Primitive.PrimState GHC.Types.IO)
+               sat_s2Rn
+               (w_s2Qa
+                `cast` (GHC.Prim.State#
+                          (Sym <(Control.Monad.Primitive.TFCo:R:PrimStateIO)>)
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                             ~#
+                           GHC.Prim.State# (Control.Monad.Primitive.PrimState GHC.Types.IO)))
+          } in
+          case GHC.Prim.<# 0 ww_s2Qe of _ {
+            GHC.Types.False ->
+              let { (# ipv2_s2Ql, ipv3_s2Qm #) ~ _
+              <- GHC.Prim.unsafeFreezeByteArray#
+                   @ (Control.Monad.Primitive.PrimState GHC.Types.IO)
+                   ipv1_s2Qg
+                   ipv_s2Qh
+              } in
+              let {
+                sat_s2Rm :: Data.Vector.Unboxed.Base.Vector GHC.Types.Int
+                [LclId]
+                sat_s2Rm =
+                  (Data.Vector.Primitive.Vector @ GHC.Types.Int 0 0 ipv3_s2Qm)
+                  `cast` (Sym <(Data.Vector.Unboxed.Base.NTCo:R:VectorInt)> ; Sym
+                                                                                <(Data.Vector.Unboxed.Base.TFCo:R:VectorInt)>
+                          :: Data.Vector.Primitive.Vector GHC.Types.Int
+                               ~#
+                             Data.Vector.Unboxed.Base.Vector GHC.Types.Int) } in
+              (# ipv2_s2Ql
+                 `cast` (GHC.Prim.State#
+                           <(Control.Monad.Primitive.TFCo:R:PrimStateIO)>
+                         :: GHC.Prim.State# (Control.Monad.Primitive.PrimState GHC.Types.IO)
+                              ~#
+                            GHC.Prim.State# GHC.Prim.RealWorld),
+                 sat_s2Rm #);
+            GHC.Types.True ->
+              let { GHC.STRef.STRef r#_s2Qq ~ _
+              <- System.Random.theStdGen
+                 `cast` (<GHC.IORef.NTCo:IORef> <System.Random.StdGen>
+                         :: GHC.IORef.IORef System.Random.StdGen
+                              ~#
+                            GHC.STRef.STRef GHC.Prim.RealWorld System.Random.StdGen)
+              } in
+              let { (# ipv2_s2Qy, ipv3_s2Qu #) ~ _
+              <- GHC.Prim.atomicModifyMutVar#
+                   @ GHC.Prim.RealWorld
+                   @ System.Random.StdGen
+                   @ (System.Random.StdGen, GHC.Types.Int)
+                   @ GHC.Types.Int
+                   r#_s2Qq
+                   System.Random.$fRandomInt2
+                   (ipv_s2Qh
+                    `cast` (GHC.Prim.State#
+                              <(Control.Monad.Primitive.TFCo:R:PrimStateIO)>
+                            :: GHC.Prim.State# (Control.Monad.Primitive.PrimState GHC.Types.IO)
+                                 ~#
+                               GHC.Prim.State# GHC.Prim.RealWorld))
+              } in
+              let { GHC.Types.I# x#_s2Qx ~ _ <- ipv3_s2Qu } in
+              let { __DEFAULT ~ ipv4_s2QW
+              <- (GHC.Prim.writeIntArray#
+                    @ (Control.Monad.Primitive.PrimState GHC.Types.IO)
+                    ipv1_s2Qg
+                    0
+                    x#_s2Qx
+                    (ipv2_s2Qy
+                     `cast` (GHC.Prim.State#
+                               (Sym <(Control.Monad.Primitive.TFCo:R:PrimStateIO)>)
+                             :: GHC.Prim.State# GHC.Prim.RealWorld
+                                  ~#
+                                GHC.Prim.State# (Control.Monad.Primitive.PrimState GHC.Types.IO))))
+                 `cast` (GHC.Prim.State#
+                           <(Control.Monad.Primitive.TFCo:R:PrimStateIO)>
+                         :: GHC.Prim.State# (Control.Monad.Primitive.PrimState GHC.Types.IO)
+                              ~#
+                            GHC.Prim.State# GHC.Prim.RealWorld)
+              } in
+              letrec {
+                $s$wa_s2QS [Occ=LoopBreaker]
+                  :: GHC.Prim.Int#
+                     -> GHC.Prim.Int#
+                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Types.Int #)
+                [LclId, Arity=3, Str=DmdType LLL, Unf=OtherCon []]
+                $s$wa_s2QS =
+                  \ (sc_s2QH :: GHC.Prim.Int#)
+                    (sc1_s2QE :: GHC.Prim.Int#)
+                    (sc2_s2QG :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                    case GHC.Prim.<# sc1_s2QE ww_s2Qe of _ {
+                      GHC.Types.False ->
+                        let {
+                          sat_s2Ro :: GHC.Types.Int
+                          [LclId]
+                          sat_s2Ro = GHC.Types.I# sc_s2QH } in
+                        (# sc2_s2QG, sat_s2Ro #);
+                      GHC.Types.True ->
+                        let { (# ipv5_s2QQ, ipv6_s2QM #) ~ _
+                        <- GHC.Prim.atomicModifyMutVar#
+                             @ GHC.Prim.RealWorld
+                             @ System.Random.StdGen
+                             @ (System.Random.StdGen, GHC.Types.Int)
+                             @ GHC.Types.Int
+                             r#_s2Qq
+                             System.Random.$fRandomInt2
+                             sc2_s2QG
+                        } in
+                        let { GHC.Types.I# x#1_s2QP ~ _ <- ipv6_s2QM } in
+                        let { __DEFAULT ~ ipv7_s2QV
+                        <- (GHC.Prim.writeIntArray#
+                              @ (Control.Monad.Primitive.PrimState GHC.Types.IO)
+                              ipv1_s2Qg
+                              sc_s2QH
+                              x#1_s2QP
+                              (ipv5_s2QQ
+                               `cast` (GHC.Prim.State#
+                                         (Sym <(Control.Monad.Primitive.TFCo:R:PrimStateIO)>)
+                                       :: GHC.Prim.State# GHC.Prim.RealWorld
+                                            ~#
+                                          GHC.Prim.State#
+                                            (Control.Monad.Primitive.PrimState GHC.Types.IO))))
+                           `cast` (GHC.Prim.State#
+                                     <(Control.Monad.Primitive.TFCo:R:PrimStateIO)>
+                                   :: GHC.Prim.State#
+                                        (Control.Monad.Primitive.PrimState GHC.Types.IO)
+                                        ~#
+                                      GHC.Prim.State# GHC.Prim.RealWorld)
+                        } in
+                        let { __DEFAULT ~ sat_s2Rq <- GHC.Prim.+# sc1_s2QE 1 } in
+                        let { __DEFAULT ~ sat_s2Rr <- GHC.Prim.+# sc_s2QH 1 } in
+                        $s$wa_s2QS sat_s2Rr sat_s2Rq ipv7_s2QV
+                    }; } in
+              let { (# ipv5_s2R3, ipv6_s2R0 #) ~ _
+              <- $s$wa_s2QS 1 1 ipv4_s2QW
+              } in
+              let { GHC.Types.I# tpl1_s2R8 ~ _ <- ipv6_s2R0 } in
+              let { (# ipv7_s2R7, ipv8_s2R9 #) ~ _
+              <- GHC.Prim.unsafeFreezeByteArray#
+                   @ (Control.Monad.Primitive.PrimState GHC.Types.IO)
+                   ipv1_s2Qg
+                   (ipv5_s2R3
+                    `cast` (GHC.Prim.State#
+                              (Sym <(Control.Monad.Primitive.TFCo:R:PrimStateIO)>)
+                            :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 ~#
+                               GHC.Prim.State# (Control.Monad.Primitive.PrimState GHC.Types.IO)))
+              } in
+              let {
+                sat_s2Rp :: Data.Vector.Unboxed.Base.Vector GHC.Types.Int
+                [LclId]
+                sat_s2Rp =
+                  (Data.Vector.Primitive.Vector
+                     @ GHC.Types.Int 0 tpl1_s2R8 ipv8_s2R9)
+                  `cast` (Sym <(Data.Vector.Unboxed.Base.NTCo:R:VectorInt)> ; Sym
+                                                                                <(Data.Vector.Unboxed.Base.TFCo:R:VectorInt)>
+                          :: Data.Vector.Primitive.Vector GHC.Types.Int
+                               ~#
+                             Data.Vector.Unboxed.Base.Vector GHC.Types.Int) } in
+              (# ipv7_s2R7
+                 `cast` (GHC.Prim.State#
+                           <(Control.Monad.Primitive.TFCo:R:PrimStateIO)>
+                         :: GHC.Prim.State# (Control.Monad.Primitive.PrimState GHC.Types.IO)
+                              ~#
+                            GHC.Prim.State# GHC.Prim.RealWorld),
+                 sat_s2Rp #)
+          } } in
+    case GHC.Prim.<=# ww_s2Qe 0 of _ {
+      GHC.Types.False -> $j_s2Rb ww_s2Qe;
+      GHC.Types.True -> $j_s2Rb 0
+    }
+
+Common.random_ints1 [InlPrag=INLINE[0]]
+  :: GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           Data.Vector.Unboxed.Base.Vector GHC.Types.Int #)
+[GblId, Arity=2, Str=DmdType U(L)L, Unf=OtherCon []]
+Common.random_ints1 =
+  \ (w_s2Rf :: GHC.Types.Int)
+    (w1_s2Rj :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    let { GHC.Types.I# ww_s2Ri ~ _ <- w_s2Rf } in
+    Common.$wa ww_s2Ri w1_s2Rj
+
+Common.random_ints
+  :: GHC.Types.Int
+     -> GHC.Types.IO (Data.Vector.Unboxed.Base.Vector GHC.Types.Int)
+[GblId, Arity=2, Str=DmdType U(L)L, Unf=OtherCon []]
+Common.random_ints =
+  (\ (eta_B2 :: GHC.Types.Int)
+     (eta_B1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+     Common.random_ints1 eta_B2 eta_B1)
+  `cast` (<GHC.Types.Int>
+          -> Sym
+               <(GHC.Types.NTCo:IO
+                   <Data.Vector.Unboxed.Base.Vector GHC.Types.Int>)>
+          :: (GHC.Types.Int
+              -> GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                    Data.Vector.Unboxed.Base.Vector GHC.Types.Int #))
+               ~#
+             (GHC.Types.Int
+              -> GHC.Types.IO (Data.Vector.Unboxed.Base.Vector GHC.Types.Int)))
+
+
+
+[2 of 2] Compiling Main             ( Normalise2.hs, Normalise2.o )
+
+==================== CorePrep ====================
+Result size of CorePrep = {terms: 531, types: 462, coercions: 126}
+
+lvl_r48t :: [GHC.Types.Char]
+[GblId]
+lvl_r48t = GHC.CString.unpackCString# "Ok"
+
+Main.main1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Str=DmdType L, Unf=OtherCon []]
+Main.main1 =
+  \ (eta_s48v :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    let { (# ipv_s48C, ipv1_s48E #) ~ _
+    <- Common.get_size1 eta_s48v
+    } in
+    let { GHC.STRef.STRef var#_s48B ~ _
+    <- System.Random.theStdGen
+       `cast` (<GHC.IORef.NTCo:IORef> <System.Random.StdGen>
+               :: GHC.IORef.IORef System.Random.StdGen
+                    ~#
+                  GHC.STRef.STRef GHC.Prim.RealWorld System.Random.StdGen)
+    } in
+    let { __DEFAULT ~ s2#_s48I
+    <- GHC.Prim.writeMutVar#
+         @ GHC.Prim.RealWorld
+         @ System.Random.StdGen
+         var#_s48B
+         Common.seed2
+         ipv_s48C
+    } in
+    let { GHC.Types.I# ww_s48H ~ _ <- ipv1_s48E } in
+    let { (# ipv2_s4cq, ipv3_s48M #) ~ _
+    <- Common.$wa ww_s48H s2#_s48I
+    } in
+    let { Data.Vector.Primitive.Vector ipv4_s495
+                                       ipv5_s48S
+                                       ipv6_s494 ~ _
+    <- ipv3_s48M
+       `cast` (<Data.Vector.Unboxed.Base.TFCo:R:VectorInt> ; <Data.Vector.Unboxed.Base.NTCo:R:VectorInt>
+               :: Data.Vector.Unboxed.Base.Vector GHC.Types.Int
+                    ~#
+                  Data.Vector.Primitive.Vector GHC.Types.Int)
+    } in
+    let {
+      sat_s4d5
+        :: forall s_a2fT.
+           GHC.ST.STRep s_a2fT (Data.Vector.Unboxed.Base.Vector GHC.Types.Int)
+      [LclId]
+      sat_s4d5 =
+        \ (@ s_a3iv) (s_s48U :: GHC.Prim.State# s_a3iv) ->
+          let { __DEFAULT ~ sat_s4cK <- GHC.Prim.*# ipv5_s48S 8 } in
+          let { (# ipv7_s49C, ipv8_s49w #) ~ _
+          <- GHC.Prim.newByteArray#
+               @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+               sat_s4cK
+               (s_s48U
+                `cast` (GHC.Prim.State#
+                          (Sym <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_a3iv>)>)
+                        :: GHC.Prim.State# s_a3iv
+                             ~#
+                           GHC.Prim.State#
+                             (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))))
+          } in
+          case GHC.Prim.>=# 0 ipv5_s48S of _ {
+            GHC.Types.False ->
+              letrec {
+                $s$wfoldlM_loop_s49a [Occ=LoopBreaker]
+                  :: GHC.Prim.Int# -> GHC.Prim.Int# -> GHC.Prim.Int#
+                [LclId, Arity=2, Str=DmdType LL, Unf=OtherCon []]
+                $s$wfoldlM_loop_s49a =
+                  \ (sc_s498 :: GHC.Prim.Int#) (sc1_s492 :: GHC.Prim.Int#) ->
+                    case GHC.Prim.>=# sc1_s492 ipv5_s48S of _ {
+                      GHC.Types.False ->
+                        let { __DEFAULT ~ sat_s4cv <- GHC.Prim.+# ipv4_s495 sc1_s492 } in
+                        let { __DEFAULT ~ wild3_s499
+                        <- GHC.Prim.indexIntArray# ipv6_s494 sat_s4cv
+                        } in
+                        let { __DEFAULT ~ sat_s4ct <- GHC.Prim.+# sc1_s492 1 } in
+                        let { __DEFAULT ~ sat_s4cu <- GHC.Prim.+# sc_s498 wild3_s499 } in
+                        $s$wfoldlM_loop_s49a sat_s4cu sat_s4ct;
+                      GHC.Types.True -> sc_s498
+                    }; } in
+              case $s$wfoldlM_loop_s49a 0 0 of ww1_s49g {
+                __DEFAULT ->
+                  let { __DEFAULT ~ wild2_s49f
+                  <- GHC.Prim.indexIntArray# ipv6_s494 ipv4_s495
+                  } in
+                  let { __DEFAULT ~ ww2_s49B
+                  <- GHC.Classes.divInt# wild2_s49f ww1_s49g
+                  } in
+                  letrec {
+                    $s$wa_s49t [Occ=LoopBreaker]
+                      :: GHC.Prim.Int#
+                         -> GHC.Prim.Int#
+                         -> GHC.Prim.State# s_a3iv
+                         -> (# GHC.Prim.State# s_a3iv, GHC.Types.Int #)
+                    [LclId, Arity=3, Str=DmdType LLL, Unf=OtherCon []]
+                    $s$wa_s49t =
+                      \ (sc_s49s :: GHC.Prim.Int#)
+                        (sc1_s49m :: GHC.Prim.Int#)
+                        (sc2_s49y :: GHC.Prim.State# s_a3iv) ->
+                        case GHC.Prim.>=# sc1_s49m ipv5_s48S of _ {
+                          GHC.Types.False ->
+                            let { __DEFAULT ~ sat_s4cz <- GHC.Prim.+# ipv4_s495 sc1_s49m } in
+                            let { __DEFAULT ~ wild4_s49q
+                            <- GHC.Prim.indexIntArray# ipv6_s494 sat_s4cz
+                            } in
+                            let { __DEFAULT ~ ww3_s49x
+                            <- GHC.Classes.divInt# wild4_s49q ww1_s49g
+                            } in
+                            let { __DEFAULT ~ sat_s4cw
+                            <- (GHC.Prim.writeIntArray#
+                                  @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                                  ipv8_s49w
+                                  sc_s49s
+                                  ww3_s49x
+                                  (sc2_s49y
+                                   `cast` (GHC.Prim.State#
+                                             (Sym
+                                                <(Control.Monad.Primitive.TFCo:R:PrimStateST
+                                                    <s_a3iv>)>)
+                                           :: GHC.Prim.State# s_a3iv
+                                                ~#
+                                              GHC.Prim.State#
+                                                (Control.Monad.Primitive.PrimState
+                                                   (GHC.ST.ST s_a3iv)))))
+                               `cast` (GHC.Prim.State#
+                                         <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_a3iv>)>
+                                       :: GHC.Prim.State#
+                                            (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                                            ~#
+                                          GHC.Prim.State# s_a3iv)
+                            } in
+                            let { __DEFAULT ~ sat_s4cx <- GHC.Prim.+# sc1_s49m 1 } in
+                            let { __DEFAULT ~ sat_s4cy <- GHC.Prim.+# sc_s49s 1 } in
+                            $s$wa_s49t sat_s4cy sat_s4cx sat_s4cw;
+                          GHC.Types.True ->
+                            let {
+                              sat_s4cC :: GHC.Types.Int
+                              [LclId]
+                              sat_s4cC = GHC.Types.I# sc_s49s } in
+                            (# sc2_s49y, sat_s4cC #)
+                        }; } in
+                  let { __DEFAULT ~ sat_s4cB
+                  <- (GHC.Prim.writeIntArray#
+                        @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                        ipv8_s49w
+                        0
+                        ww2_s49B
+                        ipv7_s49C)
+                     `cast` (GHC.Prim.State#
+                               <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_a3iv>)>
+                             :: GHC.Prim.State#
+                                  (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                                  ~#
+                                GHC.Prim.State# s_a3iv)
+                  } in
+                  let { (# ipv9_s49K, ipv10_s49H #) ~ _
+                  <- $s$wa_s49t 1 1 sat_s4cB
+                  } in
+                  let { GHC.Types.I# tpl1_s49P ~ _ <- ipv10_s49H } in
+                  let { (# ipv11_s49O, ipv12_s49Q #) ~ _
+                  <- GHC.Prim.unsafeFreezeByteArray#
+                       @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                       ipv8_s49w
+                       (ipv9_s49K
+                        `cast` (GHC.Prim.State#
+                                  (Sym <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_a3iv>)>)
+                                :: GHC.Prim.State# s_a3iv
+                                     ~#
+                                   GHC.Prim.State#
+                                     (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))))
+                  } in
+                  let {
+                    sat_s4cA :: Data.Vector.Unboxed.Base.Vector GHC.Types.Int
+                    [LclId]
+                    sat_s4cA =
+                      (Data.Vector.Primitive.Vector
+                         @ GHC.Types.Int 0 tpl1_s49P ipv12_s49Q)
+                      `cast` (Sym <(Data.Vector.Unboxed.Base.NTCo:R:VectorInt)> ; Sym
+                                                                                    <(Data.Vector.Unboxed.Base.TFCo:R:VectorInt)>
+                              :: Data.Vector.Primitive.Vector GHC.Types.Int
+                                   ~#
+                                 Data.Vector.Unboxed.Base.Vector GHC.Types.Int) } in
+                  (# ipv11_s49O
+                     `cast` (GHC.Prim.State#
+                               <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_a3iv>)>
+                             :: GHC.Prim.State#
+                                  (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                                  ~#
+                                GHC.Prim.State# s_a3iv),
+                     sat_s4cA #);
+                (-1) ->
+                  case GHC.Prim.indexIntArray# ipv6_s494 ipv4_s495 of wild2_s49T {
+                    __DEFAULT ->
+                      let { __DEFAULT ~ ww2_s4ae
+                      <- GHC.Classes.divInt# wild2_s49T (-1)
+                      } in
+                      letrec {
+                        $s$wa_s4a6 [Occ=LoopBreaker]
+                          :: GHC.Prim.Int#
+                             -> GHC.Prim.Int#
+                             -> GHC.Prim.State# s_a3iv
+                             -> (# GHC.Prim.State# s_a3iv, GHC.Types.Int #)
+                        [LclId, Arity=3, Str=DmdType LLL, Unf=OtherCon []]
+                        $s$wa_s4a6 =
+                          \ (sc_s4a5 :: GHC.Prim.Int#)
+                            (sc1_s49Z :: GHC.Prim.Int#)
+                            (sc2_s4aa :: GHC.Prim.State# s_a3iv) ->
+                            case GHC.Prim.>=# sc1_s49Z ipv5_s48S of _ {
+                              GHC.Types.False ->
+                                let { __DEFAULT ~ sat_s4cG <- GHC.Prim.+# ipv4_s495 sc1_s49Z } in
+                                case GHC.Prim.indexIntArray# ipv6_s494 sat_s4cG of wild4_s4a3 {
+                                  __DEFAULT ->
+                                    let { __DEFAULT ~ ww3_s4a9
+                                    <- GHC.Classes.divInt# wild4_s4a3 (-1)
+                                    } in
+                                    let { __DEFAULT ~ sat_s4cD
+                                    <- (GHC.Prim.writeIntArray#
+                                          @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                                          ipv8_s49w
+                                          sc_s4a5
+                                          ww3_s4a9
+                                          (sc2_s4aa
+                                           `cast` (GHC.Prim.State#
+                                                     (Sym
+                                                        <(Control.Monad.Primitive.TFCo:R:PrimStateST
+                                                            <s_a3iv>)>)
+                                                   :: GHC.Prim.State# s_a3iv
+                                                        ~#
+                                                      GHC.Prim.State#
+                                                        (Control.Monad.Primitive.PrimState
+                                                           (GHC.ST.ST s_a3iv)))))
+                                       `cast` (GHC.Prim.State#
+                                                 <(Control.Monad.Primitive.TFCo:R:PrimStateST
+                                                     <s_a3iv>)>
+                                               :: GHC.Prim.State#
+                                                    (Control.Monad.Primitive.PrimState
+                                                       (GHC.ST.ST s_a3iv))
+                                                    ~#
+                                                  GHC.Prim.State# s_a3iv)
+                                    } in
+                                    let { __DEFAULT ~ sat_s4cE <- GHC.Prim.+# sc1_s49Z 1 } in
+                                    let { __DEFAULT ~ sat_s4cF <- GHC.Prim.+# sc_s4a5 1 } in
+                                    $s$wa_s4a6 sat_s4cF sat_s4cE sat_s4cD;
+                                  (-9223372036854775808) ->
+                                    case GHC.Err.overflowError of wild5_s4dl { }
+                                };
+                              GHC.Types.True ->
+                                let {
+                                  sat_s4cJ :: GHC.Types.Int
+                                  [LclId]
+                                  sat_s4cJ = GHC.Types.I# sc_s4a5 } in
+                                (# sc2_s4aa, sat_s4cJ #)
+                            }; } in
+                      let { __DEFAULT ~ sat_s4cI
+                      <- (GHC.Prim.writeIntArray#
+                            @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                            ipv8_s49w
+                            0
+                            ww2_s4ae
+                            ipv7_s49C)
+                         `cast` (GHC.Prim.State#
+                                   <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_a3iv>)>
+                                 :: GHC.Prim.State#
+                                      (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                                      ~#
+                                    GHC.Prim.State# s_a3iv)
+                      } in
+                      let { (# ipv9_s4am, ipv10_s4aj #) ~ _
+                      <- $s$wa_s4a6 1 1 sat_s4cI
+                      } in
+                      let { GHC.Types.I# tpl1_s4ar ~ _ <- ipv10_s4aj } in
+                      let { (# ipv11_s4aq, ipv12_s4as #) ~ _
+                      <- GHC.Prim.unsafeFreezeByteArray#
+                           @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                           ipv8_s49w
+                           (ipv9_s4am
+                            `cast` (GHC.Prim.State#
+                                      (Sym <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_a3iv>)>)
+                                    :: GHC.Prim.State# s_a3iv
+                                         ~#
+                                       GHC.Prim.State#
+                                         (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))))
+                      } in
+                      let {
+                        sat_s4cH :: Data.Vector.Unboxed.Base.Vector GHC.Types.Int
+                        [LclId]
+                        sat_s4cH =
+                          (Data.Vector.Primitive.Vector
+                             @ GHC.Types.Int 0 tpl1_s4ar ipv12_s4as)
+                          `cast` (Sym <(Data.Vector.Unboxed.Base.NTCo:R:VectorInt)> ; Sym
+                                                                                        <(Data.Vector.Unboxed.Base.TFCo:R:VectorInt)>
+                                  :: Data.Vector.Primitive.Vector GHC.Types.Int
+                                       ~#
+                                     Data.Vector.Unboxed.Base.Vector GHC.Types.Int) } in
+                      (# ipv11_s4aq
+                         `cast` (GHC.Prim.State#
+                                   <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_a3iv>)>
+                                 :: GHC.Prim.State#
+                                      (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                                      ~#
+                                    GHC.Prim.State# s_a3iv),
+                         sat_s4cH #);
+                    (-9223372036854775808) ->
+                      case GHC.Err.overflowError of wild3_s4dp { }
+                  };
+                0 -> case GHC.Err.divZeroError of wild2_s4dq { }
+              };
+            GHC.Types.True ->
+              let { (# ipv9_s4az, ipv10_s4aA #) ~ _
+              <- GHC.Prim.unsafeFreezeByteArray#
+                   @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                   ipv8_s49w
+                   ipv7_s49C
+              } in
+              let {
+                sat_s4d7 :: Data.Vector.Unboxed.Base.Vector GHC.Types.Int
+                [LclId]
+                sat_s4d7 =
+                  (Data.Vector.Primitive.Vector @ GHC.Types.Int 0 0 ipv10_s4aA)
+                  `cast` (Sym <(Data.Vector.Unboxed.Base.NTCo:R:VectorInt)> ; Sym
+                                                                                <(Data.Vector.Unboxed.Base.TFCo:R:VectorInt)>
+                          :: Data.Vector.Primitive.Vector GHC.Types.Int
+                               ~#
+                             Data.Vector.Unboxed.Base.Vector GHC.Types.Int) } in
+              (# ipv9_s4az
+                 `cast` (GHC.Prim.State#
+                           <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_a3iv>)>
+                         :: GHC.Prim.State#
+                              (Control.Monad.Primitive.PrimState (GHC.ST.ST s_a3iv))
+                              ~#
+                            GHC.Prim.State# s_a3iv),
+                 sat_s4d7 #)
+          } } in
+    let { __DEFAULT ~ _
+    <- GHC.ST.runSTRep
+         @ (Data.Vector.Unboxed.Base.Vector GHC.Types.Int) sat_s4d5
+    } in
+    let {
+      sat_s4d4
+        :: forall s_a2fT.
+           GHC.ST.STRep s_a2fT (Data.Vector.Unboxed.Base.Vector GHC.Types.Int)
+      [LclId]
+      sat_s4d4 =
+        \ (@ s_X3m1) (s_s4aG :: GHC.Prim.State# s_X3m1) ->
+          let { __DEFAULT ~ sat_s4d3 <- GHC.Prim.*# ipv5_s48S 8 } in
+          let { (# ipv7_s4bo, ipv8_s4bi #) ~ _
+          <- GHC.Prim.newByteArray#
+               @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+               sat_s4d3
+               (s_s4aG
+                `cast` (GHC.Prim.State#
+                          (Sym <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_X3m1>)>)
+                        :: GHC.Prim.State# s_X3m1
+                             ~#
+                           GHC.Prim.State#
+                             (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))))
+          } in
+          case GHC.Prim.>=# 0 ipv5_s48S of _ {
+            GHC.Types.False ->
+              letrec {
+                $s$wfoldlM_loop_s4aV [Occ=LoopBreaker]
+                  :: GHC.Prim.Int# -> GHC.Prim.Int# -> GHC.Prim.Int#
+                [LclId, Arity=2, Str=DmdType LL, Unf=OtherCon []]
+                $s$wfoldlM_loop_s4aV =
+                  \ (sc_s4aU :: GHC.Prim.Int#) (sc1_s4aO :: GHC.Prim.Int#) ->
+                    case GHC.Prim.>=# sc1_s4aO ipv5_s48S of _ {
+                      GHC.Types.False ->
+                        let { __DEFAULT ~ sat_s4cM <- GHC.Prim.+# ipv4_s495 sc1_s4aO } in
+                        let { __DEFAULT ~ wild3_s4aS
+                        <- GHC.Prim.indexIntArray# ipv6_s494 sat_s4cM
+                        } in
+                        case GHC.Prim.># wild3_s4aS 0 of _ {
+                          GHC.Types.False ->
+                            let { __DEFAULT ~ sat_s4cL <- GHC.Prim.+# sc1_s4aO 1 } in
+                            $s$wfoldlM_loop_s4aV sc_s4aU sat_s4cL;
+                          GHC.Types.True ->
+                            let { __DEFAULT ~ sat_s4cU <- GHC.Prim.+# sc1_s4aO 1 } in
+                            let { __DEFAULT ~ sat_s4cV <- GHC.Prim.+# sc_s4aU wild3_s4aS } in
+                            $s$wfoldlM_loop_s4aV sat_s4cV sat_s4cU
+                        };
+                      GHC.Types.True -> sc_s4aU
+                    }; } in
+              case $s$wfoldlM_loop_s4aV 0 0 of ww1_s4b2 {
+                __DEFAULT ->
+                  let { __DEFAULT ~ wild2_s4b1
+                  <- GHC.Prim.indexIntArray# ipv6_s494 ipv4_s495
+                  } in
+                  let { __DEFAULT ~ ww2_s4bn
+                  <- GHC.Classes.divInt# wild2_s4b1 ww1_s4b2
+                  } in
+                  letrec {
+                    $s$wa_s4bf [Occ=LoopBreaker]
+                      :: GHC.Prim.Int#
+                         -> GHC.Prim.Int#
+                         -> GHC.Prim.State# s_X3m1
+                         -> (# GHC.Prim.State# s_X3m1, GHC.Types.Int #)
+                    [LclId, Arity=3, Str=DmdType LLL, Unf=OtherCon []]
+                    $s$wa_s4bf =
+                      \ (sc_s4be :: GHC.Prim.Int#)
+                        (sc1_s4b8 :: GHC.Prim.Int#)
+                        (sc2_s4bk :: GHC.Prim.State# s_X3m1) ->
+                        case GHC.Prim.>=# sc1_s4b8 ipv5_s48S of _ {
+                          GHC.Types.False ->
+                            let { __DEFAULT ~ sat_s4cQ <- GHC.Prim.+# ipv4_s495 sc1_s4b8 } in
+                            let { __DEFAULT ~ wild4_s4bc
+                            <- GHC.Prim.indexIntArray# ipv6_s494 sat_s4cQ
+                            } in
+                            let { __DEFAULT ~ ww3_s4bj
+                            <- GHC.Classes.divInt# wild4_s4bc ww1_s4b2
+                            } in
+                            let { __DEFAULT ~ sat_s4cN
+                            <- (GHC.Prim.writeIntArray#
+                                  @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                                  ipv8_s4bi
+                                  sc_s4be
+                                  ww3_s4bj
+                                  (sc2_s4bk
+                                   `cast` (GHC.Prim.State#
+                                             (Sym
+                                                <(Control.Monad.Primitive.TFCo:R:PrimStateST
+                                                    <s_X3m1>)>)
+                                           :: GHC.Prim.State# s_X3m1
+                                                ~#
+                                              GHC.Prim.State#
+                                                (Control.Monad.Primitive.PrimState
+                                                   (GHC.ST.ST s_X3m1)))))
+                               `cast` (GHC.Prim.State#
+                                         <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_X3m1>)>
+                                       :: GHC.Prim.State#
+                                            (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                                            ~#
+                                          GHC.Prim.State# s_X3m1)
+                            } in
+                            let { __DEFAULT ~ sat_s4cO <- GHC.Prim.+# sc1_s4b8 1 } in
+                            let { __DEFAULT ~ sat_s4cP <- GHC.Prim.+# sc_s4be 1 } in
+                            $s$wa_s4bf sat_s4cP sat_s4cO sat_s4cN;
+                          GHC.Types.True ->
+                            let {
+                              sat_s4cT :: GHC.Types.Int
+                              [LclId]
+                              sat_s4cT = GHC.Types.I# sc_s4be } in
+                            (# sc2_s4bk, sat_s4cT #)
+                        }; } in
+                  let { __DEFAULT ~ sat_s4cS
+                  <- (GHC.Prim.writeIntArray#
+                        @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                        ipv8_s4bi
+                        0
+                        ww2_s4bn
+                        ipv7_s4bo)
+                     `cast` (GHC.Prim.State#
+                               <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_X3m1>)>
+                             :: GHC.Prim.State#
+                                  (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                                  ~#
+                                GHC.Prim.State# s_X3m1)
+                  } in
+                  let { (# ipv9_s4bw, ipv10_s4bt #) ~ _
+                  <- $s$wa_s4bf 1 1 sat_s4cS
+                  } in
+                  let { GHC.Types.I# tpl1_s4bB ~ _ <- ipv10_s4bt } in
+                  let { (# ipv11_s4bA, ipv12_s4bC #) ~ _
+                  <- GHC.Prim.unsafeFreezeByteArray#
+                       @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                       ipv8_s4bi
+                       (ipv9_s4bw
+                        `cast` (GHC.Prim.State#
+                                  (Sym <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_X3m1>)>)
+                                :: GHC.Prim.State# s_X3m1
+                                     ~#
+                                   GHC.Prim.State#
+                                     (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))))
+                  } in
+                  let {
+                    sat_s4cR :: Data.Vector.Unboxed.Base.Vector GHC.Types.Int
+                    [LclId]
+                    sat_s4cR =
+                      (Data.Vector.Primitive.Vector
+                         @ GHC.Types.Int 0 tpl1_s4bB ipv12_s4bC)
+                      `cast` (Sym <(Data.Vector.Unboxed.Base.NTCo:R:VectorInt)> ; Sym
+                                                                                    <(Data.Vector.Unboxed.Base.TFCo:R:VectorInt)>
+                              :: Data.Vector.Primitive.Vector GHC.Types.Int
+                                   ~#
+                                 Data.Vector.Unboxed.Base.Vector GHC.Types.Int) } in
+                  (# ipv11_s4bA
+                     `cast` (GHC.Prim.State#
+                               <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_X3m1>)>
+                             :: GHC.Prim.State#
+                                  (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                                  ~#
+                                GHC.Prim.State# s_X3m1),
+                     sat_s4cR #);
+                (-1) ->
+                  case GHC.Prim.indexIntArray# ipv6_s494 ipv4_s495 of wild2_s4bF {
+                    __DEFAULT ->
+                      let { __DEFAULT ~ ww2_s4c0
+                      <- GHC.Classes.divInt# wild2_s4bF (-1)
+                      } in
+                      letrec {
+                        $s$wa_s4bS [Occ=LoopBreaker]
+                          :: GHC.Prim.Int#
+                             -> GHC.Prim.Int#
+                             -> GHC.Prim.State# s_X3m1
+                             -> (# GHC.Prim.State# s_X3m1, GHC.Types.Int #)
+                        [LclId, Arity=3, Str=DmdType LLL, Unf=OtherCon []]
+                        $s$wa_s4bS =
+                          \ (sc_s4bR :: GHC.Prim.Int#)
+                            (sc1_s4bL :: GHC.Prim.Int#)
+                            (sc2_s4bW :: GHC.Prim.State# s_X3m1) ->
+                            case GHC.Prim.>=# sc1_s4bL ipv5_s48S of _ {
+                              GHC.Types.False ->
+                                let { __DEFAULT ~ sat_s4cZ <- GHC.Prim.+# ipv4_s495 sc1_s4bL } in
+                                case GHC.Prim.indexIntArray# ipv6_s494 sat_s4cZ of wild4_s4bP {
+                                  __DEFAULT ->
+                                    let { __DEFAULT ~ ww3_s4bV
+                                    <- GHC.Classes.divInt# wild4_s4bP (-1)
+                                    } in
+                                    let { __DEFAULT ~ sat_s4cW
+                                    <- (GHC.Prim.writeIntArray#
+                                          @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                                          ipv8_s4bi
+                                          sc_s4bR
+                                          ww3_s4bV
+                                          (sc2_s4bW
+                                           `cast` (GHC.Prim.State#
+                                                     (Sym
+                                                        <(Control.Monad.Primitive.TFCo:R:PrimStateST
+                                                            <s_X3m1>)>)
+                                                   :: GHC.Prim.State# s_X3m1
+                                                        ~#
+                                                      GHC.Prim.State#
+                                                        (Control.Monad.Primitive.PrimState
+                                                           (GHC.ST.ST s_X3m1)))))
+                                       `cast` (GHC.Prim.State#
+                                                 <(Control.Monad.Primitive.TFCo:R:PrimStateST
+                                                     <s_X3m1>)>
+                                               :: GHC.Prim.State#
+                                                    (Control.Monad.Primitive.PrimState
+                                                       (GHC.ST.ST s_X3m1))
+                                                    ~#
+                                                  GHC.Prim.State# s_X3m1)
+                                    } in
+                                    let { __DEFAULT ~ sat_s4cX <- GHC.Prim.+# sc1_s4bL 1 } in
+                                    let { __DEFAULT ~ sat_s4cY <- GHC.Prim.+# sc_s4bR 1 } in
+                                    $s$wa_s4bS sat_s4cY sat_s4cX sat_s4cW;
+                                  (-9223372036854775808) ->
+                                    case GHC.Err.overflowError of wild5_s4dC { }
+                                };
+                              GHC.Types.True ->
+                                let {
+                                  sat_s4d2 :: GHC.Types.Int
+                                  [LclId]
+                                  sat_s4d2 = GHC.Types.I# sc_s4bR } in
+                                (# sc2_s4bW, sat_s4d2 #)
+                            }; } in
+                      let { __DEFAULT ~ sat_s4d1
+                      <- (GHC.Prim.writeIntArray#
+                            @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                            ipv8_s4bi
+                            0
+                            ww2_s4c0
+                            ipv7_s4bo)
+                         `cast` (GHC.Prim.State#
+                                   <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_X3m1>)>
+                                 :: GHC.Prim.State#
+                                      (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                                      ~#
+                                    GHC.Prim.State# s_X3m1)
+                      } in
+                      let { (# ipv9_s4c8, ipv10_s4c5 #) ~ _
+                      <- $s$wa_s4bS 1 1 sat_s4d1
+                      } in
+                      let { GHC.Types.I# tpl1_s4cd ~ _ <- ipv10_s4c5 } in
+                      let { (# ipv11_s4cc, ipv12_s4ce #) ~ _
+                      <- GHC.Prim.unsafeFreezeByteArray#
+                           @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                           ipv8_s4bi
+                           (ipv9_s4c8
+                            `cast` (GHC.Prim.State#
+                                      (Sym <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_X3m1>)>)
+                                    :: GHC.Prim.State# s_X3m1
+                                         ~#
+                                       GHC.Prim.State#
+                                         (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))))
+                      } in
+                      let {
+                        sat_s4d0 :: Data.Vector.Unboxed.Base.Vector GHC.Types.Int
+                        [LclId]
+                        sat_s4d0 =
+                          (Data.Vector.Primitive.Vector
+                             @ GHC.Types.Int 0 tpl1_s4cd ipv12_s4ce)
+                          `cast` (Sym <(Data.Vector.Unboxed.Base.NTCo:R:VectorInt)> ; Sym
+                                                                                        <(Data.Vector.Unboxed.Base.TFCo:R:VectorInt)>
+                                  :: Data.Vector.Primitive.Vector GHC.Types.Int
+                                       ~#
+                                     Data.Vector.Unboxed.Base.Vector GHC.Types.Int) } in
+                      (# ipv11_s4cc
+                         `cast` (GHC.Prim.State#
+                                   <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_X3m1>)>
+                                 :: GHC.Prim.State#
+                                      (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                                      ~#
+                                    GHC.Prim.State# s_X3m1),
+                         sat_s4d0 #);
+                    (-9223372036854775808) ->
+                      case GHC.Err.overflowError of wild3_s4dG { }
+                  };
+                0 -> case GHC.Err.divZeroError of wild2_s4dH { }
+              };
+            GHC.Types.True ->
+              let { (# ipv9_s4cl, ipv10_s4cm #) ~ _
+              <- GHC.Prim.unsafeFreezeByteArray#
+                   @ (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                   ipv8_s4bi
+                   ipv7_s4bo
+              } in
+              let {
+                sat_s4d6 :: Data.Vector.Unboxed.Base.Vector GHC.Types.Int
+                [LclId]
+                sat_s4d6 =
+                  (Data.Vector.Primitive.Vector @ GHC.Types.Int 0 0 ipv10_s4cm)
+                  `cast` (Sym <(Data.Vector.Unboxed.Base.NTCo:R:VectorInt)> ; Sym
+                                                                                <(Data.Vector.Unboxed.Base.TFCo:R:VectorInt)>
+                          :: Data.Vector.Primitive.Vector GHC.Types.Int
+                               ~#
+                             Data.Vector.Unboxed.Base.Vector GHC.Types.Int) } in
+              (# ipv9_s4cl
+                 `cast` (GHC.Prim.State#
+                           <(Control.Monad.Primitive.TFCo:R:PrimStateST <s_X3m1>)>
+                         :: GHC.Prim.State#
+                              (Control.Monad.Primitive.PrimState (GHC.ST.ST s_X3m1))
+                              ~#
+                            GHC.Prim.State# s_X3m1),
+                 sat_s4d6 #)
+          } } in
+    let { __DEFAULT ~ _
+    <- GHC.ST.runSTRep
+         @ (Data.Vector.Unboxed.Base.Vector GHC.Types.Int) sat_s4d4
+    } in
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout lvl_r48t GHC.Types.False ipv2_s4cq
+
+Main.main :: GHC.Types.IO ()
+[GblId, Arity=1, Str=DmdType L, Unf=OtherCon []]
+Main.main =
+  (\ (eta_B1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+     Main.main1 eta_B1)
+  `cast` (Sym <(GHC.Types.NTCo:IO <()>)>
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+Main.main2
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Str=DmdType L, Unf=OtherCon []]
+Main.main2 =
+  \ (eta_s4cs :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      @ ()
+      (Main.main1
+       `cast` (Sym <(GHC.Types.NTCo:IO <()>)>
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta_s4cs
+
+:Main.main :: GHC.Types.IO ()
+[GblId, Arity=1, Str=DmdType L, Unf=OtherCon []]
+:Main.main =
+  (\ (eta_B1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+     Main.main2 eta_B1)
+  `cast` (Sym <(GHC.Types.NTCo:IO <()>)>
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+Linking Normalise2 ...

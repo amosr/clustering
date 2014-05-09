@@ -1,11 +1,17 @@
+# normalise array, based on sum and sum of (>0)
 param array us
 
+# sum of original
 sum1 = reduce {} us
+# gts = filter (>0) us
 gts  = filter {} us
 sum2 = reduce {} gts
 
+# map (/sum1)
 nor1 = mapN   {sum1} us
+# map (/sum2)
 nor2 = mapN   {sum2} us
 
+# return both normalised versions
 return nor1
 return nor2
