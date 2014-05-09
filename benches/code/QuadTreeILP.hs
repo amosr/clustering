@@ -42,12 +42,13 @@ quadtree !pts
   {-# INLINE filter4 #-}
   filter4 b1 b2 b3 b4 !inp
    = runST $ do
-      v1 <- M.unsafeNew (V.length inp)
-      v2 <- M.unsafeNew (V.length inp)
-      v3 <- M.unsafeNew (V.length inp)
-      v4 <- M.unsafeNew (V.length inp)
+      let !len = V.length inp
+      v1 <- M.unsafeNew len
+      v2 <- M.unsafeNew len
+      v3 <- M.unsafeNew len
+      v4 <- M.unsafeNew len
       let go l1 l2 l3 l4 i
-           | I# i == V.length inp
+           | I# i == len
            = return (I# l1, I# l2, I# l3, I# l4)
            | otherwise
            = do let !e@(I# x, I# y) = V.unsafeIndex inp (I# i)
