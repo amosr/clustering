@@ -1,0 +1,1806 @@
+[1 of 2] Compiling Common           ( Common.hs, Common.o )
+
+==================== CorePrep ====================
+Result size of CorePrep
+  = {terms: 1,669, types: 1,144, coercions: 200}
+
+lvl_r4jN
+lvl_r4jN = unpackCString# "Usage: bench <data-size>"
+
+get_size5
+get_size5 = error lvl_r4jN
+
+get_size3
+get_size3 = error readEither4
+
+get_size2
+get_size2 = error readEither2
+
+get_size4
+get_size4 = $fReadInt5 $fReadInt_$sconvertInt minPrec (readEither5)
+
+get_size1
+get_size1 =
+  \ eta_s4jU ->
+    let { (# ipv_s4k5, ipv1_s4jY #) ~ _ <- getArgs1 eta_s4jU } in
+    case ipv1_s4jY of _ {
+      [] -> case get_size5 of wild1_s4yM { };
+      : sz_s4k6 ds_s4k3 ->
+        case ds_s4k3 of _ {
+          [] ->
+            let {
+              sat_s4wX
+              sat_s4wX =
+                let { __DEFAULT ~ sat_s4wW <- run get_size4 sz_s4k6 } in
+                case readEither6 sat_s4wW of _ {
+                  [] -> get_size3;
+                  : x_s4kd ds2_s4kb ->
+                    case ds2_s4kb of _ {
+                      [] -> x_s4kd;
+                      : ipv2_s4yQ ipv3_s4yR -> get_size2
+                    }
+                } } in
+            (# ipv_s4k5, sat_s4wX #);
+          : ipv2_s4yS ipv3_s4yT -> case get_size5 of wild2_s4yU { }
+        }
+    }
+
+get_size
+get_size = (\ eta_B1 -> get_size1 eta_B1) `cast` ...
+
+below
+below =
+  \ y1_s4kq ds_s4km ->
+    let { (x2_s4yW, y2_s4kr) ~ _ <- ds_s4km } in ltInt y1_s4kq y2_s4kr
+
+above
+above =
+  \ y1_s4ky ds_s4ku ->
+    let { (x2_s4yY, y2_s4kz) ~ _ <- ds_s4ku } in geInt y1_s4ky y2_s4kz
+
+$fShowQuadTree3
+$fShowQuadTree3 = unpackCString# "Tree "
+
+$fShowQuadTree5
+$fShowQuadTree5 = unpackCString# "Nil"
+
+$fShowQuadTree4
+$fShowQuadTree4 = \ eta_B1 -> ++ $fShowQuadTree5 eta_B1
+
+$fShowQuadTree6
+$fShowQuadTree6 = unpackCString# "Leaf "
+
+Rec {
+$fShowQuadTree_$s$cshowsPrec
+$fShowQuadTree_$s$cshowsPrec =
+  \ sc_s4l7 sc1_s4kC ->
+    case sc1_s4kC of _ {
+      Leaf b1_s4kH ->
+        let {
+          p_s4l6
+          p_s4l6 =
+            \ x_s4l4 ->
+              let {
+                sat_s4wZ
+                sat_s4wZ =
+                  let { (ww_s4kM, ww1_s4kT) ~ _ <- b1_s4kH } in
+                  let {
+                    sat_s4kZ
+                    sat_s4kZ =
+                      \ w1_s4kX ->
+                        let { I# ww2_s4kW ~ _ <- ww1_s4kT } in
+                        $wshowSignedInt 0 ww2_s4kW w1_s4kX } in
+                  let {
+                    sat_s4l1
+                    sat_s4l1 = : sat_s4kZ ([]) } in
+                  let {
+                    sat_s4l2
+                    sat_s4l2 =
+                      \ w1_s4kQ ->
+                        let { I# ww2_s4kP ~ _ <- ww_s4kM } in
+                        $wshowSignedInt 0 ww2_s4kP w1_s4kQ } in
+                  let {
+                    sat_s4wY
+                    sat_s4wY = : sat_s4l2 sat_s4l1 } in
+                  show_tuple sat_s4wY x_s4l4 } in
+              ++ $fShowQuadTree6 sat_s4wZ } in
+        case >=# sc_s4l7 11 of _ {
+          False -> p_s4l6;
+          True ->
+            let {
+              sat_s4x0
+              sat_s4x0 =
+                \ x_s4la ->
+                  let {
+                    sat_s4le
+                    sat_s4le =
+                      let {
+                        sat_s4lc
+                        sat_s4lc = : shows10 x_s4la } in
+                      p_s4l6 sat_s4lc } in
+                  : shows11 sat_s4le } in
+            sat_s4x0
+        };
+      Nil -> $fShowQuadTree4;
+      Tree b1_s4lu b2_s4lr b3_s4lo b4_s4ll ->
+        let {
+          g_s4lm
+          g_s4lm = $fShowQuadTree_$s$cshowsPrec 11 b4_s4ll } in
+        let {
+          f_s4lp
+          f_s4lp = $fShowQuadTree_$s$cshowsPrec 11 b3_s4lo } in
+        let {
+          f1_s4ls
+          f1_s4ls = $fShowQuadTree_$s$cshowsPrec 11 b2_s4lr } in
+        let {
+          f2_s4lv
+          f2_s4lv = $fShowQuadTree_$s$cshowsPrec 11 b1_s4lu } in
+        let {
+          p_s4lM
+          p_s4lM =
+            \ x_s4ly ->
+              let {
+                sat_s4x1
+                sat_s4x1 =
+                  let {
+                    sat_s4lI
+                    sat_s4lI =
+                      let {
+                        sat_s4lE
+                        sat_s4lE =
+                          let {
+                            sat_s4lA
+                            sat_s4lA = g_s4lm x_s4ly } in
+                          let {
+                            sat_s4lC
+                            sat_s4lC = : showSpace1 sat_s4lA } in
+                          f_s4lp sat_s4lC } in
+                      let {
+                        sat_s4lG
+                        sat_s4lG = : showSpace1 sat_s4lE } in
+                      f1_s4ls sat_s4lG } in
+                  let {
+                    sat_s4lK
+                    sat_s4lK = : showSpace1 sat_s4lI } in
+                  f2_s4lv sat_s4lK } in
+              ++ $fShowQuadTree3 sat_s4x1 } in
+        case >=# sc_s4l7 11 of _ {
+          False -> p_s4lM;
+          True ->
+            let {
+              sat_s4x2
+              sat_s4x2 =
+                \ x_s4lP ->
+                  let {
+                    sat_s4lT
+                    sat_s4lT =
+                      let {
+                        sat_s4lR
+                        sat_s4lR = : shows10 x_s4lP } in
+                      p_s4lM sat_s4lR } in
+                  : shows11 sat_s4lT } in
+            sat_s4x2
+        }
+    }
+end Rec }
+
+$fShowQuadTree_$cshowsPrec
+$fShowQuadTree_$cshowsPrec =
+  \ a_s4m0 ds_s4lX ->
+    case ds_s4lX of _ {
+      Leaf b1_s4m5 ->
+        let { I# x_s4mv ~ _ <- a_s4m0 } in
+        let {
+          p_s4mu
+          p_s4mu =
+            \ x1_s4ms ->
+              let {
+                sat_s4x4
+                sat_s4x4 =
+                  let { (ww_s4ma, ww1_s4mh) ~ _ <- b1_s4m5 } in
+                  let {
+                    sat_s4mn
+                    sat_s4mn =
+                      \ w1_s4ml ->
+                        let { I# ww2_s4mk ~ _ <- ww1_s4mh } in
+                        $wshowSignedInt 0 ww2_s4mk w1_s4ml } in
+                  let {
+                    sat_s4mp
+                    sat_s4mp = : sat_s4mn ([]) } in
+                  let {
+                    sat_s4mq
+                    sat_s4mq =
+                      \ w1_s4me ->
+                        let { I# ww2_s4md ~ _ <- ww_s4ma } in
+                        $wshowSignedInt 0 ww2_s4md w1_s4me } in
+                  let {
+                    sat_s4x3
+                    sat_s4x3 = : sat_s4mq sat_s4mp } in
+                  show_tuple sat_s4x3 x1_s4ms } in
+              ++ $fShowQuadTree6 sat_s4x4 } in
+        case >=# x_s4mv 11 of _ {
+          False -> p_s4mu;
+          True ->
+            let {
+              sat_s4x5
+              sat_s4x5 =
+                \ x1_s4my ->
+                  let {
+                    sat_s4mC
+                    sat_s4mC =
+                      let {
+                        sat_s4mA
+                        sat_s4mA = : shows10 x1_s4my } in
+                      p_s4mu sat_s4mA } in
+                  : shows11 sat_s4mC } in
+            sat_s4x5
+        };
+      Nil -> $fShowQuadTree4;
+      Tree b1_s4mU b2_s4mR b3_s4mO b4_s4mL ->
+        let { I# x_s4nd ~ _ <- a_s4m0 } in
+        let {
+          g_s4mM
+          g_s4mM = $fShowQuadTree_$s$cshowsPrec 11 b4_s4mL } in
+        let {
+          f_s4mP
+          f_s4mP = $fShowQuadTree_$s$cshowsPrec 11 b3_s4mO } in
+        let {
+          f1_s4mS
+          f1_s4mS = $fShowQuadTree_$s$cshowsPrec 11 b2_s4mR } in
+        let {
+          f2_s4mV
+          f2_s4mV = $fShowQuadTree_$s$cshowsPrec 11 b1_s4mU } in
+        let {
+          p_s4nc
+          p_s4nc =
+            \ x1_s4mY ->
+              let {
+                sat_s4x6
+                sat_s4x6 =
+                  let {
+                    sat_s4n8
+                    sat_s4n8 =
+                      let {
+                        sat_s4n4
+                        sat_s4n4 =
+                          let {
+                            sat_s4n0
+                            sat_s4n0 = g_s4mM x1_s4mY } in
+                          let {
+                            sat_s4n2
+                            sat_s4n2 = : showSpace1 sat_s4n0 } in
+                          f_s4mP sat_s4n2 } in
+                      let {
+                        sat_s4n6
+                        sat_s4n6 = : showSpace1 sat_s4n4 } in
+                      f1_s4mS sat_s4n6 } in
+                  let {
+                    sat_s4na
+                    sat_s4na = : showSpace1 sat_s4n8 } in
+                  f2_s4mV sat_s4na } in
+              ++ $fShowQuadTree3 sat_s4x6 } in
+        case >=# x_s4nd 11 of _ {
+          False -> p_s4nc;
+          True ->
+            let {
+              sat_s4x7
+              sat_s4x7 =
+                \ x1_s4ng ->
+                  let {
+                    sat_s4nk
+                    sat_s4nk =
+                      let {
+                        sat_s4ni
+                        sat_s4ni = : shows10 x1_s4ng } in
+                      p_s4nc sat_s4ni } in
+                  : shows11 sat_s4nk } in
+            sat_s4x7
+        }
+    }
+
+$fShowQuadTree2
+$fShowQuadTree2 = I# 0
+
+$fShowQuadTree1
+$fShowQuadTree1 =
+  \ eta_B1 -> $fShowQuadTree_$cshowsPrec $fShowQuadTree2 eta_B1
+
+$fShowQuadTree_$cshowList
+$fShowQuadTree_$cshowList =
+  \ eta_B2 eta_B1 -> showList__ $fShowQuadTree1 eta_B2 eta_B1
+
+$fShowQuadTree_$cshow
+$fShowQuadTree_$cshow =
+  \ x_s4nn -> $fShowQuadTree_$s$cshowsPrec 0 x_s4nn ([])
+
+$fShowQuadTree
+$fShowQuadTree =
+  D:Show
+    $fShowQuadTree_$cshowsPrec
+    $fShowQuadTree_$cshow
+    $fShowQuadTree_$cshowList
+
+inbox
+inbox =
+  \ eta_s4nx eta1_s4nq ->
+    let { (x_s4nu, y_s4nI) ~ _ <- eta1_s4nq } in
+    let { I# x1_s4nD ~ _ <- x_s4nu } in
+    let { (# tlx_s4nE, tly_s4nM, brx_s4nG, bry_s4nO #) ~ _
+    <- eta_s4nx
+    } in
+    case >=# x1_s4nD tlx_s4nE of _ {
+      False -> False;
+      True ->
+        case <# x1_s4nD brx_s4nG of _ {
+          False -> False;
+          True ->
+            let { I# x2_s4nL ~ _ <- y_s4nI } in
+            case >=# x2_s4nL tly_s4nM of _ {
+              False -> False;
+              True -> <# x2_s4nL bry_s4nO
+            }
+        }
+    }
+
+lvl1_r4jO
+lvl1_r4jO = unpackCString# "./Data/Vector/Fusion/Stream/Monadic.hs"
+
+lvl2_r4jP
+lvl2_r4jP = I# 853
+
+lvl3_r4jQ
+lvl3_r4jQ = unpackCString# "foldl1M'"
+
+lvl4_r4jR
+lvl4_r4jR = error lvl1_r4jO lvl2_r4jP lvl3_r4jQ emptyStream
+
+naive
+naive =
+  \ pts_s4nQ ->
+    let { V_2 ipv_s4o9 ipv1_s4nV ipv2_s4o0 ~ _
+    <- pts_s4nQ `cast` ...
+    } in
+    let { Vector rb_s4oh _ rb2_s4og ~ _ <- ipv1_s4nV `cast` ... } in
+    let { Vector rb3_s4ok _ rb5_s4oj ~ _ <- ipv2_s4o0 `cast` ... } in
+    let {
+      $sf_s4sr
+      $sf_s4sr =
+        \ sc_s4om sc1_s4oC ->
+          let {
+            sat_s4xt
+            sat_s4xt =
+              \ @ s_a2Qp s_s4ob ->
+                let { __DEFAULT ~ sat_s4xs <- *# ipv_s4o9 8 } in
+                let { (# ipv3_s4pz, ipv4_s4oL #) ~ _
+                <- newByteArray# sat_s4xs (s_s4ob `cast` ...)
+                } in
+                case >=# 0 ipv_s4o9 of _ {
+                  False ->
+                    let { __DEFAULT ~ wild3_s4on
+                    <- indexIntArray# rb2_s4og rb_s4oh
+                    } in
+                    let { __DEFAULT ~ wild4_s4pl
+                    <- indexIntArray# rb5_s4oj rb3_s4ok
+                    } in
+                    case ==# sc_s4om wild3_s4on of _ {
+                      False ->
+                        letrec {
+                          $s$wa_s4oI
+                          $s$wa_s4oI =
+                            \ sc2_s4oH sc3_s4ot sc4_s4oW ->
+                              case >=# sc3_s4ot ipv_s4o9 of _ {
+                                False ->
+                                  let { __DEFAULT ~ sat_s4xe <- +# rb_s4oh sc3_s4ot } in
+                                  let { __DEFAULT ~ wild7_s4oz
+                                  <- indexIntArray# rb2_s4og sat_s4xe
+                                  } in
+                                  let { __DEFAULT ~ sat_s4xd <- +# rb3_s4ok sc3_s4ot } in
+                                  let { __DEFAULT ~ wild8_s4oD
+                                  <- indexIntArray# rb5_s4oj sat_s4xd
+                                  } in
+                                  case ==# sc_s4om wild7_s4oz of _ {
+                                    False ->
+                                      let { __DEFAULT ~ x_s4oE <- -# sc1_s4oC wild8_s4oD } in
+                                      let { __DEFAULT ~ x1_s4oG <- -# sc_s4om wild7_s4oz } in
+                                      let { __DEFAULT ~ sat_s4oO <- *# x_s4oE x_s4oE } in
+                                      let { __DEFAULT ~ sat_s4xc <- *# x1_s4oG x1_s4oG } in
+                                      let { __DEFAULT ~ sat_s4oQ <- +# sat_s4xc sat_s4oO } in
+                                      let { __DEFAULT ~ sat_s4oS <- int2Double# sat_s4oQ } in
+                                      let { __DEFAULT ~ sat_s4oU <- sqrtDouble# sat_s4oS } in
+                                      let { __DEFAULT ~ sat_s4xb <- double2Int# sat_s4oU } in
+                                      let { __DEFAULT ~ sat_s4x8
+                                      <- (writeIntArray#
+                                            ipv4_s4oL sc2_s4oH sat_s4xb (sc4_s4oW `cast` ...))
+                                         `cast` ...
+                                      } in
+                                      let { __DEFAULT ~ sat_s4x9 <- +# sc3_s4ot 1 } in
+                                      let { __DEFAULT ~ sat_s4xa <- +# sc2_s4oH 1 } in
+                                      $s$wa_s4oI sat_s4xa sat_s4x9 sat_s4x8;
+                                    True ->
+                                      case ==# sc1_s4oC wild8_s4oD of _ {
+                                        False ->
+                                          let { __DEFAULT ~ x_s4p0 <- -# sc1_s4oC wild8_s4oD } in
+                                          let { __DEFAULT ~ x1_s4p2 <- -# sc_s4om wild7_s4oz } in
+                                          let { __DEFAULT ~ sat_s4p7 <- *# x_s4p0 x_s4p0 } in
+                                          let { __DEFAULT ~ sat_s4xo <- *# x1_s4p2 x1_s4p2 } in
+                                          let { __DEFAULT ~ sat_s4p9 <- +# sat_s4xo sat_s4p7 } in
+                                          let { __DEFAULT ~ sat_s4pb <- int2Double# sat_s4p9 } in
+                                          let { __DEFAULT ~ sat_s4pd <- sqrtDouble# sat_s4pb } in
+                                          let { __DEFAULT ~ sat_s4xn <- double2Int# sat_s4pd } in
+                                          let { __DEFAULT ~ sat_s4xk
+                                          <- (writeIntArray#
+                                                ipv4_s4oL sc2_s4oH sat_s4xn (sc4_s4oW `cast` ...))
+                                             `cast` ...
+                                          } in
+                                          let { __DEFAULT ~ sat_s4xl <- +# sc3_s4ot 1 } in
+                                          let { __DEFAULT ~ sat_s4xm <- +# sc2_s4oH 1 } in
+                                          $s$wa_s4oI sat_s4xm sat_s4xl sat_s4xk;
+                                        True ->
+                                          let { __DEFAULT ~ sat_s4xp
+                                          <- (writeIntArray#
+                                                ipv4_s4oL sc2_s4oH 100000000 (sc4_s4oW `cast` ...))
+                                             `cast` ...
+                                          } in
+                                          let { __DEFAULT ~ sat_s4xq <- +# sc3_s4ot 1 } in
+                                          let { __DEFAULT ~ sat_s4xr <- +# sc2_s4oH 1 } in
+                                          $s$wa_s4oI sat_s4xr sat_s4xq sat_s4xp
+                                      }
+                                  };
+                                True ->
+                                  let {
+                                    sat_s4xj
+                                    sat_s4xj = I# sc2_s4oH } in
+                                  (# sc4_s4oW, sat_s4xj #)
+                              }; } in
+                        let { __DEFAULT ~ x_s4pm <- -# sc1_s4oC wild4_s4pl } in
+                        let { __DEFAULT ~ x1_s4po <- -# sc_s4om wild3_s4on } in
+                        let { __DEFAULT ~ sat_s4pr <- *# x_s4pm x_s4pm } in
+                        let { __DEFAULT ~ sat_s4xi <- *# x1_s4po x1_s4po } in
+                        let { __DEFAULT ~ sat_s4pt <- +# sat_s4xi sat_s4pr } in
+                        let { __DEFAULT ~ sat_s4pv <- int2Double# sat_s4pt } in
+                        let { __DEFAULT ~ sat_s4px <- sqrtDouble# sat_s4pv } in
+                        let { __DEFAULT ~ sat_s4xh <- double2Int# sat_s4px } in
+                        let { __DEFAULT ~ sat_s4xg
+                        <- (writeIntArray# ipv4_s4oL 0 sat_s4xh ipv3_s4pz) `cast` ...
+                        } in
+                        let { (# ipv5_s4pH, ipv6_s4pE #) ~ _
+                        <- $s$wa_s4oI 1 1 sat_s4xg
+                        } in
+                        let { I# tpl1_s4pM ~ _ <- ipv6_s4pE } in
+                        let { (# ipv7_s4pL, ipv8_s4pN #) ~ _
+                        <- unsafeFreezeByteArray# ipv4_s4oL (ipv5_s4pH `cast` ...)
+                        } in
+                        let {
+                          sat_s4xf
+                          sat_s4xf = (Vector 0 tpl1_s4pM ipv8_s4pN) `cast` ... } in
+                        (# ipv7_s4pL `cast` ..., sat_s4xf #);
+                      True ->
+                        case ==# sc1_s4oC wild4_s4pl of _ {
+                          False ->
+                            letrec {
+                              $s$wa_s4q8
+                              $s$wa_s4q8 =
+                                \ sc2_s4q7 sc3_s4pU sc4_s4ql ->
+                                  case >=# sc3_s4pU ipv_s4o9 of _ {
+                                    False ->
+                                      let { __DEFAULT ~ sat_s4xQ <- +# rb_s4oh sc3_s4pU } in
+                                      let { __DEFAULT ~ wild8_s4q0
+                                      <- indexIntArray# rb2_s4og sat_s4xQ
+                                      } in
+                                      let { __DEFAULT ~ sat_s4xP <- +# rb3_s4ok sc3_s4pU } in
+                                      let { __DEFAULT ~ wild9_s4q3
+                                      <- indexIntArray# rb5_s4oj sat_s4xP
+                                      } in
+                                      case ==# sc_s4om wild8_s4q0 of _ {
+                                        False ->
+                                          let { __DEFAULT ~ x_s4q4 <- -# sc1_s4oC wild9_s4q3 } in
+                                          let { __DEFAULT ~ x1_s4q6 <- -# sc_s4om wild8_s4q0 } in
+                                          let { __DEFAULT ~ sat_s4qd <- *# x_s4q4 x_s4q4 } in
+                                          let { __DEFAULT ~ sat_s4xO <- *# x1_s4q6 x1_s4q6 } in
+                                          let { __DEFAULT ~ sat_s4qf <- +# sat_s4xO sat_s4qd } in
+                                          let { __DEFAULT ~ sat_s4qh <- int2Double# sat_s4qf } in
+                                          let { __DEFAULT ~ sat_s4qj <- sqrtDouble# sat_s4qh } in
+                                          let { __DEFAULT ~ sat_s4xN <- double2Int# sat_s4qj } in
+                                          let { __DEFAULT ~ sat_s4xK
+                                          <- (writeIntArray#
+                                                ipv4_s4oL sc2_s4q7 sat_s4xN (sc4_s4ql `cast` ...))
+                                             `cast` ...
+                                          } in
+                                          let { __DEFAULT ~ sat_s4xL <- +# sc3_s4pU 1 } in
+                                          let { __DEFAULT ~ sat_s4xM <- +# sc2_s4q7 1 } in
+                                          $s$wa_s4q8 sat_s4xM sat_s4xL sat_s4xK;
+                                        True ->
+                                          case ==# sc1_s4oC wild9_s4q3 of _ {
+                                            False ->
+                                              let { __DEFAULT ~ x_s4qp
+                                              <- -# sc1_s4oC wild9_s4q3
+                                              } in
+                                              let { __DEFAULT ~ x1_s4qr
+                                              <- -# sc_s4om wild8_s4q0
+                                              } in
+                                              let { __DEFAULT ~ sat_s4qw <- *# x_s4qp x_s4qp } in
+                                              let { __DEFAULT ~ sat_s4y0 <- *# x1_s4qr x1_s4qr } in
+                                              let { __DEFAULT ~ sat_s4qy
+                                              <- +# sat_s4y0 sat_s4qw
+                                              } in
+                                              let { __DEFAULT ~ sat_s4qA
+                                              <- int2Double# sat_s4qy
+                                              } in
+                                              let { __DEFAULT ~ sat_s4qC
+                                              <- sqrtDouble# sat_s4qA
+                                              } in
+                                              let { __DEFAULT ~ sat_s4xZ
+                                              <- double2Int# sat_s4qC
+                                              } in
+                                              let { __DEFAULT ~ sat_s4xW
+                                              <- (writeIntArray#
+                                                    ipv4_s4oL
+                                                    sc2_s4q7
+                                                    sat_s4xZ
+                                                    (sc4_s4ql `cast` ...))
+                                                 `cast` ...
+                                              } in
+                                              let { __DEFAULT ~ sat_s4xX <- +# sc3_s4pU 1 } in
+                                              let { __DEFAULT ~ sat_s4xY <- +# sc2_s4q7 1 } in
+                                              $s$wa_s4q8 sat_s4xY sat_s4xX sat_s4xW;
+                                            True ->
+                                              let { __DEFAULT ~ sat_s4y1
+                                              <- (writeIntArray#
+                                                    ipv4_s4oL
+                                                    sc2_s4q7
+                                                    100000000
+                                                    (sc4_s4ql `cast` ...))
+                                                 `cast` ...
+                                              } in
+                                              let { __DEFAULT ~ sat_s4y2 <- +# sc3_s4pU 1 } in
+                                              let { __DEFAULT ~ sat_s4y3 <- +# sc2_s4q7 1 } in
+                                              $s$wa_s4q8 sat_s4y3 sat_s4y2 sat_s4y1
+                                          }
+                                      };
+                                    True ->
+                                      let {
+                                        sat_s4xV
+                                        sat_s4xV = I# sc2_s4q7 } in
+                                      (# sc4_s4ql, sat_s4xV #)
+                                  }; } in
+                            let { __DEFAULT ~ x_s4qK <- -# sc1_s4oC wild4_s4pl } in
+                            let { __DEFAULT ~ x1_s4qM <- -# sc_s4om wild3_s4on } in
+                            let { __DEFAULT ~ sat_s4qP <- *# x_s4qK x_s4qK } in
+                            let { __DEFAULT ~ sat_s4xU <- *# x1_s4qM x1_s4qM } in
+                            let { __DEFAULT ~ sat_s4qR <- +# sat_s4xU sat_s4qP } in
+                            let { __DEFAULT ~ sat_s4qT <- int2Double# sat_s4qR } in
+                            let { __DEFAULT ~ sat_s4qV <- sqrtDouble# sat_s4qT } in
+                            let { __DEFAULT ~ sat_s4xT <- double2Int# sat_s4qV } in
+                            let { __DEFAULT ~ sat_s4xS
+                            <- (writeIntArray# ipv4_s4oL 0 sat_s4xT ipv3_s4pz) `cast` ...
+                            } in
+                            let { (# ipv5_s4r4, ipv6_s4r1 #) ~ _
+                            <- $s$wa_s4q8 1 1 sat_s4xS
+                            } in
+                            let { I# tpl1_s4r9 ~ _ <- ipv6_s4r1 } in
+                            let { (# ipv7_s4r8, ipv8_s4ra #) ~ _
+                            <- unsafeFreezeByteArray# ipv4_s4oL (ipv5_s4r4 `cast` ...)
+                            } in
+                            let {
+                              sat_s4xR
+                              sat_s4xR = (Vector 0 tpl1_s4r9 ipv8_s4ra) `cast` ... } in
+                            (# ipv7_s4r8 `cast` ..., sat_s4xR #);
+                          True ->
+                            letrec {
+                              $s$wa_s4ru
+                              $s$wa_s4ru =
+                                \ sc2_s4rt sc3_s4rg sc4_s4rH ->
+                                  case >=# sc3_s4rg ipv_s4o9 of _ {
+                                    False ->
+                                      let { __DEFAULT ~ sat_s4ya <- +# rb_s4oh sc3_s4rg } in
+                                      let { __DEFAULT ~ wild8_s4rm
+                                      <- indexIntArray# rb2_s4og sat_s4ya
+                                      } in
+                                      let { __DEFAULT ~ sat_s4y9 <- +# rb3_s4ok sc3_s4rg } in
+                                      let { __DEFAULT ~ wild9_s4rp
+                                      <- indexIntArray# rb5_s4oj sat_s4y9
+                                      } in
+                                      case ==# sc_s4om wild8_s4rm of _ {
+                                        False ->
+                                          let { __DEFAULT ~ x_s4rq <- -# sc1_s4oC wild9_s4rp } in
+                                          let { __DEFAULT ~ x1_s4rs <- -# sc_s4om wild8_s4rm } in
+                                          let { __DEFAULT ~ sat_s4rz <- *# x_s4rq x_s4rq } in
+                                          let { __DEFAULT ~ sat_s4y8 <- *# x1_s4rs x1_s4rs } in
+                                          let { __DEFAULT ~ sat_s4rB <- +# sat_s4y8 sat_s4rz } in
+                                          let { __DEFAULT ~ sat_s4rD <- int2Double# sat_s4rB } in
+                                          let { __DEFAULT ~ sat_s4rF <- sqrtDouble# sat_s4rD } in
+                                          let { __DEFAULT ~ sat_s4y7 <- double2Int# sat_s4rF } in
+                                          let { __DEFAULT ~ sat_s4y4
+                                          <- (writeIntArray#
+                                                ipv4_s4oL sc2_s4rt sat_s4y7 (sc4_s4rH `cast` ...))
+                                             `cast` ...
+                                          } in
+                                          let { __DEFAULT ~ sat_s4y5 <- +# sc3_s4rg 1 } in
+                                          let { __DEFAULT ~ sat_s4y6 <- +# sc2_s4rt 1 } in
+                                          $s$wa_s4ru sat_s4y6 sat_s4y5 sat_s4y4;
+                                        True ->
+                                          case ==# sc1_s4oC wild9_s4rp of _ {
+                                            False ->
+                                              let { __DEFAULT ~ x_s4rL
+                                              <- -# sc1_s4oC wild9_s4rp
+                                              } in
+                                              let { __DEFAULT ~ x1_s4rN
+                                              <- -# sc_s4om wild8_s4rm
+                                              } in
+                                              let { __DEFAULT ~ sat_s4rS <- *# x_s4rL x_s4rL } in
+                                              let { __DEFAULT ~ sat_s4yi <- *# x1_s4rN x1_s4rN } in
+                                              let { __DEFAULT ~ sat_s4rU
+                                              <- +# sat_s4yi sat_s4rS
+                                              } in
+                                              let { __DEFAULT ~ sat_s4rW
+                                              <- int2Double# sat_s4rU
+                                              } in
+                                              let { __DEFAULT ~ sat_s4rY
+                                              <- sqrtDouble# sat_s4rW
+                                              } in
+                                              let { __DEFAULT ~ sat_s4yh
+                                              <- double2Int# sat_s4rY
+                                              } in
+                                              let { __DEFAULT ~ sat_s4ye
+                                              <- (writeIntArray#
+                                                    ipv4_s4oL
+                                                    sc2_s4rt
+                                                    sat_s4yh
+                                                    (sc4_s4rH `cast` ...))
+                                                 `cast` ...
+                                              } in
+                                              let { __DEFAULT ~ sat_s4yf <- +# sc3_s4rg 1 } in
+                                              let { __DEFAULT ~ sat_s4yg <- +# sc2_s4rt 1 } in
+                                              $s$wa_s4ru sat_s4yg sat_s4yf sat_s4ye;
+                                            True ->
+                                              let { __DEFAULT ~ sat_s4yj
+                                              <- (writeIntArray#
+                                                    ipv4_s4oL
+                                                    sc2_s4rt
+                                                    100000000
+                                                    (sc4_s4rH `cast` ...))
+                                                 `cast` ...
+                                              } in
+                                              let { __DEFAULT ~ sat_s4yk <- +# sc3_s4rg 1 } in
+                                              let { __DEFAULT ~ sat_s4yl <- +# sc2_s4rt 1 } in
+                                              $s$wa_s4ru sat_s4yl sat_s4yk sat_s4yj
+                                          }
+                                      };
+                                    True ->
+                                      let {
+                                        sat_s4yd
+                                        sat_s4yd = I# sc2_s4rt } in
+                                      (# sc4_s4rH, sat_s4yd #)
+                                  }; } in
+                            let { __DEFAULT ~ sat_s4yc
+                            <- (writeIntArray# ipv4_s4oL 0 100000000 ipv3_s4pz) `cast` ...
+                            } in
+                            let { (# ipv5_s4sc, ipv6_s4s9 #) ~ _
+                            <- $s$wa_s4ru 1 1 sat_s4yc
+                            } in
+                            let { I# tpl1_s4sh ~ _ <- ipv6_s4s9 } in
+                            let { (# ipv7_s4sg, ipv8_s4si #) ~ _
+                            <- unsafeFreezeByteArray# ipv4_s4oL (ipv5_s4sc `cast` ...)
+                            } in
+                            let {
+                              sat_s4yb
+                              sat_s4yb = (Vector 0 tpl1_s4sh ipv8_s4si) `cast` ... } in
+                            (# ipv7_s4sg `cast` ..., sat_s4yb #)
+                        }
+                    };
+                  True ->
+                    let { (# ipv5_s4sn, ipv6_s4so #) ~ _
+                    <- unsafeFreezeByteArray# ipv4_s4oL ipv3_s4pz
+                    } in
+                    let {
+                      sat_s4ym
+                      sat_s4ym = (Vector 0 0 ipv6_s4so) `cast` ... } in
+                    (# ipv5_s4sn `cast` ..., sat_s4ym #)
+                } } in
+          runSTRep sat_s4xt } in
+    letrec {
+      $s$wfoldl1M'_loop_s4sI
+      $s$wfoldl1M'_loop_s4sI =
+        \ sc_s4su ->
+          case >=# sc_s4su ipv_s4o9 of _ {
+            False ->
+              let { __DEFAULT ~ sat_s4xw <- +# rb_s4oh sc_s4su } in
+              let { __DEFAULT ~ wild3_s4sA
+              <- indexIntArray# rb2_s4og sat_s4xw
+              } in
+              let { __DEFAULT ~ sat_s4xv <- +# rb3_s4ok sc_s4su } in
+              let { __DEFAULT ~ wild4_s4sB
+              <- indexIntArray# rb5_s4oj sat_s4xv
+              } in
+              let { Vector rb6_s4sL rb7_s4sG rb8_s4sK ~ _
+              <- ($sf_s4sr wild3_s4sA wild4_s4sB) `cast` ...
+              } in
+              case <# 0 rb7_s4sG of _ {
+                False ->
+                  let { __DEFAULT ~ sat_s4xu <- +# sc_s4su 1 } in
+                  $s$wfoldl1M'_loop_s4sI sat_s4xu;
+                True ->
+                  let { __DEFAULT ~ wild7_s4tz
+                  <- indexIntArray# rb8_s4sK rb6_s4sL
+                  } in
+                  case <# 1 rb7_s4sG of _ {
+                    False ->
+                      letrec {
+                        $s$wfoldlM'_loop_s4ta
+                        $s$wfoldlM'_loop_s4ta =
+                          \ sc1_s4t4 sc2_s4sS ->
+                            case >=# sc2_s4sS ipv_s4o9 of _ {
+                              False ->
+                                let { __DEFAULT ~ sat_s4xz <- +# rb_s4oh sc2_s4sS } in
+                                let { __DEFAULT ~ wild10_s4sY
+                                <- indexIntArray# rb2_s4og sat_s4xz
+                                } in
+                                let { __DEFAULT ~ sat_s4xy <- +# rb3_s4ok sc2_s4sS } in
+                                let { __DEFAULT ~ wild11_s4sZ
+                                <- indexIntArray# rb5_s4oj sat_s4xy
+                                } in
+                                let { Vector rb9_s4t5 rb10_s4t6 rb11_s4t7 ~ _
+                                <- ($sf_s4sr wild10_s4sY wild11_s4sZ) `cast` ...
+                                } in
+                                let { __DEFAULT ~ sat_s4xx <- +# sc2_s4sS 1 } in
+                                $s$wfoldlM'_loop1_s4t8
+                                  sc1_s4t4
+                                  rb9_s4t5
+                                  rb10_s4t6
+                                  rb11_s4t7
+                                  @~ (Sym <(NTCo:R:VectorInt)> ; Sym <(TFCo:R:VectorInt)>)
+                                  0
+                                  rb10_s4t6
+                                  sat_s4xx;
+                              True -> sc1_s4t4
+                            };
+                        $s$wfoldlM'_loop1_s4t8
+                        $s$wfoldlM'_loop1_s4t8 =
+                          \ sc1_s4tl
+                            sc2_s4to
+                            sc3_s4tu
+                            sc4_s4tn
+                            sg_s45z
+                            sc5_s4ti
+                            sc6_s4tj
+                            sc7_s4tm ->
+                            case <# sc5_s4ti sc6_s4tj of _ {
+                              False -> $s$wfoldlM'_loop_s4ta sc1_s4tl sc7_s4tm;
+                              True ->
+                                let { __DEFAULT ~ sat_s4xC <- +# sc2_s4to sc5_s4ti } in
+                                let { __DEFAULT ~ wild10_s4tx
+                                <- indexIntArray# sc4_s4tn sat_s4xC
+                                } in
+                                let {
+                                  $j_s4tw
+                                  $j_s4tw =
+                                    \ ww_s4tt ->
+                                      let { __DEFAULT ~ sat_s4xB <- +# sc5_s4ti 1 } in
+                                      $s$wfoldlM'_loop1_s4t8
+                                        ww_s4tt
+                                        sc2_s4to
+                                        sc3_s4tu
+                                        sc4_s4tn
+                                        @~ (Sym <(NTCo:R:VectorInt)> ; Sym <(TFCo:R:VectorInt)>)
+                                        sat_s4xB
+                                        sc6_s4tj
+                                        sc7_s4tm } in
+                                case <=# sc1_s4tl wild10_s4tx of _ {
+                                  False -> $j_s4tw wild10_s4tx;
+                                  True -> $j_s4tw sc1_s4tl
+                                }
+                            }; } in
+                      let { __DEFAULT ~ sat_s4xA <- +# sc_s4su 1 } in
+                      $s$wfoldlM'_loop_s4ta wild7_s4tz sat_s4xA;
+                    True ->
+                      let { __DEFAULT ~ sat_s4xJ <- +# rb6_s4sL 1 } in
+                      let { __DEFAULT ~ wild9_s4un
+                      <- indexIntArray# rb8_s4sK sat_s4xJ
+                      } in
+                      let {
+                        $j_s4um
+                        $j_s4um =
+                          \ ww_s4uk ->
+                            letrec {
+                              $s$wfoldlM'_loop_s4u6
+                              $s$wfoldlM'_loop_s4u6 =
+                                \ sc1_s4u2
+                                  sc2_s4u9
+                                  sc3_s4uf
+                                  sc4_s4u8
+                                  sg_s46v
+                                  sc5_s4tN
+                                  sc6_s4tO
+                                  sc7_s4tQ ->
+                                  case <# sc5_s4tN sc6_s4tO of _ {
+                                    False ->
+                                      case >=# sc7_s4tQ ipv_s4o9 of _ {
+                                        False ->
+                                          let { __DEFAULT ~ sat_s4xF <- +# rb_s4oh sc7_s4tQ } in
+                                          let { __DEFAULT ~ wild12_s4tW
+                                          <- indexIntArray# rb2_s4og sat_s4xF
+                                          } in
+                                          let { __DEFAULT ~ sat_s4xE <- +# rb3_s4ok sc7_s4tQ } in
+                                          let { __DEFAULT ~ wild13_s4tX
+                                          <- indexIntArray# rb5_s4oj sat_s4xE
+                                          } in
+                                          let { Vector rb9_s4u3 rb10_s4u4 rb11_s4u5 ~ _
+                                          <- ($sf_s4sr wild12_s4tW wild13_s4tX) `cast` ...
+                                          } in
+                                          let { __DEFAULT ~ sat_s4xD <- +# sc7_s4tQ 1 } in
+                                          $s$wfoldlM'_loop_s4u6
+                                            sc1_s4u2
+                                            rb9_s4u3
+                                            rb10_s4u4
+                                            rb11_s4u5
+                                            @~ (Sym <(NTCo:R:VectorInt)> ; Sym <(TFCo:R:VectorInt)>)
+                                            0
+                                            rb10_s4u4
+                                            sat_s4xD;
+                                        True -> sc1_s4u2
+                                      };
+                                    True ->
+                                      let { __DEFAULT ~ sat_s4xI <- +# sc2_s4u9 sc5_s4tN } in
+                                      let { __DEFAULT ~ wild11_s4ui
+                                      <- indexIntArray# sc4_s4u8 sat_s4xI
+                                      } in
+                                      let {
+                                        $j1_s4uh
+                                        $j1_s4uh =
+                                          \ ww1_s4ue ->
+                                            let { __DEFAULT ~ sat_s4xH <- +# sc5_s4tN 1 } in
+                                            $s$wfoldlM'_loop_s4u6
+                                              ww1_s4ue
+                                              sc2_s4u9
+                                              sc3_s4uf
+                                              sc4_s4u8
+                                              @~ (Sym <(NTCo:R:VectorInt)> ; Sym
+                                                                               <(TFCo:R:VectorInt)>)
+                                              sat_s4xH
+                                              sc6_s4tO
+                                              sc7_s4tQ } in
+                                      case <=# sc1_s4u2 wild11_s4ui of _ {
+                                        False -> $j1_s4uh wild11_s4ui;
+                                        True -> $j1_s4uh sc1_s4u2
+                                      }
+                                  }; } in
+                            let { __DEFAULT ~ sat_s4xG <- +# sc_s4su 1 } in
+                            $s$wfoldlM'_loop_s4u6
+                              ww_s4uk
+                              rb6_s4sL
+                              rb7_s4sG
+                              rb8_s4sK
+                              @~ (Sym <(NTCo:R:VectorInt)> ; Sym <(TFCo:R:VectorInt)>)
+                              2
+                              rb7_s4sG
+                              sat_s4xG } in
+                      case <=# wild7_s4tz wild9_s4un of _ {
+                        False -> $j_s4um wild9_s4un;
+                        True -> $j_s4um wild7_s4tz
+                      }
+                  }
+              };
+            True -> case lvl4_r4jR of wild3_s4zZ { }
+          }; } in
+    let { __DEFAULT ~ ww_s4ur <- $s$wfoldl1M'_loop_s4sI 0 } in
+    I# ww_s4ur
+
+splitbox
+splitbox =
+  \ eta_s4ut ->
+    let { (# tlx_s4uD, tly_s4uz, brx_s4uE, bry_s4uA #) ~ _
+    <- eta_s4ut
+    } in
+    let { __DEFAULT ~ sat_s4ys <- +# tly_s4uz bry_s4uA } in
+    let { __DEFAULT ~ ww_s4uI <- divInt# sat_s4ys 2 } in
+    let { __DEFAULT ~ sat_s4yr <- +# tlx_s4uD brx_s4uE } in
+    let { __DEFAULT ~ ww1_s4uH <- divInt# sat_s4yr 2 } in
+    let { __DEFAULT ~ sat_s4yn
+    <- (# ww1_s4uH, ww_s4uI, brx_s4uE, bry_s4uA #)
+    } in
+    let { __DEFAULT ~ sat_s4yo
+    <- (# tlx_s4uD, ww_s4uI, ww1_s4uH, bry_s4uA #)
+    } in
+    let { __DEFAULT ~ sat_s4yp
+    <- (# ww1_s4uH, tly_s4uz, brx_s4uE, ww_s4uI #)
+    } in
+    let { __DEFAULT ~ sat_s4yq
+    <- (# tlx_s4uD, tly_s4uz, ww1_s4uH, ww_s4uI #)
+    } in
+    (# sat_s4yq, sat_s4yp, sat_s4yo, sat_s4yn #)
+
+dist
+dist =
+  \ ds_s4uP ds1_s4uT ->
+    let { (x1_s4uX, y1_s4v3) ~ _ <- ds_s4uP } in
+    let { (x2_s4v0, y2_s4v6) ~ _ <- ds1_s4uT } in
+    let { I# x_s4ve ~ _ <- x1_s4uX } in
+    let { I# y_s4vf ~ _ <- x2_s4v0 } in
+    let { I# x3_s4va ~ _ <- y1_s4v3 } in
+    let { I# y3_s4vb ~ _ <- y2_s4v6 } in
+    let { __DEFAULT ~ x4_s4vc <- -# x3_s4va y3_s4vb } in
+    let { __DEFAULT ~ x5_s4vg <- -# x_s4ve y_s4vf } in
+    let { __DEFAULT ~ sat_s4vj <- *# x4_s4vc x4_s4vc } in
+    let { __DEFAULT ~ sat_s4yu <- *# x5_s4vg x5_s4vg } in
+    let { __DEFAULT ~ sat_s4vl <- +# sat_s4yu sat_s4vj } in
+    let { __DEFAULT ~ sat_s4vn <- int2Double# sat_s4vl } in
+    let { __DEFAULT ~ sat_s4vp <- sqrtDouble# sat_s4vn } in
+    let { __DEFAULT ~ sat_s4yt <- double2Int# sat_s4vp } in I# sat_s4yt
+
+$wrandom_ints
+$wrandom_ints =
+  \ w_s4vM ww_s4vC ->
+    let {
+      sat_s4yx
+      sat_s4yx =
+        \ @ s_a2Qp s_s4vy ->
+          let {
+            $j_s4wl
+            $j_s4wl =
+              \ x_s4vw ->
+                let { __DEFAULT ~ sat_s4yw <- *# x_s4vw 8 } in
+                let { (# ipv_s4vF, ipv1_s4vE #) ~ _
+                <- newByteArray# sat_s4yw (s_s4vy `cast` ...)
+                } in
+                case <# 0 ww_s4vC of _ {
+                  False ->
+                    let { (# ipv2_s4vJ, ipv3_s4vK #) ~ _
+                    <- unsafeFreezeByteArray# ipv1_s4vE ipv_s4vF
+                    } in
+                    let {
+                      sat_s4yv
+                      sat_s4yv = (Vector 0 0 ipv3_s4vK) `cast` ... } in
+                    (# ipv2_s4vJ `cast` ..., sat_s4yv #);
+                  True ->
+                    let { I# y_s4w1 ~ _ <- w_s4vM } in
+                    letrec {
+                      $s$wa_s4vY
+                      $s$wa_s4vY =
+                        \ sc_s4vW sc1_s4vT sc2_s4vV ->
+                          case <# sc1_s4vT ww_s4vC of _ {
+                            False ->
+                              let {
+                                sat_s4yy
+                                sat_s4yy = I# sc_s4vW } in
+                              (# sc2_s4vV, sat_s4yy #);
+                            True ->
+                              let { __DEFAULT ~ sat_s4yG <- *# sc1_s4vT y_s4w1 } in
+                              let { __DEFAULT ~ sat_s4yF <- *# sat_s4yG 512354 } in
+                              let { __DEFAULT ~ sat_s4yE <- +# sat_s4yF 1234824 } in
+                              let { __DEFAULT ~ sat_s4yB
+                              <- (writeIntArray#
+                                    ipv1_s4vE sc_s4vW sat_s4yE (sc2_s4vV `cast` ...))
+                                 `cast` ...
+                              } in
+                              let { __DEFAULT ~ sat_s4yC <- +# sc1_s4vT 1 } in
+                              let { __DEFAULT ~ sat_s4yD <- +# sc_s4vW 1 } in
+                              $s$wa_s4vY sat_s4yD sat_s4yC sat_s4yB
+                          }; } in
+                    let { __DEFAULT ~ sat_s4yA
+                    <- (writeIntArray# ipv1_s4vE 0 1234824 ipv_s4vF) `cast` ...
+                    } in
+                    let { (# ipv5_s4wd, ipv6_s4wa #) ~ _
+                    <- $s$wa_s4vY 1 1 sat_s4yA
+                    } in
+                    let { I# tpl1_s4wi ~ _ <- ipv6_s4wa } in
+                    let { (# ipv2_s4wh, ipv3_s4wj #) ~ _
+                    <- unsafeFreezeByteArray# ipv1_s4vE (ipv5_s4wd `cast` ...)
+                    } in
+                    let {
+                      sat_s4yz
+                      sat_s4yz = (Vector 0 tpl1_s4wi ipv3_s4wj) `cast` ... } in
+                    (# ipv2_s4wh `cast` ..., sat_s4yz #)
+                } } in
+          case <=# ww_s4vC 0 of _ {
+            False -> $j_s4wl ww_s4vC;
+            True -> $j_s4wl 0
+          } } in
+    runSTRep sat_s4yx
+
+random_ints
+random_ints =
+  \ w_s4wt w1_s4wq ->
+    let { I# ww_s4wu ~ _ <- w1_s4wq } in $wrandom_ints w_s4wt ww_s4wu
+
+lvl5_r4jS
+lvl5_r4jS = I# 1
+
+Rec {
+tree_size
+tree_size =
+  \ eta_s4ww ->
+    case eta_s4ww of _ {
+      Leaf ds_s4Ai -> lvl5_r4jS;
+      Nil -> $fShowQuadTree2;
+      Tree a_s4wD b_s4wG c_s4wJ d_s4wM ->
+        let { I# x_s4wP ~ _ <- tree_size a_s4wD } in
+        let { I# y_s4wQ ~ _ <- tree_size b_s4wG } in
+        let { I# y1_s4wS ~ _ <- tree_size c_s4wJ } in
+        let { I# y2_s4wU ~ _ <- tree_size d_s4wM } in
+        let { __DEFAULT ~ sat_s4yJ <- +# x_s4wP y_s4wQ } in
+        let { __DEFAULT ~ sat_s4yI <- +# sat_s4yJ y1_s4wS } in
+        let { __DEFAULT ~ sat_s4yH <- +# sat_s4yI y2_s4wU } in I# sat_s4yH
+    }
+end Rec }
+
+Leaf
+Leaf = \ eta_B1 -> Leaf eta_B1
+
+Nil
+Nil = Nil
+
+Tree
+Tree =
+  \ eta_B4 eta_B3 eta_B2 eta_B1 -> Tree eta_B4 eta_B3 eta_B2 eta_B1
+
+
+
+[2 of 2] Compiling Main             ( QuadTreeStream.hs, QuadTreeStream.o )
+
+==================== CorePrep ====================
+Result size of CorePrep
+  = {terms: 1,332, types: 1,61, coercions: 223}
+
+Rec {
+go_rbDT
+go_rbDT =
+  \ ins_sbEb box_sbEs ->
+    let { V_2 rb_sbEq as_sbEg bs_sbEl ~ _ <- ins_sbEb `cast` ... } in
+    let { Vector rb1_sbEZ _ rb3_sbEY ~ _ <- as_sbEg `cast` ... } in
+    let { Vector rb4_sbFc _ rb6_sbFb ~ _ <- bs_sbEl `cast` ... } in
+    case rb_sbEq of wild3_sbEH {
+      __DEFAULT ->
+        let { (# tlx_sbEC, tly_sbEy, brx_sbED, bry_sbEz #) ~ _
+        <- box_sbEs
+        } in
+        let { __DEFAULT ~ sat_sbOG <- +# tly_sbEy bry_sbEz } in
+        let { __DEFAULT ~ ww_sbFi <- divInt# sat_sbOG 2 } in
+        let { __DEFAULT ~ sat_sbOF <- +# tlx_sbEC brx_sbED } in
+        let { __DEFAULT ~ ww1_sbF8 <- divInt# sat_sbOF 2 } in
+        let {
+          sat_sbOB
+          sat_sbOB =
+            let { __DEFAULT ~ sat_sbNQ
+            <- (# ww1_sbF8, ww_sbFi, brx_sbED, bry_sbEz #)
+            } in
+            let {
+              sat_sbJj
+              sat_sbJj =
+                \ @ s_a2Qp s_sbIg ->
+                  let { __DEFAULT ~ sat_sbNP <- *# wild3_sbEH 8 } in
+                  let { (# ipv_sbIl, ipv1_sbIP #) ~ _
+                  <- newByteArray# sat_sbNP (s_sbIg `cast` ...)
+                  } in
+                  let { __DEFAULT ~ sat_sbNO <- *# wild3_sbEH 8 } in
+                  let { (# ipv2_sbIU, ipv3_sbIO #) ~ _
+                  <- newByteArray# sat_sbNO ipv_sbIl
+                  } in
+                  letrec {
+                    $s$wa_sbIA
+                    $s$wa_sbIA =
+                      \ sc_sbIz sc1_sbIt sc2_sbIC ->
+                        case >=# sc1_sbIt wild3_sbEH of _ {
+                          False ->
+                            let { __DEFAULT ~ sat_sbNE <- +# rb1_sbEZ sc1_sbIt } in
+                            let { __DEFAULT ~ wild6_sbIx
+                            <- indexIntArray# rb3_sbEY sat_sbNE
+                            } in
+                            case >=# wild6_sbIx ww1_sbF8 of _ {
+                              False ->
+                                let { __DEFAULT ~ sat_sbND <- +# sc1_sbIt 1 } in
+                                $s$wa_sbIA sc_sbIz sat_sbND sc2_sbIC;
+                              True ->
+                                case <# wild6_sbIx brx_sbED of _ {
+                                  False ->
+                                    let { __DEFAULT ~ sat_sbNH <- +# sc1_sbIt 1 } in
+                                    $s$wa_sbIA sc_sbIz sat_sbNH sc2_sbIC;
+                                  True ->
+                                    let { __DEFAULT ~ sat_sbNJ <- +# rb4_sbFc sc1_sbIt } in
+                                    let { __DEFAULT ~ wild9_sbIH
+                                    <- indexIntArray# rb6_sbFb sat_sbNJ
+                                    } in
+                                    case >=# wild9_sbIH ww_sbFi of _ {
+                                      False ->
+                                        let { __DEFAULT ~ sat_sbNI <- +# sc1_sbIt 1 } in
+                                        $s$wa_sbIA sc_sbIz sat_sbNI sc2_sbIC;
+                                      True ->
+                                        case <# wild9_sbIH bry_sbEz of _ {
+                                          False ->
+                                            let { __DEFAULT ~ sat_sbNK <- +# sc1_sbIt 1 } in
+                                            $s$wa_sbIA sc_sbIz sat_sbNK sc2_sbIC;
+                                          True ->
+                                            let { __DEFAULT ~ sat_sbIR
+                                            <- writeIntArray#
+                                                 ipv1_sbIP sc_sbIz wild6_sbIx (sc2_sbIC `cast` ...)
+                                            } in
+                                            let { __DEFAULT ~ sat_sbNL
+                                            <- (writeIntArray#
+                                                  ipv3_sbIO sc_sbIz wild9_sbIH sat_sbIR)
+                                               `cast` ...
+                                            } in
+                                            let { __DEFAULT ~ sat_sbNM <- +# sc1_sbIt 1 } in
+                                            let { __DEFAULT ~ sat_sbNN <- +# sc_sbIz 1 } in
+                                            $s$wa_sbIA sat_sbNN sat_sbNM sat_sbNL
+                                        }
+                                    }
+                                }
+                            };
+                          True ->
+                            let {
+                              sat_sbNG
+                              sat_sbNG = I# sc_sbIz } in
+                            (# sc2_sbIC, sat_sbNG #)
+                        }; } in
+                  let { (# ipv5_sbJ1, ipv6_sbIY #) ~ _
+                  <- $s$wa_sbIA 0 0 (ipv2_sbIU `cast` ...)
+                  } in
+                  let { I# tpl1_sbJa ~ _ <- ipv6_sbIY } in
+                  let { (# ipv4_sbJ5, ipv7_sbJb #) ~ _
+                  <- unsafeFreezeByteArray# ipv1_sbIP (ipv5_sbJ1 `cast` ...)
+                  } in
+                  let { (# ipv8_sbJ9, ipv9_sbJd #) ~ _
+                  <- unsafeFreezeByteArray# ipv3_sbIO ipv4_sbJ5
+                  } in
+                  let {
+                    sat_sbJf
+                    sat_sbJf = (Vector 0 tpl1_sbJa ipv9_sbJd) `cast` ... } in
+                  let {
+                    sat_sbJg
+                    sat_sbJg = (Vector 0 tpl1_sbJa ipv7_sbJb) `cast` ... } in
+                  let {
+                    sat_sbNF
+                    sat_sbNF = (V_2 tpl1_sbJa sat_sbJg sat_sbJf) `cast` ... } in
+                  (# ipv8_sbJ9 `cast` ..., sat_sbNF #) } in
+            let { __DEFAULT ~ sat_sbNR <- runSTRep sat_sbJj } in
+            go_rbDT sat_sbNR sat_sbNQ } in
+        let {
+          sat_sbOC
+          sat_sbOC =
+            let { __DEFAULT ~ sat_sbO5
+            <- (# tlx_sbEC, ww_sbFi, ww1_sbF8, bry_sbEz #)
+            } in
+            let {
+              sat_sbIa
+              sat_sbIa =
+                \ @ s_a2Qp s_sbH7 ->
+                  let { __DEFAULT ~ sat_sbO4 <- *# wild3_sbEH 8 } in
+                  let { (# ipv_sbHc, ipv1_sbHG #) ~ _
+                  <- newByteArray# sat_sbO4 (s_sbH7 `cast` ...)
+                  } in
+                  let { __DEFAULT ~ sat_sbO3 <- *# wild3_sbEH 8 } in
+                  let { (# ipv2_sbHL, ipv3_sbHF #) ~ _
+                  <- newByteArray# sat_sbO3 ipv_sbHc
+                  } in
+                  letrec {
+                    $s$wa_sbHr
+                    $s$wa_sbHr =
+                      \ sc_sbHq sc1_sbHk sc2_sbHt ->
+                        case >=# sc1_sbHk wild3_sbEH of _ {
+                          False ->
+                            let { __DEFAULT ~ sat_sbNT <- +# rb1_sbEZ sc1_sbHk } in
+                            let { __DEFAULT ~ wild6_sbHo
+                            <- indexIntArray# rb3_sbEY sat_sbNT
+                            } in
+                            case >=# wild6_sbHo tlx_sbEC of _ {
+                              False ->
+                                let { __DEFAULT ~ sat_sbNS <- +# sc1_sbHk 1 } in
+                                $s$wa_sbHr sc_sbHq sat_sbNS sc2_sbHt;
+                              True ->
+                                case <# wild6_sbHo ww1_sbF8 of _ {
+                                  False ->
+                                    let { __DEFAULT ~ sat_sbNW <- +# sc1_sbHk 1 } in
+                                    $s$wa_sbHr sc_sbHq sat_sbNW sc2_sbHt;
+                                  True ->
+                                    let { __DEFAULT ~ sat_sbNY <- +# rb4_sbFc sc1_sbHk } in
+                                    let { __DEFAULT ~ wild9_sbHy
+                                    <- indexIntArray# rb6_sbFb sat_sbNY
+                                    } in
+                                    case >=# wild9_sbHy ww_sbFi of _ {
+                                      False ->
+                                        let { __DEFAULT ~ sat_sbNX <- +# sc1_sbHk 1 } in
+                                        $s$wa_sbHr sc_sbHq sat_sbNX sc2_sbHt;
+                                      True ->
+                                        case <# wild9_sbHy bry_sbEz of _ {
+                                          False ->
+                                            let { __DEFAULT ~ sat_sbNZ <- +# sc1_sbHk 1 } in
+                                            $s$wa_sbHr sc_sbHq sat_sbNZ sc2_sbHt;
+                                          True ->
+                                            let { __DEFAULT ~ sat_sbHI
+                                            <- writeIntArray#
+                                                 ipv1_sbHG sc_sbHq wild6_sbHo (sc2_sbHt `cast` ...)
+                                            } in
+                                            let { __DEFAULT ~ sat_sbO0
+                                            <- (writeIntArray#
+                                                  ipv3_sbHF sc_sbHq wild9_sbHy sat_sbHI)
+                                               `cast` ...
+                                            } in
+                                            let { __DEFAULT ~ sat_sbO1 <- +# sc1_sbHk 1 } in
+                                            let { __DEFAULT ~ sat_sbO2 <- +# sc_sbHq 1 } in
+                                            $s$wa_sbHr sat_sbO2 sat_sbO1 sat_sbO0
+                                        }
+                                    }
+                                }
+                            };
+                          True ->
+                            let {
+                              sat_sbNV
+                              sat_sbNV = I# sc_sbHq } in
+                            (# sc2_sbHt, sat_sbNV #)
+                        }; } in
+                  let { (# ipv5_sbHS, ipv6_sbHP #) ~ _
+                  <- $s$wa_sbHr 0 0 (ipv2_sbHL `cast` ...)
+                  } in
+                  let { I# tpl1_sbI1 ~ _ <- ipv6_sbHP } in
+                  let { (# ipv4_sbHW, ipv7_sbI2 #) ~ _
+                  <- unsafeFreezeByteArray# ipv1_sbHG (ipv5_sbHS `cast` ...)
+                  } in
+                  let { (# ipv8_sbI0, ipv9_sbI4 #) ~ _
+                  <- unsafeFreezeByteArray# ipv3_sbHF ipv4_sbHW
+                  } in
+                  let {
+                    sat_sbI6
+                    sat_sbI6 = (Vector 0 tpl1_sbI1 ipv9_sbI4) `cast` ... } in
+                  let {
+                    sat_sbI7
+                    sat_sbI7 = (Vector 0 tpl1_sbI1 ipv7_sbI2) `cast` ... } in
+                  let {
+                    sat_sbNU
+                    sat_sbNU = (V_2 tpl1_sbI1 sat_sbI7 sat_sbI6) `cast` ... } in
+                  (# ipv8_sbI0 `cast` ..., sat_sbNU #) } in
+            let { __DEFAULT ~ sat_sbO6 <- runSTRep sat_sbIa } in
+            go_rbDT sat_sbO6 sat_sbO5 } in
+        let {
+          sat_sbOD
+          sat_sbOD =
+            let { __DEFAULT ~ sat_sbOk
+            <- (# ww1_sbF8, tly_sbEy, brx_sbED, ww_sbFi #)
+            } in
+            let {
+              sat_sbH1
+              sat_sbH1 =
+                \ @ s_a2Qp s_sbFY ->
+                  let { __DEFAULT ~ sat_sbOj <- *# wild3_sbEH 8 } in
+                  let { (# ipv_sbG3, ipv1_sbGx #) ~ _
+                  <- newByteArray# sat_sbOj (s_sbFY `cast` ...)
+                  } in
+                  let { __DEFAULT ~ sat_sbOi <- *# wild3_sbEH 8 } in
+                  let { (# ipv2_sbGC, ipv3_sbGw #) ~ _
+                  <- newByteArray# sat_sbOi ipv_sbG3
+                  } in
+                  letrec {
+                    $s$wa_sbGi
+                    $s$wa_sbGi =
+                      \ sc_sbGh sc1_sbGb sc2_sbGk ->
+                        case >=# sc1_sbGb wild3_sbEH of _ {
+                          False ->
+                            let { __DEFAULT ~ sat_sbO8 <- +# rb1_sbEZ sc1_sbGb } in
+                            let { __DEFAULT ~ wild6_sbGf
+                            <- indexIntArray# rb3_sbEY sat_sbO8
+                            } in
+                            case >=# wild6_sbGf ww1_sbF8 of _ {
+                              False ->
+                                let { __DEFAULT ~ sat_sbO7 <- +# sc1_sbGb 1 } in
+                                $s$wa_sbGi sc_sbGh sat_sbO7 sc2_sbGk;
+                              True ->
+                                case <# wild6_sbGf brx_sbED of _ {
+                                  False ->
+                                    let { __DEFAULT ~ sat_sbOb <- +# sc1_sbGb 1 } in
+                                    $s$wa_sbGi sc_sbGh sat_sbOb sc2_sbGk;
+                                  True ->
+                                    let { __DEFAULT ~ sat_sbOd <- +# rb4_sbFc sc1_sbGb } in
+                                    let { __DEFAULT ~ wild9_sbGp
+                                    <- indexIntArray# rb6_sbFb sat_sbOd
+                                    } in
+                                    case >=# wild9_sbGp tly_sbEy of _ {
+                                      False ->
+                                        let { __DEFAULT ~ sat_sbOc <- +# sc1_sbGb 1 } in
+                                        $s$wa_sbGi sc_sbGh sat_sbOc sc2_sbGk;
+                                      True ->
+                                        case <# wild9_sbGp ww_sbFi of _ {
+                                          False ->
+                                            let { __DEFAULT ~ sat_sbOe <- +# sc1_sbGb 1 } in
+                                            $s$wa_sbGi sc_sbGh sat_sbOe sc2_sbGk;
+                                          True ->
+                                            let { __DEFAULT ~ sat_sbGz
+                                            <- writeIntArray#
+                                                 ipv1_sbGx sc_sbGh wild6_sbGf (sc2_sbGk `cast` ...)
+                                            } in
+                                            let { __DEFAULT ~ sat_sbOf
+                                            <- (writeIntArray#
+                                                  ipv3_sbGw sc_sbGh wild9_sbGp sat_sbGz)
+                                               `cast` ...
+                                            } in
+                                            let { __DEFAULT ~ sat_sbOg <- +# sc1_sbGb 1 } in
+                                            let { __DEFAULT ~ sat_sbOh <- +# sc_sbGh 1 } in
+                                            $s$wa_sbGi sat_sbOh sat_sbOg sat_sbOf
+                                        }
+                                    }
+                                }
+                            };
+                          True ->
+                            let {
+                              sat_sbOa
+                              sat_sbOa = I# sc_sbGh } in
+                            (# sc2_sbGk, sat_sbOa #)
+                        }; } in
+                  let { (# ipv5_sbGJ, ipv6_sbGG #) ~ _
+                  <- $s$wa_sbGi 0 0 (ipv2_sbGC `cast` ...)
+                  } in
+                  let { I# tpl1_sbGS ~ _ <- ipv6_sbGG } in
+                  let { (# ipv4_sbGN, ipv7_sbGT #) ~ _
+                  <- unsafeFreezeByteArray# ipv1_sbGx (ipv5_sbGJ `cast` ...)
+                  } in
+                  let { (# ipv8_sbGR, ipv9_sbGV #) ~ _
+                  <- unsafeFreezeByteArray# ipv3_sbGw ipv4_sbGN
+                  } in
+                  let {
+                    sat_sbGX
+                    sat_sbGX = (Vector 0 tpl1_sbGS ipv9_sbGV) `cast` ... } in
+                  let {
+                    sat_sbGY
+                    sat_sbGY = (Vector 0 tpl1_sbGS ipv7_sbGT) `cast` ... } in
+                  let {
+                    sat_sbO9
+                    sat_sbO9 = (V_2 tpl1_sbGS sat_sbGY sat_sbGX) `cast` ... } in
+                  (# ipv8_sbGR `cast` ..., sat_sbO9 #) } in
+            let { __DEFAULT ~ sat_sbOl <- runSTRep sat_sbH1 } in
+            go_rbDT sat_sbOl sat_sbOk } in
+        let {
+          sat_sbOE
+          sat_sbOE =
+            let { __DEFAULT ~ sat_sbOz
+            <- (# tlx_sbEC, tly_sbEy, ww1_sbF8, ww_sbFi #)
+            } in
+            let {
+              sat_sbFS
+              sat_sbFS =
+                \ @ s_a2Qp s_sbEJ ->
+                  let { __DEFAULT ~ sat_sbOy <- *# wild3_sbEH 8 } in
+                  let { (# ipv_sbEO, ipv1_sbFo #) ~ _
+                  <- newByteArray# sat_sbOy (s_sbEJ `cast` ...)
+                  } in
+                  let { __DEFAULT ~ sat_sbOx <- *# wild3_sbEH 8 } in
+                  let { (# ipv2_sbFt, ipv3_sbFn #) ~ _
+                  <- newByteArray# sat_sbOx ipv_sbEO
+                  } in
+                  letrec {
+                    $s$wa_sbF5
+                    $s$wa_sbF5 =
+                      \ sc_sbF4 sc1_sbEW sc2_sbF7 ->
+                        case >=# sc1_sbEW wild3_sbEH of _ {
+                          False ->
+                            let { __DEFAULT ~ sat_sbOn <- +# rb1_sbEZ sc1_sbEW } in
+                            let { __DEFAULT ~ wild6_sbF2
+                            <- indexIntArray# rb3_sbEY sat_sbOn
+                            } in
+                            case >=# wild6_sbF2 tlx_sbEC of _ {
+                              False ->
+                                let { __DEFAULT ~ sat_sbOm <- +# sc1_sbEW 1 } in
+                                $s$wa_sbF5 sc_sbF4 sat_sbOm sc2_sbF7;
+                              True ->
+                                case <# wild6_sbF2 ww1_sbF8 of _ {
+                                  False ->
+                                    let { __DEFAULT ~ sat_sbOq <- +# sc1_sbEW 1 } in
+                                    $s$wa_sbF5 sc_sbF4 sat_sbOq sc2_sbF7;
+                                  True ->
+                                    let { __DEFAULT ~ sat_sbOs <- +# rb4_sbFc sc1_sbEW } in
+                                    let { __DEFAULT ~ wild9_sbFf
+                                    <- indexIntArray# rb6_sbFb sat_sbOs
+                                    } in
+                                    case >=# wild9_sbFf tly_sbEy of _ {
+                                      False ->
+                                        let { __DEFAULT ~ sat_sbOr <- +# sc1_sbEW 1 } in
+                                        $s$wa_sbF5 sc_sbF4 sat_sbOr sc2_sbF7;
+                                      True ->
+                                        case <# wild9_sbFf ww_sbFi of _ {
+                                          False ->
+                                            let { __DEFAULT ~ sat_sbOt <- +# sc1_sbEW 1 } in
+                                            $s$wa_sbF5 sc_sbF4 sat_sbOt sc2_sbF7;
+                                          True ->
+                                            let { __DEFAULT ~ sat_sbFq
+                                            <- writeIntArray#
+                                                 ipv1_sbFo sc_sbF4 wild6_sbF2 (sc2_sbF7 `cast` ...)
+                                            } in
+                                            let { __DEFAULT ~ sat_sbOu
+                                            <- (writeIntArray#
+                                                  ipv3_sbFn sc_sbF4 wild9_sbFf sat_sbFq)
+                                               `cast` ...
+                                            } in
+                                            let { __DEFAULT ~ sat_sbOv <- +# sc1_sbEW 1 } in
+                                            let { __DEFAULT ~ sat_sbOw <- +# sc_sbF4 1 } in
+                                            $s$wa_sbF5 sat_sbOw sat_sbOv sat_sbOu
+                                        }
+                                    }
+                                }
+                            };
+                          True ->
+                            let {
+                              sat_sbOp
+                              sat_sbOp = I# sc_sbF4 } in
+                            (# sc2_sbF7, sat_sbOp #)
+                        }; } in
+                  let { (# ipv5_sbFA, ipv6_sbFx #) ~ _
+                  <- $s$wa_sbF5 0 0 (ipv2_sbFt `cast` ...)
+                  } in
+                  let { I# tpl1_sbFJ ~ _ <- ipv6_sbFx } in
+                  let { (# ipv4_sbFE, ipv7_sbFK #) ~ _
+                  <- unsafeFreezeByteArray# ipv1_sbFo (ipv5_sbFA `cast` ...)
+                  } in
+                  let { (# ipv8_sbFI, ipv9_sbFM #) ~ _
+                  <- unsafeFreezeByteArray# ipv3_sbFn ipv4_sbFE
+                  } in
+                  let {
+                    sat_sbFO
+                    sat_sbFO = (Vector 0 tpl1_sbFJ ipv9_sbFM) `cast` ... } in
+                  let {
+                    sat_sbFP
+                    sat_sbFP = (Vector 0 tpl1_sbFJ ipv7_sbFK) `cast` ... } in
+                  let {
+                    sat_sbOo
+                    sat_sbOo = (V_2 tpl1_sbFJ sat_sbFP sat_sbFO) `cast` ... } in
+                  (# ipv8_sbFI `cast` ..., sat_sbOo #) } in
+            let { __DEFAULT ~ sat_sbOA <- runSTRep sat_sbFS } in
+            go_rbDT sat_sbOA sat_sbOz } in
+        Tree sat_sbOE sat_sbOD sat_sbOC sat_sbOB;
+      0 -> Nil;
+      1 ->
+        let {
+          sat_sbJt
+          sat_sbJt =
+            let { __DEFAULT ~ wild4_sbJr
+            <- indexIntArray# rb6_sbFb rb4_sbFc
+            } in
+            I# wild4_sbJr } in
+        let {
+          sat_sbJu
+          sat_sbJu =
+            let { __DEFAULT ~ wild4_sbJo
+            <- indexIntArray# rb3_sbEY rb1_sbEZ
+            } in
+            I# wild4_sbJo } in
+        let {
+          sat_sbOH
+          sat_sbOH = (sat_sbJu, sat_sbJt) } in
+        Leaf sat_sbOH
+    }
+end Rec }
+
+lvl_rbDU
+lvl_rbDU = unpackCString# "./Data/Vector/Fusion/Stream/Monadic.hs"
+
+lvl1_rbDV
+lvl1_rbDV = I# 853
+
+lvl2_rbDW
+lvl2_rbDW = unpackCString# "foldl1M'"
+
+lvl3_rbDX
+lvl3_rbDX = error lvl_rbDU lvl1_rbDV lvl2_rbDW emptyStream
+
+lvl4_rbDY
+lvl4_rbDY = error lvl_rbDU lvl1_rbDV lvl2_rbDW emptyStream
+
+lvl5_rbDZ
+lvl5_rbDZ = error lvl_rbDU lvl1_rbDV lvl2_rbDW emptyStream
+
+lvl6_rbE0
+lvl6_rbE0 = error lvl_rbDU lvl1_rbDV lvl2_rbDW emptyStream
+
+quadtree_r9K1
+quadtree_r9K1 =
+  \ pts_sbJx ->
+    let { V_2 rb_sbQ5 as_sbJC bs_sbJH ~ wild_sbKY
+    <- pts_sbJx `cast` ...
+    } in
+    let { Vector ipv_sbJP ipv1_sbJM ipv2_sbJO ~ _
+    <- as_sbJC `cast` ...
+    } in
+    let { Vector ipv3_sbKq ipv4_sbKn ipv5_sbKp ~ _
+    <- bs_sbJH `cast` ...
+    } in
+    case >=# 0 ipv1_sbJM of _ {
+      False ->
+        let { __DEFAULT ~ wild2_sbK4
+        <- indexIntArray# ipv2_sbJO ipv_sbJP
+        } in
+        letrec {
+          $s$wfoldlM'_loop_sbK1
+          $s$wfoldlM'_loop_sbK1 =
+            \ sc_sbJY sc1_sbJU ->
+              case >=# sc1_sbJU ipv1_sbJM of _ {
+                False ->
+                  let { __DEFAULT ~ sat_sbOJ <- +# ipv_sbJP sc1_sbJU } in
+                  let { __DEFAULT ~ wild4_sbJZ
+                  <- indexIntArray# ipv2_sbJO sat_sbOJ
+                  } in
+                  case <=# sc_sbJY wild4_sbJZ of _ {
+                    False ->
+                      let { __DEFAULT ~ sat_sbOI <- +# sc1_sbJU 1 } in
+                      $s$wfoldlM'_loop_sbK1 wild4_sbJZ sat_sbOI;
+                    True ->
+                      let { __DEFAULT ~ sat_sbOV <- +# sc1_sbJU 1 } in
+                      $s$wfoldlM'_loop_sbK1 sc_sbJY sat_sbOV
+                  };
+                True -> sc_sbJY
+              }; } in
+        let { __DEFAULT ~ ww_sbKZ
+        <- $s$wfoldlM'_loop_sbK1 wild2_sbK4 1
+        } in
+        case >=# 0 ipv1_sbJM of _ {
+          False ->
+            let { __DEFAULT ~ wild4_sbKl
+            <- indexIntArray# ipv2_sbJO ipv_sbJP
+            } in
+            letrec {
+              $s$wfoldlM'_loop1_sbKi
+              $s$wfoldlM'_loop1_sbKi =
+                \ sc_sbKf sc1_sbKb ->
+                  case >=# sc1_sbKb ipv1_sbJM of _ {
+                    False ->
+                      let { __DEFAULT ~ sat_sbOL <- +# ipv_sbJP sc1_sbKb } in
+                      let { __DEFAULT ~ wild6_sbKg
+                      <- indexIntArray# ipv2_sbJO sat_sbOL
+                      } in
+                      case <=# sc_sbKf wild6_sbKg of _ {
+                        False ->
+                          let { __DEFAULT ~ sat_sbOK <- +# sc1_sbKb 1 } in
+                          $s$wfoldlM'_loop1_sbKi sc_sbKf sat_sbOK;
+                        True ->
+                          let { __DEFAULT ~ sat_sbOU <- +# sc1_sbKb 1 } in
+                          $s$wfoldlM'_loop1_sbKi wild6_sbKg sat_sbOU
+                      };
+                    True -> sc_sbKf
+                  }; } in
+            let { __DEFAULT ~ ww1_sbL1
+            <- $s$wfoldlM'_loop1_sbKi wild4_sbKl 1
+            } in
+            case >=# 0 ipv4_sbKn of _ {
+              False ->
+                let { __DEFAULT ~ wild6_sbKF
+                <- indexIntArray# ipv5_sbKp ipv3_sbKq
+                } in
+                letrec {
+                  $s$wfoldlM'_loop2_sbKC
+                  $s$wfoldlM'_loop2_sbKC =
+                    \ sc_sbKz sc1_sbKv ->
+                      case >=# sc1_sbKv ipv4_sbKn of _ {
+                        False ->
+                          let { __DEFAULT ~ sat_sbON <- +# ipv3_sbKq sc1_sbKv } in
+                          let { __DEFAULT ~ wild8_sbKA
+                          <- indexIntArray# ipv5_sbKp sat_sbON
+                          } in
+                          case <=# sc_sbKz wild8_sbKA of _ {
+                            False ->
+                              let { __DEFAULT ~ sat_sbOM <- +# sc1_sbKv 1 } in
+                              $s$wfoldlM'_loop2_sbKC wild8_sbKA sat_sbOM;
+                            True ->
+                              let { __DEFAULT ~ sat_sbOT <- +# sc1_sbKv 1 } in
+                              $s$wfoldlM'_loop2_sbKC sc_sbKz sat_sbOT
+                          };
+                        True -> sc_sbKz
+                      }; } in
+                let { __DEFAULT ~ ww2_sbL0
+                <- $s$wfoldlM'_loop2_sbKC wild6_sbKF 1
+                } in
+                case >=# 0 ipv4_sbKn of _ {
+                  False ->
+                    let { __DEFAULT ~ wild8_sbKW
+                    <- indexIntArray# ipv5_sbKp ipv3_sbKq
+                    } in
+                    letrec {
+                      $s$wfoldlM'_loop3_sbKT
+                      $s$wfoldlM'_loop3_sbKT =
+                        \ sc_sbKQ sc1_sbKM ->
+                          case >=# sc1_sbKM ipv4_sbKn of _ {
+                            False ->
+                              let { __DEFAULT ~ sat_sbOP <- +# ipv3_sbKq sc1_sbKM } in
+                              let { __DEFAULT ~ wild10_sbKR
+                              <- indexIntArray# ipv5_sbKp sat_sbOP
+                              } in
+                              case <=# sc_sbKQ wild10_sbKR of _ {
+                                False ->
+                                  let { __DEFAULT ~ sat_sbOO <- +# sc1_sbKM 1 } in
+                                  $s$wfoldlM'_loop3_sbKT sc_sbKQ sat_sbOO;
+                                True ->
+                                  let { __DEFAULT ~ sat_sbOS <- +# sc1_sbKM 1 } in
+                                  $s$wfoldlM'_loop3_sbKT wild10_sbKR sat_sbOS
+                              };
+                            True -> sc_sbKQ
+                          }; } in
+                    let { __DEFAULT ~ ww3_sbL3
+                    <- $s$wfoldlM'_loop3_sbKT wild8_sbKW 1
+                    } in
+                    let { __DEFAULT ~ sat_sbL5 <- +# ww3_sbL3 1 } in
+                    let { __DEFAULT ~ sat_sbOR <- +# ww1_sbL1 1 } in
+                    let { __DEFAULT ~ sat_sbOQ
+                    <- (# ww_sbKZ, ww2_sbL0, sat_sbOR, sat_sbL5 #)
+                    } in
+                    go_rbDT (wild_sbKY `cast` ...) sat_sbOQ;
+                  True -> case lvl3_rbDX of wild8_sbQk { }
+                };
+              True -> case lvl4_rbDY of wild6_sbQl { }
+            };
+          True -> case lvl5_rbDZ of wild4_sbQm { }
+        };
+      True -> case lvl6_rbE0 of wild2_sbQn { }
+    }
+
+lvl7_rbE1
+lvl7_rbE1 = I# 2
+
+lvl8_rbE2
+lvl8_rbE2 = I# 1
+
+lvl9_rbE3
+lvl9_rbE3 = unpackCString# "Ok"
+
+lvl10_rbE4
+lvl10_rbE4 = unpackCString# "./Data/Vector/Generic.hs"
+
+lvl11_rbE5
+lvl11_rbE5 = I# 244
+
+lvl12_rbE6
+lvl12_rbE6 = unpackCString# "(!)"
+
+lvl13_rbE7
+lvl13_rbE7 =
+  \ rb_sbLc ->
+    let { __DEFAULT ~ sat_sbOW <- checkIndex_msg# 12349 rb_sbLc } in
+    checkError lvl10_rbE4 lvl11_rbE5 Bounds lvl12_rbE6 sat_sbOW
+
+lvl14_rbE8
+lvl14_rbE8 =
+  \ rb_sbLf ->
+    let { __DEFAULT ~ sat_sbOX <- checkIndex_msg# 0 rb_sbLf } in
+    checkError lvl10_rbE4 lvl11_rbE5 Bounds lvl12_rbE6 sat_sbOX
+
+main1
+main1 =
+  \ eta_sbLi ->
+    let { (# ipv_sbMw, ipv1_sbLn #) ~ _ <- get_size1 eta_sbLi } in
+    let {
+      pts_sbLK
+      pts_sbLK =
+        let { I# ww_sbLq ~ _ <- ipv1_sbLn } in
+        let { Vector rb_sbLC rb1_sbLz rb2_sbLD ~ _
+        <- ($wrandom_ints lvl8_rbE2 ww_sbLq) `cast` ...
+        } in
+        let { Vector rb3_sbLF rb4_sbLA rb5_sbLG ~ _
+        <- ($wrandom_ints lvl7_rbE1 ww_sbLq) `cast` ...
+        } in
+        case <=# rb1_sbLz rb4_sbLA of _ {
+          False ->
+            let {
+              sat_sbOY
+              sat_sbOY = (Vector rb3_sbLF rb4_sbLA rb5_sbLG) `cast` ... } in
+            let {
+              sat_sbOZ
+              sat_sbOZ = (Vector rb_sbLC rb4_sbLA rb2_sbLD) `cast` ... } in
+            (V_2 rb4_sbLA sat_sbOZ sat_sbOY) `cast` ...;
+          True ->
+            let {
+              sat_sbPf
+              sat_sbPf = (Vector rb3_sbLF rb1_sbLz rb5_sbLG) `cast` ... } in
+            let {
+              sat_sbPg
+              sat_sbPg = (Vector rb_sbLC rb1_sbLz rb2_sbLD) `cast` ... } in
+            (V_2 rb1_sbLz sat_sbPg sat_sbPf) `cast` ...
+        } } in
+    let {
+      sat_sbP5
+      sat_sbP5 =
+        let { V_2 rb_sbLZ as_sbLP bs_sbLU ~ _ <- pts_sbLK `cast` ... } in
+        let { Vector rb1_sbM4 _ rb3_sbM3 ~ _ <- as_sbLP `cast` ... } in
+        let { Vector rb4_sbMg _ rb6_sbMf ~ _ <- bs_sbLU `cast` ... } in
+        case <# 0 rb_sbLZ of _ {
+          False -> case lvl14_rbE8 rb_sbLZ of wild3_sbQx { };
+          True ->
+            let {
+              w_sbMj
+              w_sbMj =
+                let { __DEFAULT ~ wild3_sbMi
+                <- indexIntArray# rb6_sbMf rb4_sbMg
+                } in
+                I# wild3_sbMi } in
+            let {
+              sat_sbMq
+              sat_sbMq =
+                \ w1_sbMo ->
+                  let { I# ww_sbMn ~ _ <- w_sbMj } in
+                  $wshowSignedInt 0 ww_sbMn w1_sbMo } in
+            let {
+              sat_sbMs
+              sat_sbMs = : sat_sbMq ([]) } in
+            let {
+              w_sbM7
+              w_sbM7 =
+                let { __DEFAULT ~ wild3_sbM6
+                <- indexIntArray# rb3_sbM3 rb1_sbM4
+                } in
+                I# wild3_sbM6 } in
+            let {
+              sat_sbMt
+              sat_sbMt =
+                \ w1_sbMc ->
+                  let { I# ww_sbMb ~ _ <- w_sbM7 } in
+                  $wshowSignedInt 0 ww_sbMb w1_sbMc } in
+            let {
+              sat_sbPc
+              sat_sbPc = : sat_sbMt sat_sbMs } in
+            show_tuple sat_sbPc ([])
+        } } in
+    let { (# ipv2_sbNn, _ #) ~ _
+    <- hPutStr2 stdout sat_sbP5 True ipv_sbMw
+    } in
+    let {
+      sat_sbP3
+      sat_sbP3 =
+        let { V_2 rb_sbMO as_sbME bs_sbMJ ~ _ <- pts_sbLK `cast` ... } in
+        let { Vector rb1_sbMT _ rb3_sbMS ~ _ <- as_sbME `cast` ... } in
+        let { Vector rb4_sbN6 _ rb6_sbN5 ~ _ <- bs_sbMJ `cast` ... } in
+        case <# 12349 rb_sbMO of _ {
+          False -> case lvl13_rbE7 rb_sbMO of wild3_sbQF { };
+          True ->
+            let {
+              w_sbNa
+              w_sbNa =
+                let { __DEFAULT ~ sat_sbP6 <- +# rb4_sbN6 12349 } in
+                let { __DEFAULT ~ wild3_sbN9
+                <- indexIntArray# rb6_sbN5 sat_sbP6
+                } in
+                I# wild3_sbN9 } in
+            let {
+              sat_sbNh
+              sat_sbNh =
+                \ w1_sbNf ->
+                  let { I# ww_sbNe ~ _ <- w_sbNa } in
+                  $wshowSignedInt 0 ww_sbNe w1_sbNf } in
+            let {
+              sat_sbNj
+              sat_sbNj = : sat_sbNh ([]) } in
+            let {
+              w_sbMX
+              w_sbMX =
+                let { __DEFAULT ~ sat_sbP7 <- +# rb1_sbMT 12349 } in
+                let { __DEFAULT ~ wild3_sbMW
+                <- indexIntArray# rb3_sbMS sat_sbP7
+                } in
+                I# wild3_sbMW } in
+            let {
+              sat_sbNk
+              sat_sbNk =
+                \ w1_sbN2 ->
+                  let { I# ww_sbN1 ~ _ <- w_sbMX } in
+                  $wshowSignedInt 0 ww_sbN1 w1_sbN2 } in
+            let {
+              sat_sbP8
+              sat_sbP8 = : sat_sbNk sat_sbNj } in
+            show_tuple sat_sbP8 ([])
+        } } in
+    let { (# ipv4_sbNw, _ #) ~ _
+    <- hPutStr2 stdout sat_sbP3 True ipv2_sbNn
+    } in
+    let {
+      sat_sbP1
+      sat_sbP1 =
+        let { __DEFAULT ~ sat_sbP0 <- quadtree_r9K1 pts_sbLK } in
+        let { I# ww_sbNu ~ _ <- tree_size sat_sbP0 } in
+        $wshowSignedInt 0 ww_sbNu ([]) } in
+    let { (# ipv6_sbNA, _ #) ~ _
+    <- hPutStr2 stdout sat_sbP1 True ipv4_sbNw
+    } in
+    hPutStr2 stdout lvl9_rbE3 False ipv6_sbNA
+
+main
+main = (\ eta_B1 -> main1 eta_B1) `cast` ...
+
+main2
+main2 = \ eta_sbNC -> runMainIO1 (main1 `cast` ...) eta_sbNC
+
+main
+main = (\ eta_B1 -> main2 eta_B1) `cast` ...
+
+
+
+Linking QuadTreeStream ...

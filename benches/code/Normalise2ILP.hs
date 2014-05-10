@@ -11,7 +11,9 @@ normalise2 us
  = let (# sum1, sum2 #) = go_sum_gts 0# 0# 0#
 
        -- nor1, nor2
-       nors = V.map (\(I# x) -> (I# (quotInt# x sum1), I# (quotInt# x sum2))) us
+       nors = V.map (\x -> (x `div` I# sum1, x `div` I# sum2)) us
+       -- This is faster, because it doesn't perform /0 checks:
+       -- nors = V.map (\(I# x) -> (I# (quotInt# x sum1), I# (quotInt# x sum2))) us
     in nors `seq` V.unzip nors
  where
   go_sum_gts i j k

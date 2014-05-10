@@ -1,6 +1,21 @@
 
 	.section	__TEXT,__text,regular,pure_instructions
 
+	.section	__TEXT,__const
+	.align	4
+LCPI2_0:
+	.quad	-55                     ## 0xffffffffffffffc9
+	.quad	-87                     ## 0xffffffffffffffa9
+	.section	__TEXT,__const
+	.align	4
+LCPI3_0:
+	.quad	-55                     ## 0xffffffffffffffc9
+	.quad	-87                     ## 0xffffffffffffffa9
+	.section	__TEXT,__const
+	.align	4
+LCPI33_0:
+	.quad	-31                     ## 0xffffffffffffffe1
+	.quad	-54                     ## 0xffffffffffffffca
 	.section	__DATA,__data
 	.globl	_Main_normalise2_closure ## @Main_normalise2_closure
 	.align	3
@@ -306,10 +321,10 @@ LBB2_1:                                 ## %n3Ek
 	movq	%rcx, 64(%rax)
 	movq	_vectorzm0zi10zi0zi1_DataziVectorziUnboxedziBase_Vzu2_con_info@GOTPCREL(%rip), %rcx
 	movq	%rcx, 72(%rax)
-	leaq	-55(%r12), %rcx
-	movq	%rcx, 80(%rax)
-	leaq	-87(%r12), %rcx
-	movq	%rcx, 88(%rax)
+	vmovq	%r12, %xmm0
+	vmovlhps	%xmm0, %xmm0, %xmm0 ## xmm0 = xmm0[0,0]
+	vpaddq	LCPI2_0(%rip), %xmm0, %xmm0
+	vmovdqu	%xmm0, 80(%rax)
 	movq	7(%rbx), %rcx
 	movq	%rcx, 96(%rax)
 	movq	56(%rbp), %rax
@@ -359,10 +374,10 @@ LBB3_4:                                 ## %n3Ek.i
 	movq	%rcx, 64(%r12)
 	movq	_vectorzm0zi10zi0zi1_DataziVectorziUnboxedziBase_Vzu2_con_info@GOTPCREL(%rip), %rcx
 	movq	%rcx, 72(%r12)
-	leaq	-55(%rax), %rcx
-	movq	%rcx, 80(%r12)
-	leaq	-87(%rax), %rcx
-	movq	%rcx, 88(%r12)
+	vmovq	%rax, %xmm0
+	vmovlhps	%xmm0, %xmm0, %xmm0 ## xmm0 = xmm0[0,0]
+	vpaddq	LCPI3_0(%rip), %xmm0, %xmm0
+	vmovdqu	%xmm0, 80(%r12)
 	movq	7(%rbx), %rcx
 	movq	%rcx, 96(%r12)
 	movq	56(%rbp), %rcx
@@ -390,21 +405,22 @@ _s3qI_info:                             ## @s3qI_info
 	movq	$254, 64(%r13)
 	jmp	_stg_gc_ut              ## TAILCALL
 LBB4_1:                                 ## %n3I0
+	vmovq	40(%rbp), %xmm0
 	leaq	_s3o3_info(%rip), %rcx
-	movq	%rcx, 8(%rax)
-	movq	40(%rbp), %rcx
-	movq	%rcx, 16(%rax)
-	movq	%rbx, 24(%rax)
-	movq	8(%rbp), %rcx
-	movq	%rcx, 32(%rax)
-	movq	48(%rbp), %rcx
-	movq	%rcx, 40(%rax)
-	movq	32(%rbp), %rcx
-	movq	%rcx, 48(%rax)
-	movq	24(%rbp), %rcx
-	movq	%rcx, 56(%rax)
-	movq	16(%rbp), %rcx
-	movq	%rcx, 64(%rax)
+	vmovq	%rcx, %xmm1
+	vpunpcklqdq	%xmm0, %xmm1, %xmm0 ## xmm0 = xmm1[0],xmm0[0]
+	vmovdqu	%xmm0, 8(%rax)
+	vmovq	%rbx, %xmm0
+	vmovq	8(%rbp), %xmm1
+	vpunpcklqdq	%xmm1, %xmm0, %xmm0 ## xmm0 = xmm0[0],xmm1[0]
+	vmovdqu	%xmm0, 24(%rax)
+	vmovq	32(%rbp), %xmm0
+	vmovq	48(%rbp), %xmm1
+	vpunpcklqdq	%xmm0, %xmm1, %xmm0 ## xmm0 = xmm1[0],xmm0[0]
+	vmovdqu	%xmm0, 40(%rax)
+	vmovupd	16(%rbp), %xmm0
+	vshufpd	$1, %xmm0, %xmm0, %xmm0 ## xmm0 = xmm0[1,0]
+	vmovupd	%xmm0, 56(%rax)
 	movq	%rbx, 48(%rbp)
 	leaq	_s3qO_info(%rip), %rax
 	movq	%rax, (%rbp)
@@ -518,10 +534,8 @@ _s3qK_info:                             ## @s3qK_info
 LBB8_1:                                 ## %n3Pe
 	leaq	_s3qz_info(%rip), %rcx
 	movq	%rcx, 8(%rax)
-	movq	16(%rbp), %rcx
-	movq	%rcx, 16(%rax)
-	movq	24(%rbp), %rcx
-	movq	%rcx, 24(%rax)
+	vmovups	16(%rbp), %xmm0
+	vmovups	%xmm0, 16(%rax)
 	movq	8(%rbp), %rcx
 	movq	%rcx, 32(%rax)
 	movq	%r14, 40(%rax)
@@ -560,61 +574,58 @@ LBB9_1:                                 ## %n3RG
 	movq	%rdx, 24(%r12)
 	movq	15(%rbx), %r10
 	movq	%r10, 32(%r12)
-	movq	15(%rbx), %rdx
-	movq	%rdx, -8(%rsp)          ## 8-byte Spill
-	movq	%rdx, -16(%rbp)
+	movq	15(%rbx), %r8
+	movq	%r8, -16(%rbp)
 	movq	7(%rbx), %rdx
-	movq	%rdx, -16(%rsp)         ## 8-byte Spill
 	movq	%rdx, -8(%rbp)
 	movq	23(%rbx), %rdx
-	movq	%rdx, -24(%rsp)         ## 8-byte Spill
 	movq	%rdx, (%rbp)
-	leaq	_s3qK_info(%rip), %rsi
-	movq	%rsi, -24(%rbp)
-	movq	24(%r12), %rsi
+	leaq	_s3qK_info(%rip), %rdx
+	movq	%rdx, -24(%rbp)
+	movq	24(%r12), %rdi
 	xorl	%r14d, %r14d
 	movl	$0, %ebx
-	testq	%rsi, %rsi
+	testq	%rdi, %rdi
 	je	LBB9_7
 ## BB#2:                                ## %n3xd.lr.ph.lr.ph.i
-	movq	-16(%rax), %rax
-	movl	$1, %r11d
-	subq	%rsi, %r11
-	negq	%rsi
-	addq	$16, %rax
+	movq	-16(%rax), %r11
+	movl	$1, %r9d
+	subq	%rdi, %r9
+	negq	%rdi
+	addq	$16, %r11
 	xorl	%r14d, %r14d
 	xorl	%ebx, %ebx
-	xorl	%edi, %edi
+	xorl	%edx, %edx
 LBB9_3:                                 ## %n3xd.lr.ph.i
                                         ## =>This Loop Header: Depth=1
                                         ##     Child Loop BB9_4 Depth 2
-	leaq	(%r10,%rdi), %rdx
-	negq	%rdi
-	leaq	(%rax,%rdx,8), %r8
+	leaq	(%r10,%rdx), %rax
+	negq	%rdx
+	leaq	(%r11,%rax,8), %rsi
 	.align	4, 0x90
 LBB9_4:                                 ## %n3xd.i
                                         ##   Parent Loop BB9_3 Depth=1
                                         ## =>  This Inner Loop Header: Depth=2
-	movq	(%r8), %r9
-	testq	%r9, %r9
+	movq	(%rsi), %rax
+	testq	%rax, %rax
 	jg	LBB9_6
 ## BB#5:                                ## %n3xC.i
                                         ##   in Loop: Header=BB9_4 Depth=2
-	addq	%r9, %rbx
-	decq	%rdi
-	addq	$8, %r8
-	cmpq	%rdi, %rsi
+	addq	%rax, %rbx
+	decq	%rdx
+	addq	$8, %rsi
+	cmpq	%rdx, %rdi
 	jne	LBB9_4
 	jmp	LBB9_7
 	.align	4, 0x90
 LBB9_6:                                 ## %c3xB.i
                                         ##   in Loop: Header=BB9_3 Depth=1
-	addq	%r9, %r14
-	addq	%r9, %rbx
-	movl	$1, %edx
-	subq	%rdi, %rdx
-	cmpq	%rdi, %r11
-	movq	%rdx, %rdi
+	addq	%rax, %r14
+	addq	%rax, %rbx
+	movl	$1, %eax
+	subq	%rdx, %rax
+	cmpq	%rdx, %r9
+	movq	%rax, %rdx
 	jne	LBB9_3
 LBB9_7:                                 ## %s3nt_info.exit
 	leaq	80(%r12), %rax
@@ -629,12 +640,9 @@ LBB9_7:                                 ## %s3nt_info.exit
 LBB9_10:                                ## %n3Pe.i
 	leaq	_s3qz_info(%rip), %rcx
 	movq	%rcx, 40(%r12)
-	movq	-16(%rsp), %rcx         ## 8-byte Reload
-	movq	%rcx, 48(%r12)
-	movq	-24(%rsp), %rcx         ## 8-byte Reload
-	movq	%rcx, 56(%r12)
-	movq	-8(%rsp), %rcx          ## 8-byte Reload
-	movq	%rcx, 64(%r12)
+	vmovups	-8(%rbp), %xmm0
+	vmovups	%xmm0, 48(%r12)
+	movq	%r8, 64(%r12)
 	movq	%r14, 72(%r12)
 	movq	%rbx, 80(%r12)
 	leaq	_s3qP_info(%rip), %rcx
@@ -1465,10 +1473,10 @@ LBB33_5:                                ## %n4ud
 	movq	%rdx, 96(%rcx)
 	movq	%rsi, 104(%rcx)
 	movq	%r8, 112(%rcx)
-	leaq	-31(%r12), %rdx
-	movq	%rdx, 120(%rcx)
-	leaq	-54(%r12), %rdx
-	movq	%rdx, 128(%rcx)
+	vmovq	%r12, %xmm0
+	vmovlhps	%xmm0, %xmm0, %xmm0 ## xmm0 = xmm0[0,0]
+	vpaddq	LCPI33_0(%rip), %xmm0, %xmm0
+	vmovdqu	%xmm0, 120(%rcx)
 	movq	%rdi, -24(%rbp)
 	movq	_stg_ap_p_info@GOTPCREL(%rip), %rcx
 	movq	%rcx, -32(%rbp)
@@ -1693,40 +1701,40 @@ _ZCMain_main_info_itable:
 	.quad	0                       ## 0x0
 	.quad	4294967311              ## 0x10000000f
 
-	.no_dead_strip	_s3ti_info_itable
-	.no_dead_strip	_s3tl_info_itable
-	.no_dead_strip	_s3tw_info_itable
+	.no_dead_strip	_s3tk_info_itable
+	.no_dead_strip	_s3pl_info_itable
+	.no_dead_strip	_s3t1_info_itable
+	.no_dead_strip	_s3qJ_info_itable
+	.no_dead_strip	_s3qG_info_itable
+	.no_dead_strip	_s3tp_info_itable
+	.no_dead_strip	_r3mT_info_itable
+	.no_dead_strip	_s3qz_info_itable
+	.no_dead_strip	_s3qI_info_itable
+	.no_dead_strip	_s3p3_info_itable
 	.no_dead_strip	_s3tv_info_itable
-	.no_dead_strip	_s3tu_info_itable
+	.no_dead_strip	_s3tr_info_itable
+	.no_dead_strip	_s3sW_info_itable
+	.no_dead_strip	_s3pJ_info_itable
+	.no_dead_strip	_s3q8_info_itable
 	.no_dead_strip	_s3tb_info_itable
+	.no_dead_strip	_s3tl_info_itable
+	.no_dead_strip	_s3pV_info_itable
+	.no_dead_strip	_s3qP_info_itable
+	.no_dead_strip	_s3ts_info_itable
+	.no_dead_strip	_s3tw_info_itable
+	.no_dead_strip	_s3th_info_itable
+	.no_dead_strip	_s3tf_info_itable
+	.no_dead_strip	_r3mV_info_itable
+	.no_dead_strip	_s3qO_info_itable
+	.no_dead_strip	_s3o3_info_itable
+	.no_dead_strip	_s3qN_info_itable
+	.no_dead_strip	_s3tu_info_itable
+	.no_dead_strip	_s3t6_info_itable
+	.no_dead_strip	_s3ti_info_itable
 	.no_dead_strip	_s3qb_info_itable
 	.no_dead_strip	_s3tt_info_itable
-	.no_dead_strip	_s3q8_info_itable
-	.no_dead_strip	_s3ts_info_itable
-	.no_dead_strip	_s3pV_info_itable
-	.no_dead_strip	_s3tr_info_itable
-	.no_dead_strip	_s3pJ_info_itable
-	.no_dead_strip	_s3tp_info_itable
-	.no_dead_strip	_s3pl_info_itable
-	.no_dead_strip	_s3tf_info_itable
-	.no_dead_strip	_s3tk_info_itable
-	.no_dead_strip	_s3p3_info_itable
-	.no_dead_strip	_s3th_info_itable
-	.no_dead_strip	_s3t6_info_itable
-	.no_dead_strip	_s3t1_info_itable
-	.no_dead_strip	_s3sW_info_itable
-	.no_dead_strip	_r3mV_info_itable
-	.no_dead_strip	_r3mT_info_itable
-	.no_dead_strip	_s3qG_info_itable
-	.no_dead_strip	_s3qK_info_itable
-	.no_dead_strip	_s3qP_info_itable
-	.no_dead_strip	_s3qz_info_itable
-	.no_dead_strip	_s3qJ_info_itable
-	.no_dead_strip	_s3qI_info_itable
-	.no_dead_strip	_s3qO_info_itable
-	.no_dead_strip	_s3qN_info_itable
-	.no_dead_strip	_s3o3_info_itable
 	.no_dead_strip	_s3nt_info_itable
+	.no_dead_strip	_s3qK_info_itable
 
 .subsections_via_symbols
 	.text
