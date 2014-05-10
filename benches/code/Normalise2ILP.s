@@ -1,18 +1,11 @@
 
 	.section	__TEXT,__text,regular,pure_instructions
 
-	.section	__DATA,__const
-	.align	3                       ## @Main_normalise2_srt
-_Main_normalise2_srt:
-	.quad	_base_GHCziErr_divZZeroError_closure
-	.quad	_base_GHCziErr_overflowError_closure
-
 	.section	__DATA,__data
 	.globl	_Main_normalise2_closure ## @Main_normalise2_closure
 	.align	3
 _Main_normalise2_closure:
 	.quad	_Main_normalise2_info
-	.quad	0                       ## 0x0
 
 	.globl	_Main_main6_closure     ## @Main_main6_closure
 	.align	3
@@ -29,39 +22,39 @@ _Main_main2_closure:
 	.quad	0                       ## 0x0
 
 	.section	__TEXT,__const
-	.align	3                       ## @c3IR_str
-_c3IR_str:
+	.align	3                       ## @c3vI_str
+_c3vI_str:
 	.asciz	"Ok"
 
 	.section	__DATA,__data
-	.align	4                       ## @r3vN_closure
-_r3vN_closure:
-	.quad	_r3vN_info
+	.align	4                       ## @r3mT_closure
+_r3mT_closure:
+	.quad	_r3mT_info
 	.quad	0                       ## 0x0
 	.quad	0                       ## 0x0
 	.quad	0                       ## 0x0
 
 	.section	__TEXT,__const
-	.align	4                       ## @c3IK_str
-_c3IK_str:
+	.align	4                       ## @c3vB_str
+_c3vB_str:
 	.asciz	"./Data/Vector/Generic.hs"
 
 	.section	__DATA,__data
-	.align	3                       ## @r3vO_closure
-_r3vO_closure:
+	.align	3                       ## @r3mU_closure
+_r3mU_closure:
 	.quad	_ghczmprim_GHCziTypes_Izh_static_info
 	.quad	244                     ## 0xf4
 
-	.align	4                       ## @r3vP_closure
-_r3vP_closure:
-	.quad	_r3vP_info
+	.align	4                       ## @r3mV_closure
+_r3mV_closure:
+	.quad	_r3mV_info
 	.quad	0                       ## 0x0
 	.quad	0                       ## 0x0
 	.quad	0                       ## 0x0
 
 	.section	__TEXT,__const
-	.align	3                       ## @c3ID_str
-_c3ID_str:
+	.align	3                       ## @c3vu_str
+_c3vu_str:
 	.asciz	"(!)"
 
 	.section	__DATA,__const
@@ -69,8 +62,8 @@ _c3ID_str:
 _Main_main3_srt:
 	.quad	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkIndexzumsgzh_closure
 	.quad	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkError_closure
-	.quad	_r3vN_closure
-	.quad	_r3vP_closure
+	.quad	_r3mT_closure
+	.quad	_r3mV_closure
 
 	.section	__DATA,__data
 	.globl	_Main_main3_closure     ## @Main_main3_closure
@@ -84,8 +77,8 @@ _Main_main3_closure:
 _Main_main4_srt:
 	.quad	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkIndexzumsgzh_closure
 	.quad	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkError_closure
-	.quad	_r3vN_closure
-	.quad	_r3vP_closure
+	.quad	_r3mT_closure
+	.quad	_r3mV_closure
 
 	.section	__DATA,__data
 	.globl	_Main_main4_closure     ## @Main_main4_closure
@@ -99,8 +92,8 @@ _Main_main4_closure:
 _Main_main5_srt:
 	.quad	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkIndexzumsgzh_closure
 	.quad	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkError_closure
-	.quad	_r3vN_closure
-	.quad	_r3vP_closure
+	.quad	_r3mT_closure
+	.quad	_r3mV_closure
 
 	.section	__DATA,__data
 	.globl	_Main_main5_closure     ## @Main_main5_closure
@@ -112,15 +105,14 @@ _Main_main5_closure:
 	.section	__DATA,__const
 	.align	4                       ## @Main_main1_srt
 _Main_main1_srt:
-	.quad	_Common_getzusizze1_closure
-	.quad	_base_GHCziShow_showzutuple_closure
-	.quad	_Main_normalise2_closure
-	.quad	_base_GHCziIOziHandleziText_hPutStr2_closure
-	.quad	_base_GHCziIOziHandleziFD_stdout_closure
 	.quad	_Main_main2_closure
+	.quad	_base_GHCziShow_showzutuple_closure
 	.quad	_Main_main3_closure
 	.quad	_Main_main4_closure
 	.quad	_Main_main5_closure
+	.quad	_base_GHCziIOziHandleziFD_stdout_closure
+	.quad	_base_GHCziIOziHandleziText_hPutStr2_closure
+	.quad	_Common_getzusizze1_closure
 
 	.section	__DATA,__data
 	.globl	_Main_main1_closure     ## @Main_main1_closure
@@ -167,40 +159,40 @@ _ZCMain_main_closure:
 	.quad	0                       ## 0x0
 
 	.text
-	.align	3                       ## @s3wb_info_itable
-_s3wb_info_itable:
+	.align	3                       ## @s3nt_info_itable
+_s3nt_info_itable:
 	.quad	12884901901             ## 0x30000000d
 	.quad	8589934593              ## 0x200000001
 	.quad	9                       ## 0x9
 
 	.text
 	.align	3, 0x90
-_s3wb_info:                             ## @s3wb_info
-## BB#0:                                ## %c3Ka
+_s3nt_info:                             ## @s3nt_info
+## BB#0:                                ## %c3x1
 	movq	13(%rbx), %rax
 	cmpq	%r14, %rax
 	je	LBB0_5
-## BB#1:                                ## %n3Km.lr.ph.lr.ph
+## BB#1:                                ## %n3xd.lr.ph.lr.ph
 	movq	5(%rbx), %rcx
 	movq	21(%rbx), %r8
 	movl	$1, %r9d
 	subq	%rax, %r9
 	negq	%rax
 	addq	$16, %rcx
-LBB0_2:                                 ## %n3Km.lr.ph
+LBB0_2:                                 ## %n3xd.lr.ph
                                         ## =>This Loop Header: Depth=1
                                         ##     Child Loop BB0_3 Depth 2
 	leaq	(%r8,%r14), %rdx
 	negq	%r14
 	leaq	(%rcx,%rdx,8), %rdx
 	.align	4, 0x90
-LBB0_3:                                 ## %n3Km
+LBB0_3:                                 ## %n3xd
                                         ##   Parent Loop BB0_2 Depth=1
                                         ## =>  This Inner Loop Header: Depth=2
 	movq	(%rdx), %rbx
 	testq	%rbx, %rbx
 	jg	LBB0_6
-## BB#4:                                ## %n3KL
+## BB#4:                                ## %n3xC
                                         ##   in Loop: Header=BB0_3 Depth=2
 	addq	%rbx, %rsi
 	decq	%r14
@@ -209,7 +201,7 @@ LBB0_3:                                 ## %n3Km
 	jne	LBB0_3
 	jmp	LBB0_5
 	.align	4, 0x90
-LBB0_6:                                 ## %c3KK
+LBB0_6:                                 ## %c3xB
                                         ##   in Loop: Header=BB0_2 Depth=1
 	addq	%rbx, %rdi
 	addq	%rbx, %rsi
@@ -218,480 +210,87 @@ LBB0_6:                                 ## %c3KK
 	cmpq	%r14, %r9
 	movq	%rdx, %r14
 	jne	LBB0_2
-LBB0_5:                                 ## %c3Kl
+LBB0_5:                                 ## %c3xc
 	movq	(%rbp), %rax
 	movq	%rsi, %rbx
 	movq	%rdi, %r14
 	jmpq	*%rax  # TAILCALL
 
 	.text
-	.align	3                       ## @s3wZ_info_itable
-_s3wZ_info_itable:
-	.quad	_Main_normalise2_srt-_s3wZ_info
-	.quad	46026                   ## 0xb3ca
-	.quad	12884901920             ## 0x300000020
-
-	.text
-	.align	3, 0x90
-_s3wZ_info:                             ## @s3wZ_info
-## BB#0:                                ## %c3My
-	movq	8(%rbp), %rax
-	movq	40(%rbp), %rcx
-	movq	%rbx, 16(%rcx,%rax,8)
-	movq	16(%rbp), %rcx
-	movq	48(%rbp), %rdx
-	movq	%rcx, 16(%rdx,%rax,8)
-	movq	24(%rbp), %r14
-	addq	$16, %rbp
-	incq	%r14
-	incq	%rax
-	movq	%rax, %rbx
-	jmp	_s3wT_info              ## TAILCALL
-
-	.text
-	.align	3                       ## @s3x4_info_itable
-_s3x4_info_itable:
-	.quad	_Main_normalise2_srt-_s3x4_info
-	.quad	46026                   ## 0xb3ca
-	.quad	12884901920             ## 0x300000020
-
-	.text
-	.align	3, 0x90
-_s3x4_info:                             ## @s3x4_info
-## BB#0:                                ## %c3NK
-	movq	16(%rbp), %r14
-	movq	%rbx, 16(%rbp)
-	movq	56(%rbp), %rsi
-	leaq	_s3wZ_info(%rip), %rax
-	movq	%rax, (%rbp)
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
-
-	.text
-	.align	3                       ## @s3x9_info_itable
-_s3x9_info_itable:
-	.quad	_Main_normalise2_srt-_s3x9_info
-	.quad	46026                   ## 0xb3ca
-	.quad	12884901920             ## 0x300000020
-
-	.text
-	.align	3, 0x90
-_s3x9_info:                             ## @s3x9_info
-## BB#0:                                ## %c3Og
-	movq	16(%rbp), %r14
-	movq	%rbx, 16(%rbp)
-	movq	56(%rbp), %rsi
-	leaq	_s3wZ_info(%rip), %rax
-	movq	%rax, (%rbp)
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
-
-	.text
-	.align	3                       ## @s3xd_info_itable
-_s3xd_info_itable:
-	.quad	_Main_normalise2_srt-_s3xd_info
-	.quad	46026                   ## 0xb3ca
-	.quad	12884901920             ## 0x300000020
-
-	.text
-	.align	3, 0x90
-_s3xd_info:                             ## @s3xd_info
-## BB#0:                                ## %c3Ox
-	movq	16(%rbp), %r14
-	movq	%rbx, 16(%rbp)
-	movq	56(%rbp), %rsi
-	leaq	_s3wZ_info(%rip), %rax
-	movq	%rax, (%rbp)
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
-
-	.text
-	.align	3                       ## @s3wT_info_itable
-_s3wT_info_itable:
-	.quad	_Main_normalise2_srt-_s3wT_info
-	.quad	11464                   ## 0x2cc8
-	.quad	12884901920             ## 0x300000020
-
-	.text
-	.align	3, 0x90
-_s3wT_info:                             ## @s3wT_info
-## BB#0:                                ## %c3Rl
-	movq	%r14, %rax
-	leaq	16(%r12), %rcx
-	cmpq	144(%r13), %rcx
-	jbe	LBB5_1
-## BB#5:                                ## %c3Rz
-	movq	$16, 192(%r13)
-	leaq	_s3wT_info(%rip), %rdx
-	movq	%rdx, (%rbp)
-	movq	$255, 64(%r13)
-	movq	%rcx, %r12
-	movq	%rax, %r14
-	jmp	_stg_gc_ut              ## TAILCALL
-LBB5_1:                                 ## %n3RA
-	cmpq	%rax, 64(%rbp)
-	jle	LBB5_6
-## BB#2:                                ## %n3RM
-	movq	48(%rbp), %rcx
-	addq	%rax, %rcx
-	movq	56(%rbp), %rdx
-	movq	16(%rdx,%rcx,8), %r14
-	movq	%rax, 8(%rbp)
-	movq	%r14, (%rbp)
-	movq	%rbx, -8(%rbp)
-	movq	16(%rbp), %rsi
-	testq	%rsi, %rsi
-	js	LBB5_8
-## BB#3:                                ## %n3Sl
-	jne	LBB5_7
-## BB#4:                                ## %n3Sp
-	addq	$72, %rbp
-	movq	_base_GHCziErr_divZZeroError_closure@GOTPCREL(%rip), %rbx
-	jmp	_stg_ap_0_fast          ## TAILCALL
-LBB5_6:                                 ## %c3RL
-	movq	_ghczmprim_GHCziTypes_Izh_con_info@GOTPCREL(%rip), %rax
-	movq	%rax, 8(%r12)
-	movq	%rbx, 16(%r12)
-	movq	72(%rbp), %rax
-	addq	$72, %rbp
-	leaq	-7(%rcx), %rbx
-	movq	%rcx, %r12
-	jmpq	*%rax  # TAILCALL
-LBB5_8:                                 ## %c3Sk
-	cmpq	$-1, %rsi
-	je	LBB5_9
-LBB5_7:                                 ## %c3So
-	leaq	_s3x9_info(%rip), %rax
-	movq	%rax, -16(%rbp)
-	addq	$-16, %rbp
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
-LBB5_9:                                 ## %n3TB
-	movabsq	$-9223372036854775808, %rax ## imm = 0x8000000000000000
-	cmpq	%rax, %r14
-	jne	LBB5_11
-## BB#10:                               ## %n3TH
-	addq	$72, %rbp
-	movq	_base_GHCziErr_overflowError_closure@GOTPCREL(%rip), %rbx
-	jmp	_stg_ap_0_fast          ## TAILCALL
-LBB5_11:                                ## %c3TG
-	leaq	_s3xd_info(%rip), %rax
-	movq	%rax, -16(%rbp)
-	addq	$-16, %rbp
-	movq	$-1, %rsi
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
-
-	.text
-	.align	3                       ## @s3xi_info_itable
-_s3xi_info_itable:
-	.quad	_Main_normalise2_srt-_s3xi_info
-	.quad	11464                   ## 0x2cc8
-	.quad	12884901920             ## 0x300000020
-
-	.text
-	.align	3, 0x90
-_s3xi_info:                             ## @s3xi_info
-## BB#0:                                ## %c3UD
-	movq	24(%rbp), %rax
-	movq	%rbx, 16(%rax)
-	movq	8(%rbp), %rax
-	movq	32(%rbp), %rcx
-	movq	%rax, 16(%rcx)
-	movl	$1, %ebx
-	movl	$1, %r14d
-	jmp	_s3wT_info              ## TAILCALL
-
-	.text
-	.align	3                       ## @s3xJ_info_itable
-_s3xJ_info_itable:
-	.quad	_Main_normalise2_srt-_s3xJ_info
-	.quad	21449                   ## 0x53c9
-	.quad	12884901920             ## 0x300000020
-
-	.text
-	.align	3, 0x90
-_s3xJ_info:                             ## @s3xJ_info
-## BB#0:                                ## %c3W4
-	movq	8(%rbp), %rax
-	movq	40(%rbp), %rcx
-	movq	%rbx, 16(%rcx,%rax,8)
-	movq	16(%rbp), %rcx
-	movq	48(%rbp), %rdx
-	movq	%rcx, 16(%rdx,%rax,8)
-	movq	24(%rbp), %r14
-	addq	$16, %rbp
-	incq	%r14
-	incq	%rax
-	movq	%rax, %rbx
-	jmp	_s3xF_info              ## TAILCALL
-
-	.text
-	.align	3                       ## @s3xP_info_itable
-_s3xP_info_itable:
-	.quad	_Main_normalise2_srt-_s3xP_info
-	.quad	21449                   ## 0x53c9
-	.quad	12884901920             ## 0x300000020
-
-	.text
-	.align	3, 0x90
-_s3xP_info:                             ## @s3xP_info
-## BB#0:                                ## %c3Xq
-	movq	16(%rbp), %r14
-	movabsq	$-9223372036854775808, %rax ## imm = 0x8000000000000000
-	cmpq	%rax, %r14
-	jne	LBB8_2
-## BB#1:                                ## %n3Xz
-	addq	$80, %rbp
-	movq	_base_GHCziErr_overflowError_closure@GOTPCREL(%rip), %rbx
-	jmp	_stg_ap_0_fast          ## TAILCALL
-LBB8_2:                                 ## %c3Xy
-	movq	%rbx, 16(%rbp)
-	leaq	_s3xJ_info(%rip), %rax
-	movq	%rax, (%rbp)
-	movq	$-1, %rsi
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
-
-	.text
-	.align	3                       ## @s3xT_info_itable
-_s3xT_info_itable:
-	.quad	_Main_normalise2_srt-_s3xT_info
-	.quad	21449                   ## 0x53c9
-	.quad	12884901920             ## 0x300000020
-
-	.text
-	.align	3, 0x90
-_s3xT_info:                             ## @s3xT_info
-## BB#0:                                ## %c3Y8
-	movq	16(%rbp), %r14
-	movabsq	$-9223372036854775808, %rax ## imm = 0x8000000000000000
-	cmpq	%rax, %r14
-	jne	LBB9_2
-## BB#1:                                ## %n3Xz.i
-	addq	$80, %rbp
-	movq	_base_GHCziErr_overflowError_closure@GOTPCREL(%rip), %rbx
-	jmp	_stg_ap_0_fast          ## TAILCALL
-LBB9_2:                                 ## %c3Xy.i
-	movq	%rbx, 16(%rbp)
-	leaq	_s3xJ_info(%rip), %rax
-	movq	%rax, (%rbp)
-	movq	$-1, %rsi
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
-
-	.text
-	.align	3                       ## @s3xX_info_itable
-_s3xX_info_itable:
-	.quad	_Main_normalise2_srt-_s3xX_info
-	.quad	21449                   ## 0x53c9
-	.quad	12884901920             ## 0x300000020
-
-	.text
-	.align	3, 0x90
-_s3xX_info:                             ## @s3xX_info
-## BB#0:                                ## %c3Yp
-	movq	16(%rbp), %r14
-	movabsq	$-9223372036854775808, %rax ## imm = 0x8000000000000000
-	cmpq	%rax, %r14
-	jne	LBB10_2
-## BB#1:                                ## %n3Xz.i
-	addq	$80, %rbp
-	movq	_base_GHCziErr_overflowError_closure@GOTPCREL(%rip), %rbx
-	jmp	_stg_ap_0_fast          ## TAILCALL
-LBB10_2:                                ## %c3Xy.i
-	movq	%rbx, 16(%rbp)
-	leaq	_s3xJ_info(%rip), %rax
-	movq	%rax, (%rbp)
-	movq	$-1, %rsi
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
-
-	.text
-	.align	3                       ## @s3xF_info_itable
-_s3xF_info_itable:
-	.quad	_Main_normalise2_srt-_s3xF_info
-	.quad	5319                    ## 0x14c7
-	.quad	12884901920             ## 0x300000020
-
-	.text
-	.align	3, 0x90
-_s3xF_info:                             ## @s3xF_info
-## BB#0:                                ## %c41d
-	movq	%r14, %rax
-	leaq	16(%r12), %rcx
-	cmpq	144(%r13), %rcx
-	jbe	LBB11_1
-## BB#5:                                ## %c41r
-	movq	$16, 192(%r13)
-	leaq	_s3xF_info(%rip), %rdx
-	movq	%rdx, (%rbp)
-	movq	$255, 64(%r13)
-	movq	%rcx, %r12
-	movq	%rax, %r14
-	jmp	_stg_gc_ut              ## TAILCALL
-LBB11_1:                                ## %n41s
-	cmpq	%rax, 56(%rbp)
-	jle	LBB11_6
-## BB#2:                                ## %n41E
-	movq	40(%rbp), %rcx
-	addq	%rax, %rcx
-	movq	48(%rbp), %rdx
-	movq	16(%rdx,%rcx,8), %r14
-	movq	%rax, 8(%rbp)
-	movq	%r14, (%rbp)
-	movq	%rbx, -8(%rbp)
-	movq	16(%rbp), %rsi
-	testq	%rsi, %rsi
-	js	LBB11_8
-## BB#3:                                ## %n42d
-	jne	LBB11_7
-## BB#4:                                ## %n42h
-	addq	$64, %rbp
-	movq	_base_GHCziErr_divZZeroError_closure@GOTPCREL(%rip), %rbx
-	jmp	_stg_ap_0_fast          ## TAILCALL
-LBB11_6:                                ## %c41D
-	movq	_ghczmprim_GHCziTypes_Izh_con_info@GOTPCREL(%rip), %rax
-	movq	%rax, 8(%r12)
-	movq	%rbx, 16(%r12)
-	movq	64(%rbp), %rax
-	addq	$64, %rbp
-	leaq	-7(%rcx), %rbx
-	movq	%rcx, %r12
-	jmpq	*%rax  # TAILCALL
-LBB11_8:                                ## %c42c
-	cmpq	$-1, %rsi
-	je	LBB11_9
-LBB11_7:                                ## %c42g
-	leaq	_s3xT_info(%rip), %rax
-	movq	%rax, -16(%rbp)
-	addq	$-16, %rbp
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
-LBB11_9:                                ## %n43t
-	movabsq	$-9223372036854775808, %rax ## imm = 0x8000000000000000
-	cmpq	%rax, %r14
-	jne	LBB11_11
-## BB#10:                               ## %n43z
-	addq	$64, %rbp
-	movq	_base_GHCziErr_overflowError_closure@GOTPCREL(%rip), %rbx
-	jmp	_stg_ap_0_fast          ## TAILCALL
-LBB11_11:                               ## %c43y
-	leaq	_s3xX_info(%rip), %rax
-	movq	%rax, -16(%rbp)
-	addq	$-16, %rbp
-	movq	$-1, %rsi
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
-
-	.text
-	.align	3                       ## @s3y1_info_itable
-_s3y1_info_itable:
-	.quad	_Main_normalise2_srt-_s3y1_info
-	.quad	5319                    ## 0x14c7
-	.quad	12884901920             ## 0x300000020
-
-	.text
-	.align	3, 0x90
-_s3y1_info:                             ## @s3y1_info
-## BB#0:                                ## %c44v
-	movq	24(%rbp), %rax
-	movq	%rbx, 16(%rax)
-	movq	8(%rbp), %rax
-	movq	32(%rbp), %rcx
-	movq	%rax, 16(%rcx)
-	movl	$1, %ebx
-	movl	$1, %r14d
-	jmp	_s3xF_info              ## TAILCALL
-
-	.text
-	.align	3                       ## @s3y7_info_itable
-_s3y7_info_itable:
-	.quad	_Main_normalise2_srt-_s3y7_info
-	.quad	4294967300              ## 0x100000004
-	.quad	21474836483             ## 0x500000003
+	.align	3                       ## @s3o3_info_itable
+_s3o3_info_itable:
 	.quad	12884901897             ## 0x300000009
+	.quad	17179869187             ## 0x400000003
+	.quad	9                       ## 0x9
 
 	.text
 	.align	3, 0x90
-_s3y7_info:                             ## @s3y7_info
-## BB#0:                                ## %c47y
-	leaq	-88(%rbp), %rax
-	cmpq	%r15, %rax
-	jae	LBB13_1
-## BB#4:                                ## %c47F
+_s3o3_info:                             ## @s3o3_info
+## BB#0:                                ## %c3Al
+	movq	%r12, %r8
+	leaq	16(%r8), %r12
+	cmpq	144(%r13), %r12
+	jbe	LBB1_1
+## BB#4:                                ## %c3Az
+	movq	$16, 192(%r13)
 	movq	-8(%r13), %rax
 	jmpq	*%rax  # TAILCALL
-LBB13_1:                                ## %n47G
-	movq	47(%rbx), %rsi
-	testq	%rsi, %rsi
-	js	LBB13_6
-## BB#2:                                ## %n47Q
-	jne	LBB13_5
-## BB#3:                                ## %n47U
-	movq	_base_GHCziErr_divZZeroError_closure@GOTPCREL(%rip), %rbx
-	jmp	_stg_ap_0_fast          ## TAILCALL
-LBB13_6:                                ## %c47P
-	cmpq	$-1, %rsi
-	je	LBB13_7
-LBB13_5:                                ## %c47T
-	movq	%r14, -64(%rbp)
-	movq	63(%rbx), %rax
-	movq	%rax, -56(%rbp)
-	movq	23(%rbx), %rax
-	movq	%rax, -48(%rbp)
-	movq	15(%rbx), %rax
-	movq	%rax, -40(%rbp)
-	movq	%rsi, -32(%rbp)
-	movq	39(%rbx), %rax
-	movq	%rax, -24(%rbp)
-	movq	7(%rbx), %rax
-	movq	%rax, -16(%rbp)
-	movq	31(%rbx), %rax
-	movq	%rax, -8(%rbp)
-	movq	55(%rbx), %r14
-	leaq	_s3xi_info(%rip), %rax
-	movq	%rax, -72(%rbp)
-	addq	$-72, %rbp
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
-LBB13_7:                                ## %n49d
-	movq	55(%rbx), %rax
-	movabsq	$-9223372036854775808, %rcx ## imm = 0x8000000000000000
-	cmpq	%rcx, %rax
-	jne	LBB13_9
-## BB#8:                                ## %n49m
-	movq	_base_GHCziErr_overflowError_closure@GOTPCREL(%rip), %rbx
-	jmp	_stg_ap_0_fast          ## TAILCALL
-LBB13_9:                                ## %c49l
-	movq	%r14, -56(%rbp)
-	movq	63(%rbx), %rcx
-	movq	%rcx, -48(%rbp)
-	movq	23(%rbx), %rcx
-	movq	%rcx, -40(%rbp)
-	movq	15(%rbx), %rcx
-	movq	%rcx, -32(%rbp)
-	movq	39(%rbx), %rcx
-	movq	%rcx, -24(%rbp)
-	movq	7(%rbx), %rcx
-	movq	%rcx, -16(%rbp)
-	movq	31(%rbx), %rcx
-	movq	%rcx, -8(%rbp)
-	leaq	_s3y1_info(%rip), %rcx
-	movq	%rcx, -64(%rbp)
-	addq	$-64, %rbp
-	movq	$-1, %rsi
-	movq	%rax, %r14
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
+LBB1_1:                                 ## %n3AA.lr.ph
+	movq	29(%rbx), %r9
+	leaq	16(,%r14,8), %rcx
+	jmp	LBB1_2
+	.align	4, 0x90
+LBB1_3:                                 ## %n3AN
+                                        ##   in Loop: Header=BB1_2 Depth=1
+	movq	37(%rbx), %rax
+	addq	%rsi, %rax
+	movq	5(%rbx), %rdx
+	movq	21(%rbx), %r11
+	movq	16(%rdx,%rax,8), %rdi
+	movq	%rdi, %rax
+	cqto
+	idivq	45(%rbx)
+	movq	%rax, %r10
+	movq	%rdi, %rax
+	cqto
+	idivq	53(%rbx)
+	movq	%rax, (%rcx,%r11)
+	movq	13(%rbx), %rax
+	movq	%r10, (%rcx,%rax)
+	incq	%rsi
+	incq	%r14
+	addq	$8, %rcx
+LBB1_2:                                 ## %n3AA
+                                        ## =>This Inner Loop Header: Depth=1
+	cmpq	%rsi, %r9
+	jg	LBB1_3
+## BB#5:                                ## %c3AM
+	movq	_ghczmprim_GHCziTypes_Izh_con_info@GOTPCREL(%rip), %rax
+	movq	%rax, 8(%r8)
+	movq	%r14, 16(%r8)
+	movq	(%rbp), %rax
+	leaq	-7(%r12), %rbx
+	jmpq	*%rax  # TAILCALL
 
 	.text
-	.align	3                       ## @s3BC_info_itable
-_s3BC_info_itable:
+	.align	3                       ## @s3qN_info_itable
+_s3qN_info_itable:
 	.quad	1926                    ## 0x786
 	.quad	32                      ## 0x20
 
 	.text
 	.align	3, 0x90
-_s3BC_info:                             ## @s3BC_info
-## BB#0:                                ## %c4c6
+_s3qN_info:                             ## @s3qN_info
+## BB#0:                                ## %c3E3
 	movq	%r12, %rax
 	leaq	96(%rax), %r12
 	cmpq	144(%r13), %r12
-	jbe	LBB14_1
-## BB#2:                                ## %c4cm
+	jbe	LBB2_1
+## BB#2:                                ## %c3Ej
 	movq	$96, 192(%r13)
 	movq	-16(%r13), %rax
 	jmpq	*%rax  # TAILCALL
-LBB14_1:                                ## %n4cn
+LBB2_1:                                 ## %n3Ek
 	movq	8(%rbp), %rcx
 	movq	48(%rbp), %rdx
 	movq	_vectorzm0zi10zi0zi1_DataziVectorziPrimitive_Vector_con_info@GOTPCREL(%rip), %rsi
@@ -719,32 +318,32 @@ LBB14_1:                                ## %n4cn
 	jmpq	*%rax  # TAILCALL
 
 	.text
-	.align	3                       ## @s3BD_info_itable
-_s3BD_info_itable:
+	.align	3                       ## @s3qO_info_itable
+_s3qO_info_itable:
 	.quad	1926                    ## 0x786
 	.quad	32                      ## 0x20
 
 	.text
 	.align	3, 0x90
-_s3BD_info:                             ## @s3BD_info
-## BB#0:                                ## %c4e7
-	leaq	_s3BC_info(%rip), %rax
+_s3qO_info:                             ## @s3qO_info
+## BB#0:                                ## %c3G4
+	leaq	_s3qN_info(%rip), %rax
 	movq	%rax, (%rbp)
 	testb	$7, %bl
-	je	LBB15_3
-## BB#1:                                ## %c4eg
+	je	LBB3_3
+## BB#1:                                ## %c3Gd
 	leaq	96(%r12), %rax
 	cmpq	144(%r13), %rax
-	jbe	LBB15_4
-## BB#2:                                ## %c4cm.i
+	jbe	LBB3_4
+## BB#2:                                ## %c3Ej.i
 	movq	$96, 192(%r13)
 	movq	-16(%r13), %rcx
 	movq	%rax, %r12
 	jmpq	*%rcx  # TAILCALL
-LBB15_3:                                ## %n4eh
+LBB3_3:                                 ## %n3Ge
 	movq	(%rbx), %rax
 	jmpq	*%rax  # TAILCALL
-LBB15_4:                                ## %n4cn.i
+LBB3_4:                                 ## %n3Ek.i
 	movq	8(%rbp), %rcx
 	movq	48(%rbp), %rdx
 	movq	_vectorzm0zi10zi0zi1_DataziVectorziPrimitive_Vector_con_info@GOTPCREL(%rip), %rsi
@@ -773,278 +372,84 @@ LBB15_4:                                ## %n4cn.i
 	jmpq	*%rcx  # TAILCALL
 
 	.text
-	.align	3                       ## @s3yb_info_itable
-_s3yb_info_itable:
-	.quad	902                     ## 0x386
-	.quad	32                      ## 0x20
-
-	.text
-	.align	3, 0x90
-_s3yb_info:                             ## @s3yb_info
-## BB#0:                                ## %c4eL
-	movq	%rbx, %rax
-	movq	40(%rbp), %rbx
-	leaq	_s3BD_info(%rip), %rcx
-	movq	%rcx, (%rbp)
-	movq	%rax, %r14
-	jmp	_s3y7_info              ## TAILCALL
-
-	.text
-	.align	3                       ## @s3BG_info_itable
-_s3BG_info_itable:
-	.quad	1926                    ## 0x786
-	.quad	32                      ## 0x20
-
-	.text
-	.align	3, 0x90
-_s3BG_info:                             ## @s3BG_info
-## BB#0:                                ## %c4gM
-	movq	%r12, %rax
-	leaq	96(%rax), %r12
-	cmpq	144(%r13), %r12
-	jbe	LBB17_1
-## BB#2:                                ## %c4h2
-	movq	$96, 192(%r13)
-	movq	-16(%r13), %rax
-	jmpq	*%rax  # TAILCALL
-LBB17_1:                                ## %n4h3
-	movq	8(%rbp), %rcx
-	movq	48(%rbp), %rdx
-	movq	_vectorzm0zi10zi0zi1_DataziVectorziPrimitive_Vector_con_info@GOTPCREL(%rip), %rsi
-	movq	%rsi, 8(%rax)
-	movq	%rdx, 16(%rax)
-	movq	$0, 24(%rax)
-	movq	7(%rbx), %rdx
-	movq	%rdx, 32(%rax)
-	movq	%rsi, 40(%rax)
-	movq	%rcx, 48(%rax)
-	movq	$0, 56(%rax)
-	movq	7(%rbx), %rcx
-	movq	%rcx, 64(%rax)
-	movq	_vectorzm0zi10zi0zi1_DataziVectorziUnboxedziBase_Vzu2_con_info@GOTPCREL(%rip), %rcx
-	movq	%rcx, 72(%rax)
-	leaq	-55(%r12), %rcx
-	movq	%rcx, 80(%rax)
-	leaq	-87(%r12), %rcx
-	movq	%rcx, 88(%rax)
-	movq	7(%rbx), %rcx
-	movq	%rcx, 96(%rax)
-	movq	56(%rbp), %rax
-	addq	$56, %rbp
-	leaq	-23(%r12), %rbx
-	jmpq	*%rax  # TAILCALL
-
-	.text
-	.align	3                       ## @s3BH_info_itable
-_s3BH_info_itable:
-	.quad	1926                    ## 0x786
-	.quad	32                      ## 0x20
-
-	.text
-	.align	3, 0x90
-_s3BH_info:                             ## @s3BH_info
-## BB#0:                                ## %c4iN
-	leaq	_s3BG_info(%rip), %rax
-	movq	%rax, (%rbp)
-	testb	$7, %bl
-	je	LBB18_3
-## BB#1:                                ## %c4iW
-	leaq	96(%r12), %rax
-	cmpq	144(%r13), %rax
-	jbe	LBB18_4
-## BB#2:                                ## %c4h2.i
-	movq	$96, 192(%r13)
-	movq	-16(%r13), %rcx
-	movq	%rax, %r12
-	jmpq	*%rcx  # TAILCALL
-LBB18_3:                                ## %n4iX
-	movq	(%rbx), %rax
-	jmpq	*%rax  # TAILCALL
-LBB18_4:                                ## %n4h3.i
-	movq	8(%rbp), %rcx
-	movq	48(%rbp), %rdx
-	movq	_vectorzm0zi10zi0zi1_DataziVectorziPrimitive_Vector_con_info@GOTPCREL(%rip), %rsi
-	movq	%rsi, 8(%r12)
-	movq	%rdx, 16(%r12)
-	movq	$0, 24(%r12)
-	movq	7(%rbx), %rdx
-	movq	%rdx, 32(%r12)
-	movq	%rsi, 40(%r12)
-	movq	%rcx, 48(%r12)
-	movq	$0, 56(%r12)
-	movq	7(%rbx), %rcx
-	movq	%rcx, 64(%r12)
-	movq	_vectorzm0zi10zi0zi1_DataziVectorziUnboxedziBase_Vzu2_con_info@GOTPCREL(%rip), %rcx
-	movq	%rcx, 72(%r12)
-	leaq	-55(%rax), %rcx
-	movq	%rcx, 80(%r12)
-	leaq	-87(%rax), %rcx
-	movq	%rcx, 88(%r12)
-	movq	7(%rbx), %rcx
-	movq	%rcx, 96(%r12)
-	movq	56(%rbp), %rcx
-	addq	$56, %rbp
-	leaq	-23(%rax), %rbx
-	movq	%rax, %r12
-	jmpq	*%rcx  # TAILCALL
-
-	.text
-	.align	3                       ## @s3yC_info_itable
-_s3yC_info_itable:
-	.quad	902                     ## 0x386
-	.quad	32                      ## 0x20
-
-	.text
-	.align	3, 0x90
-_s3yC_info:                             ## @s3yC_info
-## BB#0:                                ## %c4jr
-	movq	%rbx, %rax
-	movq	40(%rbp), %rbx
-	leaq	_s3BH_info(%rip), %rcx
-	movq	%rcx, (%rbp)
-	movq	%rax, %r14
-	jmp	_s3y7_info              ## TAILCALL
-
-	.text
-	.align	3                       ## @s3Bw_info_itable
-_s3Bw_info_itable:
-	.quad	_Main_normalise2_srt-_s3Bw_info
+	.align	3                       ## @s3qI_info_itable
+_s3qI_info_itable:
 	.quad	2950                    ## 0xb86
-	.quad	12884901920             ## 0x300000020
+	.quad	32                      ## 0x20
 
 	.text
 	.align	3, 0x90
-_s3Bw_info:                             ## @s3Bw_info
-## BB#0:                                ## %c4nw
+_s3qI_info:                             ## @s3qI_info
+## BB#0:                                ## %c3HL
 	movq	%r12, %rax
-	leaq	96(%rax), %r12
+	leaq	64(%rax), %r12
 	cmpq	144(%r13), %r12
-	jbe	LBB20_1
-## BB#5:                                ## %c4nK
-	movq	$96, 192(%r13)
+	jbe	LBB4_1
+## BB#2:                                ## %c3HZ
+	movq	$64, 192(%r13)
 	movq	$254, 64(%r13)
 	jmp	_stg_gc_ut              ## TAILCALL
-LBB20_1:                                ## %n4nL
-	movq	48(%rbp), %rcx
-	testq	%rcx, %rcx
-	jle	LBB20_6
-## BB#2:                                ## %n4nW
-	movq	32(%rbp), %rdx
-	movq	40(%rbp), %rsi
-	movq	16(%rsi,%rdx,8), %r14
-	leaq	_s3y7_info(%rip), %rdi
-	movq	%rdi, 8(%rax)
-	movq	%rsi, 16(%rax)
+LBB4_1:                                 ## %n3I0
+	leaq	_s3o3_info(%rip), %rcx
+	movq	%rcx, 8(%rax)
+	movq	40(%rbp), %rcx
+	movq	%rcx, 16(%rax)
 	movq	%rbx, 24(%rax)
-	movq	8(%rbp), %rsi
-	movq	%rsi, 32(%rax)
+	movq	8(%rbp), %rcx
+	movq	%rcx, 32(%rax)
+	movq	48(%rbp), %rcx
 	movq	%rcx, 40(%rax)
-	movq	%rdx, 48(%rax)
+	movq	32(%rbp), %rcx
+	movq	%rcx, 48(%rax)
 	movq	24(%rbp), %rcx
 	movq	%rcx, 56(%rax)
-	movq	%r14, 64(%rax)
-	movq	16(%rbp), %rsi
-	movq	%rsi, 72(%rax)
-	leaq	72(%rax), %rax
-	testq	%rsi, %rsi
-	js	LBB20_8
-## BB#3:                                ## %n4p2
-	jne	LBB20_7
-## BB#4:                                ## %n4p6
-	addq	$56, %rbp
-	movq	_base_GHCziErr_divZZeroError_closure@GOTPCREL(%rip), %rbx
-	movq	%rax, %r12
-	jmp	_stg_ap_0_fast          ## TAILCALL
-LBB20_6:                                ## %c4nV
-	movq	8(%rbp), %rcx
-	movq	_vectorzm0zi10zi0zi1_DataziVectorziPrimitive_Vector_con_info@GOTPCREL(%rip), %rdx
-	movq	%rdx, 8(%rax)
-	movq	%rbx, 16(%rax)
-	vxorps	%xmm0, %xmm0, %xmm0
-	vmovups	%xmm0, 24(%rax)
-	movq	%rdx, 40(%rax)
-	movq	%rcx, 48(%rax)
-	vmovups	%xmm0, 56(%rax)
-	movq	_vectorzm0zi10zi0zi1_DataziVectorziUnboxedziBase_Vzu2_con_info@GOTPCREL(%rip), %rcx
-	movq	%rcx, 72(%rax)
-	leaq	-55(%r12), %rcx
-	movq	%rcx, 80(%rax)
-	leaq	-87(%r12), %rcx
-	movq	%rcx, 88(%rax)
-	movq	$0, 96(%rax)
-	leaq	-23(%r12), %rbx
-	movq	56(%rbp), %rax
-	addq	$56, %rbp
-	jmpq	*%rax  # TAILCALL
-LBB20_8:                                ## %c4p1
-	cmpq	$-1, %rsi
-	je	LBB20_9
-LBB20_7:                                ## %c4p5
-	addq	$-87, %r12
-	movq	%r12, 40(%rbp)
+	movq	16(%rbp), %rcx
+	movq	%rcx, 64(%rax)
 	movq	%rbx, 48(%rbp)
-	leaq	_s3yb_info(%rip), %rcx
-	movq	%rcx, (%rbp)
-	movq	%rax, %r12
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
-LBB20_9:                                ## %n4qQ
-	movabsq	$-9223372036854775808, %rcx ## imm = 0x8000000000000000
-	cmpq	%rcx, %r14
-	jne	LBB20_11
-## BB#10:                               ## %n4qW
-	addq	$56, %rbp
-	movq	_base_GHCziErr_overflowError_closure@GOTPCREL(%rip), %rbx
-	movq	%rax, %r12
-	jmp	_stg_ap_0_fast          ## TAILCALL
-LBB20_11:                               ## %c4qV
-	addq	$-87, %r12
-	movq	%r12, 40(%rbp)
-	movq	%rbx, 48(%rbp)
-	leaq	_s3yC_info(%rip), %rcx
-	movq	%rcx, (%rbp)
-	movq	$-1, %rsi
-	movq	%rax, %r12
-	jmp	_ghczmprim_GHCziClasses_divIntzh_info ## TAILCALL
+	leaq	_s3qO_info(%rip), %rax
+	movq	%rax, (%rbp)
+	leaq	-53(%r12), %rbx
+	xorl	%r14d, %r14d
+	xorl	%esi, %esi
+	jmp	_s3o3_info              ## TAILCALL
 
 	.text
-	.align	3                       ## @s3Bx_info_itable
-_s3Bx_info_itable:
-	.quad	_Main_normalise2_srt-_s3Bx_info
+	.align	3                       ## @s3qJ_info_itable
+_s3qJ_info_itable:
 	.quad	1477                    ## 0x5c5
-	.quad	12884901920             ## 0x300000020
+	.quad	32                      ## 0x20
 
 	.text
 	.align	3, 0x90
-_s3Bx_info:                             ## @s3Bx_info
-## BB#0:                                ## %c4rU
+_s3qJ_info:                             ## @s3qJ_info
+## BB#0:                                ## %c3Jt
 	movq	40(%rbp), %rax
 	shlq	$3, %rax
 	movq	%rbx, (%rbp)
-	leaq	_s3Bw_info(%rip), %rcx
+	leaq	_s3qI_info(%rip), %rcx
 	movq	%rcx, -8(%rbp)
 	addq	$-8, %rbp
 	movq	%rax, %rbx
 	jmp	_stg_newByteArrayzh     ## TAILCALL
 
 	.text
-	.align	3                       ## @s3Bf_info_itable
-_s3Bf_info_itable:
-	.quad	_Main_normalise2_srt-_s3Bf_info
+	.align	3                       ## @s3qz_info_itable
+_s3qz_info_itable:
 	.quad	4294967299              ## 0x100000003
 	.quad	17179869185             ## 0x400000001
-	.quad	12884901897             ## 0x300000009
+	.quad	9                       ## 0x9
 
 	.text
 	.align	3, 0x90
-_s3Bf_info:                             ## @s3Bf_info
-## BB#0:                                ## %c4tj
+_s3qz_info:                             ## @s3qz_info
+## BB#0:                                ## %c3KS
 	leaq	-56(%rbp), %rax
 	cmpq	%r15, %rax
-	jae	LBB22_1
-## BB#2:                                ## %c4tq
+	jae	LBB6_1
+## BB#2:                                ## %c3KZ
 	movq	-8(%r13), %rax
 	jmpq	*%rax  # TAILCALL
-LBB22_1:                                ## %n4tr
+LBB6_1:                                 ## %n3L0
 	movq	15(%rbx), %rax
 	movq	%rax, -8(%rbp)
 	shlq	$3, %rax
@@ -1056,31 +461,31 @@ LBB22_1:                                ## %n4tr
 	movq	%rcx, -32(%rbp)
 	movq	39(%rbx), %rcx
 	movq	%rcx, -40(%rbp)
-	leaq	_s3Bx_info(%rip), %rcx
+	leaq	_s3qJ_info(%rip), %rcx
 	movq	%rcx, -48(%rbp)
 	addq	$-48, %rbp
 	movq	%rax, %rbx
 	jmp	_stg_newByteArrayzh     ## TAILCALL
 
 	.text
-	.align	3                       ## @s3BK_info_itable
-_s3BK_info_itable:
+	.align	3                       ## @s3qP_info_itable
+_s3qP_info_itable:
 	.quad	0                       ## 0x0
 	.quad	32                      ## 0x20
 
 	.text
 	.align	3, 0x90
-_s3BK_info:                             ## @s3BK_info
-## BB#0:                                ## %c4vl
+_s3qP_info:                             ## @s3qP_info
+## BB#0:                                ## %c3MU
 	movq	%r12, %rax
 	leaq	24(%rax), %r12
 	cmpq	144(%r13), %r12
-	jbe	LBB23_1
-## BB#2:                                ## %c4vB
+	jbe	LBB7_1
+## BB#2:                                ## %c3Na
 	movq	$24, 192(%r13)
 	movq	-16(%r13), %rax
 	jmpq	*%rax  # TAILCALL
-LBB23_1:                                ## %n4vC
+LBB7_1:                                 ## %n3Nb
 	movq	_ghczmprim_GHCziTuple_Z2T_con_info@GOTPCREL(%rip), %rcx
 	movq	%rcx, 8(%rax)
 	movq	7(%rbx), %rcx
@@ -1093,26 +498,25 @@ LBB23_1:                                ## %n4vC
 	jmpq	*%rax  # TAILCALL
 
 	.text
-	.align	3                       ## @s3By_info_itable
-_s3By_info_itable:
-	.quad	_Main_normalise2_srt-_s3By_info
+	.align	3                       ## @s3qK_info_itable
+_s3qK_info_itable:
 	.quad	323                     ## 0x143
-	.quad	12884901920             ## 0x300000020
+	.quad	32                      ## 0x20
 
 	.text
 	.align	3, 0x90
-_s3By_info:                             ## @s3By_info
-## BB#0:                                ## %c4xq
+_s3qK_info:                             ## @s3qK_info
+## BB#0:                                ## %c3OZ
 	movq	%r12, %rax
 	leaq	48(%rax), %r12
 	cmpq	144(%r13), %r12
-	jbe	LBB24_1
-## BB#2:                                ## %c4xE
+	jbe	LBB8_1
+## BB#2:                                ## %c3Pd
 	movq	$48, 192(%r13)
 	movq	$255, 64(%r13)
 	jmp	_stg_gc_ut              ## TAILCALL
-LBB24_1:                                ## %n4xF
-	leaq	_s3Bf_info(%rip), %rcx
+LBB8_1:                                 ## %n3Pe
+	leaq	_s3qz_info(%rip), %rcx
 	movq	%rcx, 8(%rax)
 	movq	16(%rbp), %rcx
 	movq	%rcx, 16(%rax)
@@ -1120,36 +524,35 @@ LBB24_1:                                ## %n4xF
 	movq	%rcx, 24(%rax)
 	movq	8(%rbp), %rcx
 	movq	%rcx, 32(%rax)
-	movq	%rbx, 40(%rax)
-	movq	%r14, 48(%rax)
-	leaq	_s3BK_info(%rip), %rax
+	movq	%r14, 40(%rax)
+	movq	%rbx, 48(%rax)
+	leaq	_s3qP_info(%rip), %rax
 	movq	%rax, 24(%rbp)
 	leaq	24(%rbp), %rbp
 	leaq	-39(%r12), %r14
 	jmp	_base_GHCziST_runSTRep_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3Bt_info_itable
-_s3Bt_info_itable:
-	.quad	_Main_normalise2_srt-_s3Bt_info
+	.align	3                       ## @s3qG_info_itable
+_s3qG_info_itable:
 	.quad	0                       ## 0x0
-	.quad	12884901920             ## 0x300000020
+	.quad	32                      ## 0x20
 
 	.text
 	.align	3, 0x90
-_s3Bt_info:                             ## @s3Bt_info
-## BB#0:                                ## %c4zS
+_s3qG_info:                             ## @s3qG_info
+## BB#0:                                ## %c3Rr
 	leaq	32(%r12), %rax
 	movq	144(%r13), %rcx
 	cmpq	%rcx, %rax
-	jbe	LBB25_1
-## BB#9:                                ## %c4A6
+	jbe	LBB9_1
+## BB#9:                                ## %c3RF
 	movq	$32, 192(%r13)
 	movq	-16(%r13), %rcx
 	movq	%rax, %r12
 	jmpq	*%rcx  # TAILCALL
-LBB25_1:                                ## %n4A7
-	leaq	_s3wb_info(%rip), %rdx
+LBB9_1:                                 ## %n3RG
+	leaq	_s3nt_info(%rip), %rdx
 	movq	%rdx, 8(%r12)
 	movq	7(%rbx), %rdx
 	movq	%rdx, 16(%r12)
@@ -1166,14 +569,14 @@ LBB25_1:                                ## %n4A7
 	movq	23(%rbx), %rdx
 	movq	%rdx, -24(%rsp)         ## 8-byte Spill
 	movq	%rdx, (%rbp)
-	leaq	_s3By_info(%rip), %rsi
+	leaq	_s3qK_info(%rip), %rsi
 	movq	%rsi, -24(%rbp)
 	movq	24(%r12), %rsi
 	xorl	%r14d, %r14d
 	movl	$0, %ebx
 	testq	%rsi, %rsi
-	je	LBB25_7
-## BB#2:                                ## %n3Km.lr.ph.lr.ph.i
+	je	LBB9_7
+## BB#2:                                ## %n3xd.lr.ph.lr.ph.i
 	movq	-16(%rax), %rax
 	movl	$1, %r11d
 	subq	%rsi, %r11
@@ -1182,49 +585,49 @@ LBB25_1:                                ## %n4A7
 	xorl	%r14d, %r14d
 	xorl	%ebx, %ebx
 	xorl	%edi, %edi
-LBB25_3:                                ## %n3Km.lr.ph.i
+LBB9_3:                                 ## %n3xd.lr.ph.i
                                         ## =>This Loop Header: Depth=1
-                                        ##     Child Loop BB25_4 Depth 2
+                                        ##     Child Loop BB9_4 Depth 2
 	leaq	(%r10,%rdi), %rdx
 	negq	%rdi
 	leaq	(%rax,%rdx,8), %r8
 	.align	4, 0x90
-LBB25_4:                                ## %n3Km.i
-                                        ##   Parent Loop BB25_3 Depth=1
+LBB9_4:                                 ## %n3xd.i
+                                        ##   Parent Loop BB9_3 Depth=1
                                         ## =>  This Inner Loop Header: Depth=2
 	movq	(%r8), %r9
 	testq	%r9, %r9
-	jg	LBB25_6
-## BB#5:                                ## %n3KL.i
-                                        ##   in Loop: Header=BB25_4 Depth=2
+	jg	LBB9_6
+## BB#5:                                ## %n3xC.i
+                                        ##   in Loop: Header=BB9_4 Depth=2
 	addq	%r9, %rbx
 	decq	%rdi
 	addq	$8, %r8
 	cmpq	%rdi, %rsi
-	jne	LBB25_4
-	jmp	LBB25_7
+	jne	LBB9_4
+	jmp	LBB9_7
 	.align	4, 0x90
-LBB25_6:                                ## %c3KK.i
-                                        ##   in Loop: Header=BB25_3 Depth=1
+LBB9_6:                                 ## %c3xB.i
+                                        ##   in Loop: Header=BB9_3 Depth=1
 	addq	%r9, %r14
 	addq	%r9, %rbx
 	movl	$1, %edx
 	subq	%rdi, %rdx
 	cmpq	%rdi, %r11
 	movq	%rdx, %rdi
-	jne	LBB25_3
-LBB25_7:                                ## %s3wb_info.exit
+	jne	LBB9_3
+LBB9_7:                                 ## %s3nt_info.exit
 	leaq	80(%r12), %rax
 	cmpq	%rcx, %rax
-	jbe	LBB25_10
-## BB#8:                                ## %c4xE.i
+	jbe	LBB9_10
+## BB#8:                                ## %c3Pd.i
 	addq	$-24, %rbp
 	movq	$48, 192(%r13)
 	movq	$255, 64(%r13)
 	movq	%rax, %r12
 	jmp	_stg_gc_ut              ## TAILCALL
-LBB25_10:                               ## %n4xF.i
-	leaq	_s3Bf_info(%rip), %rcx
+LBB9_10:                                ## %n3Pe.i
+	leaq	_s3qz_info(%rip), %rcx
 	movq	%rcx, 40(%r12)
 	movq	-16(%rsp), %rcx         ## 8-byte Reload
 	movq	%rcx, 48(%r12)
@@ -1232,9 +635,9 @@ LBB25_10:                               ## %n4xF.i
 	movq	%rcx, 56(%r12)
 	movq	-8(%rsp), %rcx          ## 8-byte Reload
 	movq	%rcx, 64(%r12)
-	movq	%rbx, 72(%r12)
-	movq	%r14, 80(%r12)
-	leaq	_s3BK_info(%rip), %rcx
+	movq	%r14, 72(%r12)
+	movq	%rbx, 80(%r12)
+	leaq	_s3qP_info(%rip), %rcx
 	movq	%rcx, (%rbp)
 	leaq	-39(%rax), %r14
 	movq	%rax, %r12
@@ -1244,25 +647,24 @@ LBB25_10:                               ## %n4xF.i
 	.globl	_Main_normalise2_info_itable ## @Main_normalise2_info_itable
 	.align	3
 _Main_normalise2_info_itable:
-	.quad	_Main_normalise2_srt-_Main_normalise2_info
 	.quad	4294967301              ## 0x100000005
 	.quad	0                       ## 0x0
-	.quad	12884901903             ## 0x30000000f
+	.quad	15                      ## 0xf
 
 	.text
 	.globl	_Main_normalise2_info
 	.align	3, 0x90
 _Main_normalise2_info:                  ## @Main_normalise2_info
-## BB#0:                                ## %c4BM
+## BB#0:                                ## %c3Tl
 	leaq	-32(%rbp), %rax
 	cmpq	%r15, %rax
-	jae	LBB26_1
-## BB#2:                                ## %c4BT
+	jae	LBB10_1
+## BB#2:                                ## %c3Ts
 	movq	-8(%r13), %rax
 	leaq	_Main_normalise2_closure(%rip), %rbx
 	jmpq	*%rax  # TAILCALL
-LBB26_1:                                ## %n4BU
-	leaq	_s3Bt_info(%rip), %rax
+LBB10_1:                                ## %n3Tt
+	leaq	_s3qG_info(%rip), %rax
 	movq	%rax, -8(%rbp)
 	addq	$-8, %rbp
 	movq	%r14, %rbx
@@ -1279,26 +681,26 @@ _Main_main2_info_itable:
 	.globl	_Main_main2_info
 	.align	3, 0x90
 _Main_main2_info:                       ## @Main_main2_info
-## BB#0:                                ## %c4DF
+## BB#0:                                ## %c3Ve
 	pushq	%rax
 	movq	%r12, %rax
 	leaq	-16(%rbp), %r14
 	cmpq	%r15, %r14
-	jae	LBB27_2
+	jae	LBB11_2
 ## BB#1:
 	movq	%rax, %r12
-	jmp	LBB27_6
-LBB27_2:                                ## %n4DN
+	jmp	LBB11_6
+LBB11_2:                                ## %n3Vm
 	leaq	16(%rax), %r12
 	cmpq	144(%r13), %r12
-	jbe	LBB27_3
-## BB#5:                                ## %c4E0
+	jbe	LBB11_3
+## BB#5:                                ## %c3Vz
 	movq	$16, 192(%r13)
-LBB27_6:                                ## %c4DM
+LBB11_6:                                ## %c3Vl
 	movq	-16(%r13), %rax
 	popq	%rdx
 	jmpq	*%rax  # TAILCALL
-LBB27_3:                                ## %n4E1
+LBB11_3:                                ## %n3VA
 	movq	%r15, (%rsp)            ## 8-byte Spill
 	movq	_stg_CAF_BLACKHOLE_info@GOTPCREL(%rip), %rcx
 	movq	%rcx, 8(%rax)
@@ -1310,52 +712,52 @@ LBB27_3:                                ## %n4E1
 	movq	%r15, %rdx
 	callq	_newCAF
 	testq	%rax, %rax
-	je	LBB27_4
-## BB#7:                                ## %c4Ep
+	je	LBB11_4
+## BB#7:                                ## %c3VY
 	movq	_stg_bh_upd_frame_info@GOTPCREL(%rip), %rax
 	movq	%rax, -16(%rbp)
 	movq	%r15, -8(%rbp)
-	leaq	_c3IR_str(%rip), %rax
+	leaq	_c3vI_str(%rip), %rax
 	movq	%r14, %rbp
 	movq	%rax, %r14
 	movq	(%rsp), %r15            ## 8-byte Reload
 	popq	%rax
 	jmp	_ghczmprim_GHCziCString_unpackCStringzh_info ## TAILCALL
-LBB27_4:                                ## %c4En
+LBB11_4:                                ## %c3VW
 	movq	(%rbx), %rax
 	movq	(%rsp), %r15            ## 8-byte Reload
 	popq	%rdx
 	jmpq	*%rax  # TAILCALL
 
 	.text
-	.align	3                       ## @r3vN_info_itable
-_r3vN_info_itable:
+	.align	3                       ## @r3mT_info_itable
+_r3mT_info_itable:
 	.quad	0                       ## 0x0
 	.quad	22                      ## 0x16
 
 	.text
 	.align	3, 0x90
-_r3vN_info:                             ## @r3vN_info
-## BB#0:                                ## %c4Gp
+_r3mT_info:                             ## @r3mT_info
+## BB#0:                                ## %c3XY
 	pushq	%rax
 	movq	%r12, %rax
 	leaq	-16(%rbp), %r14
 	cmpq	%r15, %r14
-	jae	LBB28_2
+	jae	LBB12_2
 ## BB#1:
 	movq	%rax, %r12
-	jmp	LBB28_6
-LBB28_2:                                ## %n4Gx
+	jmp	LBB12_6
+LBB12_2:                                ## %n3Y6
 	leaq	16(%rax), %r12
 	cmpq	144(%r13), %r12
-	jbe	LBB28_3
-## BB#5:                                ## %c4GK
+	jbe	LBB12_3
+## BB#5:                                ## %c3Yj
 	movq	$16, 192(%r13)
-LBB28_6:                                ## %c4Gw
+LBB12_6:                                ## %c3Y5
 	movq	-16(%r13), %rax
 	popq	%rdx
 	jmpq	*%rax  # TAILCALL
-LBB28_3:                                ## %n4GL
+LBB12_3:                                ## %n3Yk
 	movq	%r15, (%rsp)            ## 8-byte Spill
 	movq	_stg_CAF_BLACKHOLE_info@GOTPCREL(%rip), %rcx
 	movq	%rcx, 8(%rax)
@@ -1367,52 +769,52 @@ LBB28_3:                                ## %n4GL
 	movq	%r15, %rdx
 	callq	_newCAF
 	testq	%rax, %rax
-	je	LBB28_4
-## BB#7:                                ## %c4H9
+	je	LBB12_4
+## BB#7:                                ## %c3YI
 	movq	_stg_bh_upd_frame_info@GOTPCREL(%rip), %rax
 	movq	%rax, -16(%rbp)
 	movq	%r15, -8(%rbp)
-	leaq	_c3IK_str(%rip), %rax
+	leaq	_c3vB_str(%rip), %rax
 	movq	%r14, %rbp
 	movq	%rax, %r14
 	movq	(%rsp), %r15            ## 8-byte Reload
 	popq	%rax
 	jmp	_ghczmprim_GHCziCString_unpackCStringzh_info ## TAILCALL
-LBB28_4:                                ## %c4H7
+LBB12_4:                                ## %c3YG
 	movq	(%rbx), %rax
 	movq	(%rsp), %r15            ## 8-byte Reload
 	popq	%rdx
 	jmpq	*%rax  # TAILCALL
 
 	.text
-	.align	3                       ## @r3vP_info_itable
-_r3vP_info_itable:
+	.align	3                       ## @r3mV_info_itable
+_r3mV_info_itable:
 	.quad	0                       ## 0x0
 	.quad	22                      ## 0x16
 
 	.text
 	.align	3, 0x90
-_r3vP_info:                             ## @r3vP_info
-## BB#0:                                ## %c4J9
+_r3mV_info:                             ## @r3mV_info
+## BB#0:                                ## %c40I
 	pushq	%rax
 	movq	%r12, %rax
 	leaq	-16(%rbp), %r14
 	cmpq	%r15, %r14
-	jae	LBB29_2
+	jae	LBB13_2
 ## BB#1:
 	movq	%rax, %r12
-	jmp	LBB29_6
-LBB29_2:                                ## %n4Jh
+	jmp	LBB13_6
+LBB13_2:                                ## %n40Q
 	leaq	16(%rax), %r12
 	cmpq	144(%r13), %r12
-	jbe	LBB29_3
-## BB#5:                                ## %c4Ju
+	jbe	LBB13_3
+## BB#5:                                ## %c413
 	movq	$16, 192(%r13)
-LBB29_6:                                ## %c4Jg
+LBB13_6:                                ## %c40P
 	movq	-16(%r13), %rax
 	popq	%rdx
 	jmpq	*%rax  # TAILCALL
-LBB29_3:                                ## %n4Jv
+LBB13_3:                                ## %n414
 	movq	%r15, (%rsp)            ## 8-byte Spill
 	movq	_stg_CAF_BLACKHOLE_info@GOTPCREL(%rip), %rcx
 	movq	%rcx, 8(%rax)
@@ -1424,40 +826,40 @@ LBB29_3:                                ## %n4Jv
 	movq	%r15, %rdx
 	callq	_newCAF
 	testq	%rax, %rax
-	je	LBB29_4
-## BB#7:                                ## %c4JT
+	je	LBB13_4
+## BB#7:                                ## %c41s
 	movq	_stg_bh_upd_frame_info@GOTPCREL(%rip), %rax
 	movq	%rax, -16(%rbp)
 	movq	%r15, -8(%rbp)
-	leaq	_c3ID_str(%rip), %rax
+	leaq	_c3vu_str(%rip), %rax
 	movq	%r14, %rbp
 	movq	%rax, %r14
 	movq	(%rsp), %r15            ## 8-byte Reload
 	popq	%rax
 	jmp	_ghczmprim_GHCziCString_unpackCStringzh_info ## TAILCALL
-LBB29_4:                                ## %c4JR
+LBB13_4:                                ## %c41q
 	movq	(%rbx), %rax
 	movq	(%rsp), %r15            ## 8-byte Reload
 	popq	%rdx
 	jmpq	*%rax  # TAILCALL
 
 	.text
-	.align	3                       ## @s3G5_info_itable
-_s3G5_info_itable:
-	.quad	(_Main_main3_srt-_s3G5_info)+8
+	.align	3                       ## @s3sW_info_itable
+_s3sW_info_itable:
+	.quad	(_Main_main3_srt-_s3sW_info)+8
 	.quad	0                       ## 0x0
 	.quad	30064771104             ## 0x700000020
 
 	.text
 	.align	3, 0x90
-_s3G5_info:                             ## @s3G5_info
-## BB#0:                                ## %c4KZ
+_s3sW_info:                             ## @s3sW_info
+## BB#0:                                ## %c42y
 	addq	$8, %rbp
 	movq	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_Bounds_closure@GOTPCREL(%rip), %rdi
 	incq	%rdi
-	leaq	_r3vN_closure(%rip), %r14
-	leaq	_r3vO_closure+1(%rip), %rsi
-	leaq	_r3vP_closure(%rip), %r8
+	leaq	_r3mT_closure(%rip), %r14
+	leaq	_r3mU_closure+1(%rip), %rsi
+	leaq	_r3mV_closure(%rip), %r8
 	movq	%rbx, %r9
 	jmp	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkError_info ## TAILCALL
 
@@ -1474,42 +876,42 @@ _Main_main3_info_itable:
 	.globl	_Main_main3_info
 	.align	3, 0x90
 _Main_main3_info:                       ## @Main_main3_info
-## BB#0:                                ## %c4LT
+## BB#0:                                ## %c43s
 	movq	%r14, %rax
 	movq	%rbp, %rcx
 	leaq	-8(%rcx), %rbp
 	cmpq	%r15, %rbp
-	jae	LBB31_1
-## BB#2:                                ## %c4M0
+	jae	LBB15_1
+## BB#2:                                ## %c43z
 	movq	-8(%r13), %rdx
 	leaq	_Main_main3_closure(%rip), %rbx
 	movq	%rcx, %rbp
 	movq	%rax, %r14
 	jmpq	*%rdx  # TAILCALL
-LBB31_1:                                ## %n4M1
-	leaq	_s3G5_info(%rip), %rcx
+LBB15_1:                                ## %n43A
+	leaq	_s3sW_info(%rip), %rcx
 	movq	%rcx, (%rbp)
 	xorl	%r14d, %r14d
 	movq	%rax, %rsi
 	jmp	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkIndexzumsgzh_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3Ga_info_itable
-_s3Ga_info_itable:
-	.quad	(_Main_main4_srt-_s3Ga_info)+8
+	.align	3                       ## @s3t1_info_itable
+_s3t1_info_itable:
+	.quad	(_Main_main4_srt-_s3t1_info)+8
 	.quad	0                       ## 0x0
 	.quad	30064771104             ## 0x700000020
 
 	.text
 	.align	3, 0x90
-_s3Ga_info:                             ## @s3Ga_info
-## BB#0:                                ## %c4MU
+_s3t1_info:                             ## @s3t1_info
+## BB#0:                                ## %c44t
 	addq	$8, %rbp
 	movq	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_Bounds_closure@GOTPCREL(%rip), %rdi
 	incq	%rdi
-	leaq	_r3vN_closure(%rip), %r14
-	leaq	_r3vO_closure+1(%rip), %rsi
-	leaq	_r3vP_closure(%rip), %r8
+	leaq	_r3mT_closure(%rip), %r14
+	leaq	_r3mU_closure+1(%rip), %rsi
+	leaq	_r3mV_closure(%rip), %r8
 	movq	%rbx, %r9
 	jmp	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkError_info ## TAILCALL
 
@@ -1526,42 +928,42 @@ _Main_main4_info_itable:
 	.globl	_Main_main4_info
 	.align	3, 0x90
 _Main_main4_info:                       ## @Main_main4_info
-## BB#0:                                ## %c4NO
+## BB#0:                                ## %c45n
 	movq	%r14, %rax
 	movq	%rbp, %rcx
 	leaq	-8(%rcx), %rbp
 	cmpq	%r15, %rbp
-	jae	LBB33_1
-## BB#2:                                ## %c4NV
+	jae	LBB17_1
+## BB#2:                                ## %c45u
 	movq	-8(%r13), %rdx
 	leaq	_Main_main4_closure(%rip), %rbx
 	movq	%rcx, %rbp
 	movq	%rax, %r14
 	jmpq	*%rdx  # TAILCALL
-LBB33_1:                                ## %n4NW
-	leaq	_s3Ga_info(%rip), %rcx
+LBB17_1:                                ## %n45v
+	leaq	_s3t1_info(%rip), %rcx
 	movq	%rcx, (%rbp)
 	xorl	%r14d, %r14d
 	movq	%rax, %rsi
 	jmp	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkIndexzumsgzh_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3Gf_info_itable
-_s3Gf_info_itable:
-	.quad	(_Main_main5_srt-_s3Gf_info)+8
+	.align	3                       ## @s3t6_info_itable
+_s3t6_info_itable:
+	.quad	(_Main_main5_srt-_s3t6_info)+8
 	.quad	0                       ## 0x0
 	.quad	30064771104             ## 0x700000020
 
 	.text
 	.align	3, 0x90
-_s3Gf_info:                             ## @s3Gf_info
-## BB#0:                                ## %c4OP
+_s3t6_info:                             ## @s3t6_info
+## BB#0:                                ## %c46o
 	addq	$8, %rbp
 	movq	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_Bounds_closure@GOTPCREL(%rip), %rdi
 	incq	%rdi
-	leaq	_r3vN_closure(%rip), %r14
-	leaq	_r3vO_closure+1(%rip), %rsi
-	leaq	_r3vP_closure(%rip), %r8
+	leaq	_r3mT_closure(%rip), %r14
+	leaq	_r3mU_closure+1(%rip), %rsi
+	leaq	_r3mV_closure(%rip), %r8
 	movq	%rbx, %r9
 	jmp	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkError_info ## TAILCALL
 
@@ -1578,90 +980,90 @@ _Main_main5_info_itable:
 	.globl	_Main_main5_info
 	.align	3, 0x90
 _Main_main5_info:                       ## @Main_main5_info
-## BB#0:                                ## %c4PJ
+## BB#0:                                ## %c47i
 	movq	%r14, %rax
 	movq	%rbp, %rcx
 	leaq	-8(%rcx), %rbp
 	cmpq	%r15, %rbp
-	jae	LBB35_1
-## BB#2:                                ## %c4PQ
+	jae	LBB19_1
+## BB#2:                                ## %c47p
 	movq	-8(%r13), %rdx
 	leaq	_Main_main5_closure(%rip), %rbx
 	movq	%rcx, %rbp
 	movq	%rax, %r14
 	jmpq	*%rdx  # TAILCALL
-LBB35_1:                                ## %n4PR
-	leaq	_s3Gf_info(%rip), %rcx
+LBB19_1:                                ## %n47q
+	leaq	_s3t6_info(%rip), %rcx
 	movq	%rcx, (%rbp)
 	xorl	%r14d, %r14d
 	movq	%rax, %rsi
 	jmp	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkIndexzumsgzh_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3Gq_info_itable
-_s3Gq_info_itable:
+	.align	3                       ## @s3th_info_itable
+_s3th_info_itable:
 	.quad	0                       ## 0x0
 	.quad	32                      ## 0x20
 
 	.text
 	.align	3, 0x90
-_s3Gq_info:                             ## @s3Gq_info
-## BB#0:                                ## %c4QE
+_s3th_info:                             ## @s3th_info
+## BB#0:                                ## %c48d
 	movq	7(%rbx), %rsi
 	addq	$8, %rbp
 	leaq	_Main_main6_closure+1(%rip), %r14
 	jmp	_Common_zdwrandomzuints_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3zH_info_itable
-_s3zH_info_itable:
+	.align	3                       ## @s3p3_info_itable
+_s3p3_info_itable:
 	.quad	1                       ## 0x1
 	.quad	17                      ## 0x11
 
 	.text
 	.align	3, 0x90
-_s3zH_info:                             ## @s3zH_info
-## BB#0:                                ## %c4RO
+_s3p3_info:                             ## @s3p3_info
+## BB#0:                                ## %c49n
 	leaq	-24(%rbp), %rax
 	cmpq	%r15, %rax
-	jae	LBB37_1
-## BB#3:                                ## %c4RV
+	jae	LBB21_1
+## BB#3:                                ## %c49u
 	movq	-16(%r13), %rax
 	jmpq	*%rax  # TAILCALL
-LBB37_1:                                ## %n4RW
+LBB21_1:                                ## %n49v
 	movq	_stg_upd_frame_info@GOTPCREL(%rip), %rcx
 	movq	%rcx, -16(%rbp)
 	movq	%rbx, -8(%rbp)
 	movq	16(%rbx), %rbx
-	leaq	_s3Gq_info(%rip), %rcx
+	leaq	_s3th_info(%rip), %rcx
 	movq	%rcx, -24(%rbp)
 	testb	$7, %bl
-	je	LBB37_2
-## BB#4:                                ## %c4Sh
+	je	LBB21_2
+## BB#4:                                ## %c49Q
 	addq	$-16, %rbp
 	movq	7(%rbx), %rsi
 	leaq	_Main_main6_closure+1(%rip), %r14
 	jmp	_Common_zdwrandomzuints_info ## TAILCALL
-LBB37_2:                                ## %n4Si
+LBB21_2:                                ## %n49R
 	movq	(%rbx), %rcx
 	movq	%rax, %rbp
 	jmpq	*%rcx  # TAILCALL
 
 	.text
-	.align	3                       ## @s3Gt_info_itable
-_s3Gt_info_itable:
-	.quad	(_Main_main1_srt-_s3Gt_info)+64
+	.align	3                       ## @s3tk_info_itable
+_s3tk_info_itable:
+	.quad	(_Main_main1_srt-_s3tk_info)+32
 	.quad	0                       ## 0x0
 	.quad	4294967328              ## 0x100000020
 
 	.text
 	.align	3, 0x90
-_s3Gt_info:                             ## @s3Gt_info
-## BB#0:                                ## %c4Tx
+_s3tk_info:                             ## @s3tk_info
+## BB#0:                                ## %c4b6
 	movq	23(%rbx), %rsi
 	testq	%rsi, %rsi
-	jle	LBB38_1
-## BB#3:                                ## %c4TI
+	jle	LBB22_1
+## BB#3:                                ## %c4bh
 	movq	7(%rbx), %rax
 	movq	15(%rbx), %rcx
 	movq	16(%rax,%rcx,8), %rsi
@@ -1670,110 +1072,109 @@ _s3Gt_info:                             ## @s3Gt_info
 	incq	%rdi
 	xorl	%r14d, %r14d
 	jmp	_base_GHCziShow_zdwshowSignedInt_info ## TAILCALL
-LBB38_1:                                ## %n4TJ
+LBB22_1:                                ## %n4bi
 	cmpq	%r15, %rbp
-	jae	LBB38_4
-## BB#2:                                ## %c4PQ.i
+	jae	LBB22_4
+## BB#2:                                ## %c47p.i
 	addq	$8, %rbp
 	movq	-8(%r13), %rax
 	leaq	_Main_main5_closure(%rip), %rbx
 	movq	%rsi, %r14
 	jmpq	*%rax  # TAILCALL
-LBB38_4:                                ## %n4PR.i
-	leaq	_s3Gf_info(%rip), %rax
+LBB22_4:                                ## %n47q.i
+	leaq	_s3t6_info(%rip), %rax
 	movq	%rax, (%rbp)
 	xorl	%r14d, %r14d
 	jmp	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkIndexzumsgzh_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3Go_info_itable
-_s3Go_info_itable:
-	.quad	(_Main_main1_srt-_s3Go_info)+64
+	.align	3                       ## @s3tf_info_itable
+_s3tf_info_itable:
+	.quad	(_Main_main1_srt-_s3tf_info)+32
 	.quad	1                       ## 0x1
 	.quad	4294967313              ## 0x100000011
 
 	.text
 	.align	3, 0x90
-_s3Go_info:                             ## @s3Go_info
-## BB#0:                                ## %c4V4
+_s3tf_info:                             ## @s3tf_info
+## BB#0:                                ## %c4cD
 	leaq	-24(%rbp), %rax
 	cmpq	%r15, %rax
-	jae	LBB39_1
-## BB#2:                                ## %c4Vb
+	jae	LBB23_1
+## BB#2:                                ## %c4cK
 	movq	-16(%r13), %rax
 	jmpq	*%rax  # TAILCALL
-LBB39_1:                                ## %n4Vc
+LBB23_1:                                ## %n4cL
 	movq	_stg_upd_frame_info@GOTPCREL(%rip), %rcx
 	movq	%rcx, -16(%rbp)
 	movq	%rbx, -8(%rbp)
 	movq	16(%rbx), %rbx
-	leaq	_s3Gt_info(%rip), %rcx
+	leaq	_s3tk_info(%rip), %rcx
 	movq	%rcx, -24(%rbp)
 	movq	%rax, %rbp
 	jmp	_stg_ap_0_fast          ## TAILCALL
 
 	.text
-	.align	3                       ## @s3zZ_info_itable
-_s3zZ_info_itable:
-	.quad	(_Main_main1_srt-_s3zZ_info)+16
+	.align	3                       ## @s3pl_info_itable
+_s3pl_info_itable:
 	.quad	1                       ## 0x1
-	.quad	4294967313              ## 0x100000011
+	.quad	17                      ## 0x11
 
 	.text
 	.align	3, 0x90
-_s3zZ_info:                             ## @s3zZ_info
-## BB#0:                                ## %c4Wm
+_s3pl_info:                             ## @s3pl_info
+## BB#0:                                ## %c4dV
 	leaq	-16(%rbp), %rcx
 	cmpq	%r15, %rcx
-	jae	LBB40_1
-## BB#3:                                ## %c4Wt
+	jae	LBB24_1
+## BB#3:                                ## %c4e2
 	movq	-16(%r13), %rax
 	jmpq	*%rax  # TAILCALL
-LBB40_1:                                ## %n4Wu
+LBB24_1:                                ## %n4e3
 	movq	_stg_upd_frame_info@GOTPCREL(%rip), %rax
 	movq	%rax, -16(%rbp)
 	movq	%rbx, -8(%rbp)
 	movq	16(%rbx), %rax
 	leaq	-48(%rbp), %rdx
 	cmpq	%r15, %rdx
-	jae	LBB40_4
-## BB#2:                                ## %c4BT.i
+	jae	LBB24_4
+## BB#2:                                ## %c3Ts.i
 	movq	-8(%r13), %rdx
 	leaq	_Main_normalise2_closure(%rip), %rbx
 	movq	%rcx, %rbp
 	movq	%rax, %r14
 	jmpq	*%rdx  # TAILCALL
-LBB40_4:                                ## %n4BU.i
-	leaq	_s3Bt_info(%rip), %rcx
+LBB24_4:                                ## %n3Tt.i
+	leaq	_s3qG_info(%rip), %rcx
 	movq	%rcx, -24(%rbp)
 	addq	$-24, %rbp
 	movq	%rax, %rbx
 	jmp	_stg_ap_0_fast          ## TAILCALL
 
 	.text
-	.align	3                       ## @s3Gy_info_itable
-_s3Gy_info_itable:
-	.quad	(_Main_main1_srt-_s3Gy_info)+56
+	.align	3                       ## @s3tp_info_itable
+_s3tp_info_itable:
+	.quad	(_Main_main1_srt-_s3tp_info)+24
 	.quad	0                       ## 0x0
 	.quad	4294967328              ## 0x100000020
 
 	.text
 	.align	3, 0x90
-_s3Gy_info:                             ## @s3Gy_info
-## BB#0:                                ## %c4Yp
+_s3tp_info:                             ## @s3tp_info
+## BB#0:                                ## %c4fY
 	leaq	16(%r12), %rax
 	cmpq	144(%r13), %rax
-	jbe	LBB41_1
-## BB#4:                                ## %c4YD
+	jbe	LBB25_1
+## BB#4:                                ## %c4gc
 	movq	$16, 192(%r13)
 	movq	-16(%r13), %rcx
 	movq	%rax, %r12
 	jmpq	*%rcx  # TAILCALL
-LBB41_1:                                ## %n4YE
+LBB25_1:                                ## %n4gd
 	movq	23(%rbx), %rsi
 	testq	%rsi, %rsi
-	jle	LBB41_2
-## BB#5:                                ## %c4YP
+	jle	LBB25_2
+## BB#5:                                ## %c4go
 	movq	7(%rbx), %rcx
 	movq	15(%rbx), %rdx
 	movq	16(%rcx,%rdx,8), %rcx
@@ -1785,72 +1186,72 @@ LBB41_1:                                ## %n4YE
 	leaq	-7(%rax), %rbx
 	movq	%rax, %r12
 	jmpq	*%rcx  # TAILCALL
-LBB41_2:                                ## %n4YQ
+LBB25_2:                                ## %n4gp
 	cmpq	%r15, %rbp
-	jae	LBB41_6
-## BB#3:                                ## %c4NV.i
+	jae	LBB25_6
+## BB#3:                                ## %c45u.i
 	addq	$8, %rbp
 	movq	-8(%r13), %rax
 	leaq	_Main_main4_closure(%rip), %rbx
 	movq	%rsi, %r14
 	jmpq	*%rax  # TAILCALL
-LBB41_6:                                ## %n4NW.i
-	leaq	_s3Ga_info(%rip), %rax
+LBB25_6:                                ## %n45v.i
+	leaq	_s3t1_info(%rip), %rax
 	movq	%rax, (%rbp)
 	xorl	%r14d, %r14d
 	jmp	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkIndexzumsgzh_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3An_info_itable
-_s3An_info_itable:
-	.quad	(_Main_main1_srt-_s3An_info)+56
+	.align	3                       ## @s3pJ_info_itable
+_s3pJ_info_itable:
+	.quad	(_Main_main1_srt-_s3pJ_info)+24
 	.quad	1                       ## 0x1
 	.quad	4294967313              ## 0x100000011
 
 	.text
 	.align	3, 0x90
-_s3An_info:                             ## @s3An_info
-## BB#0:                                ## %c50A
+_s3pJ_info:                             ## @s3pJ_info
+## BB#0:                                ## %c4i9
 	leaq	-24(%rbp), %rax
 	cmpq	%r15, %rax
-	jae	LBB42_1
-## BB#2:                                ## %c50H
+	jae	LBB26_1
+## BB#2:                                ## %c4ig
 	movq	-16(%r13), %rax
 	jmpq	*%rax  # TAILCALL
-LBB42_1:                                ## %n50I
+LBB26_1:                                ## %n4ih
 	movq	_stg_upd_frame_info@GOTPCREL(%rip), %rcx
 	movq	%rcx, -16(%rbp)
 	movq	%rbx, -8(%rbp)
 	movq	16(%rbx), %rbx
-	leaq	_s3Gy_info(%rip), %rcx
+	leaq	_s3tp_info(%rip), %rcx
 	movq	%rcx, -24(%rbp)
 	movq	%rax, %rbp
 	jmp	_stg_ap_0_fast          ## TAILCALL
 
 	.text
-	.align	3                       ## @s3GA_info_itable
-_s3GA_info_itable:
-	.quad	(_Main_main1_srt-_s3GA_info)+48
+	.align	3                       ## @s3tr_info_itable
+_s3tr_info_itable:
+	.quad	(_Main_main1_srt-_s3tr_info)+16
 	.quad	0                       ## 0x0
 	.quad	4294967328              ## 0x100000020
 
 	.text
 	.align	3, 0x90
-_s3GA_info:                             ## @s3GA_info
-## BB#0:                                ## %c52F
+_s3tr_info:                             ## @s3tr_info
+## BB#0:                                ## %c4ke
 	leaq	16(%r12), %rax
 	cmpq	144(%r13), %rax
-	jbe	LBB43_1
-## BB#4:                                ## %c52T
+	jbe	LBB27_1
+## BB#4:                                ## %c4ks
 	movq	$16, 192(%r13)
 	movq	-16(%r13), %rcx
 	movq	%rax, %r12
 	jmpq	*%rcx  # TAILCALL
-LBB43_1:                                ## %n52U
+LBB27_1:                                ## %n4kt
 	movq	23(%rbx), %rsi
 	testq	%rsi, %rsi
-	jle	LBB43_2
-## BB#5:                                ## %c535
+	jle	LBB27_2
+## BB#5:                                ## %c4kE
 	movq	7(%rbx), %rcx
 	movq	15(%rbx), %rdx
 	movq	16(%rcx,%rdx,8), %rcx
@@ -1862,58 +1263,58 @@ LBB43_1:                                ## %n52U
 	leaq	-7(%rax), %rbx
 	movq	%rax, %r12
 	jmpq	*%rcx  # TAILCALL
-LBB43_2:                                ## %n536
+LBB27_2:                                ## %n4kF
 	cmpq	%r15, %rbp
-	jae	LBB43_6
-## BB#3:                                ## %c4M0.i
+	jae	LBB27_6
+## BB#3:                                ## %c43z.i
 	addq	$8, %rbp
 	movq	-8(%r13), %rax
 	leaq	_Main_main3_closure(%rip), %rbx
 	movq	%rsi, %r14
 	jmpq	*%rax  # TAILCALL
-LBB43_6:                                ## %n4M1.i
-	leaq	_s3G5_info(%rip), %rax
+LBB27_6:                                ## %n43A.i
+	leaq	_s3sW_info(%rip), %rax
 	movq	%rax, (%rbp)
 	xorl	%r14d, %r14d
 	jmp	_vectorzm0zi10zi0zi1_DataziVectorziInternalziCheck_checkIndexzumsgzh_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3Az_info_itable
-_s3Az_info_itable:
-	.quad	(_Main_main1_srt-_s3Az_info)+48
+	.align	3                       ## @s3pV_info_itable
+_s3pV_info_itable:
+	.quad	(_Main_main1_srt-_s3pV_info)+16
 	.quad	1                       ## 0x1
 	.quad	4294967313              ## 0x100000011
 
 	.text
 	.align	3, 0x90
-_s3Az_info:                             ## @s3Az_info
-## BB#0:                                ## %c54Q
+_s3pV_info:                             ## @s3pV_info
+## BB#0:                                ## %c4mp
 	leaq	-24(%rbp), %rax
 	cmpq	%r15, %rax
-	jae	LBB44_1
-## BB#2:                                ## %c54X
+	jae	LBB28_1
+## BB#2:                                ## %c4mw
 	movq	-16(%r13), %rax
 	jmpq	*%rax  # TAILCALL
-LBB44_1:                                ## %n54Y
+LBB28_1:                                ## %n4mx
 	movq	_stg_upd_frame_info@GOTPCREL(%rip), %rcx
 	movq	%rcx, -16(%rbp)
 	movq	%rbx, -8(%rbp)
 	movq	16(%rbx), %rbx
-	leaq	_s3GA_info(%rip), %rcx
+	leaq	_s3tr_info(%rip), %rcx
 	movq	%rcx, -24(%rbp)
 	movq	%rax, %rbp
 	jmp	_stg_ap_0_fast          ## TAILCALL
 
 	.text
-	.align	3                       ## @s3GB_info_itable
-_s3GB_info_itable:
+	.align	3                       ## @s3ts_info_itable
+_s3ts_info_itable:
 	.quad	1                       ## 0x1
 	.quad	32                      ## 0x20
 
 	.text
 	.align	3, 0x90
-_s3GB_info:                             ## @s3GB_info
-## BB#0:                                ## %c55V
+_s3ts_info:                             ## @s3ts_info
+## BB#0:                                ## %c4nu
 	movq	7(%rbx), %rsi
 	movq	8(%rbp), %rdi
 	addq	$16, %rbp
@@ -1921,51 +1322,51 @@ _s3GB_info:                             ## @s3GB_info
 	jmp	_base_GHCziShow_zdwshowSignedInt_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3AM_info_itable
-_s3AM_info_itable:
+	.align	3                       ## @s3q8_info_itable
+_s3q8_info_itable:
 	.quad	4294967301              ## 0x100000005
 	.quad	1                       ## 0x1
 	.quad	10                      ## 0xa
 
 	.text
 	.align	3, 0x90
-_s3AM_info:                             ## @s3AM_info
-## BB#0:                                ## %c574
+_s3q8_info:                             ## @s3q8_info
+## BB#0:                                ## %c4oD
 	movq	%r14, %rax
 	leaq	-16(%rbp), %rcx
 	cmpq	%r15, %rcx
-	jae	LBB46_1
-## BB#3:                                ## %c57b
+	jae	LBB30_1
+## BB#3:                                ## %c4oK
 	movq	-8(%r13), %rcx
 	movq	%rax, %r14
 	jmpq	*%rcx  # TAILCALL
-LBB46_1:                                ## %n57c
+LBB30_1:                                ## %n4oL
 	movq	%rax, -8(%rbp)
 	movq	7(%rbx), %rbx
-	leaq	_s3GB_info(%rip), %rdx
+	leaq	_s3ts_info(%rip), %rdx
 	movq	%rdx, -16(%rbp)
 	testb	$7, %bl
-	je	LBB46_2
-## BB#4:                                ## %c57w
+	je	LBB30_2
+## BB#4:                                ## %c4p5
 	movq	7(%rbx), %rsi
 	xorl	%r14d, %r14d
 	movq	%rax, %rdi
 	jmp	_base_GHCziShow_zdwshowSignedInt_info ## TAILCALL
-LBB46_2:                                ## %n57x
+LBB30_2:                                ## %n4p6
 	movq	(%rbx), %rax
 	movq	%rcx, %rbp
 	jmpq	*%rax  # TAILCALL
 
 	.text
-	.align	3                       ## @s3GC_info_itable
-_s3GC_info_itable:
+	.align	3                       ## @s3tt_info_itable
+_s3tt_info_itable:
 	.quad	1                       ## 0x1
 	.quad	32                      ## 0x20
 
 	.text
 	.align	3, 0x90
-_s3GC_info:                             ## @s3GC_info
-## BB#0:                                ## %c58n
+_s3tt_info:                             ## @s3tt_info
+## BB#0:                                ## %c4pW
 	movq	7(%rbx), %rsi
 	movq	8(%rbp), %rdi
 	addq	$16, %rbp
@@ -1973,84 +1374,84 @@ _s3GC_info:                             ## @s3GC_info
 	jmp	_base_GHCziShow_zdwshowSignedInt_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3AP_info_itable
-_s3AP_info_itable:
+	.align	3                       ## @s3qb_info_itable
+_s3qb_info_itable:
 	.quad	4294967301              ## 0x100000005
 	.quad	1                       ## 0x1
 	.quad	10                      ## 0xa
 
 	.text
 	.align	3, 0x90
-_s3AP_info:                             ## @s3AP_info
-## BB#0:                                ## %c59w
+_s3qb_info:                             ## @s3qb_info
+## BB#0:                                ## %c4r5
 	movq	%r14, %rax
 	leaq	-16(%rbp), %rcx
 	cmpq	%r15, %rcx
-	jae	LBB48_1
-## BB#3:                                ## %c59D
+	jae	LBB32_1
+## BB#3:                                ## %c4rc
 	movq	-8(%r13), %rcx
 	movq	%rax, %r14
 	jmpq	*%rcx  # TAILCALL
-LBB48_1:                                ## %n59E
+LBB32_1:                                ## %n4rd
 	movq	%rax, -8(%rbp)
 	movq	7(%rbx), %rbx
-	leaq	_s3GC_info(%rip), %rdx
+	leaq	_s3tt_info(%rip), %rdx
 	movq	%rdx, -16(%rbp)
 	testb	$7, %bl
-	je	LBB48_2
-## BB#4:                                ## %c59Y
+	je	LBB32_2
+## BB#4:                                ## %c4rx
 	movq	7(%rbx), %rsi
 	xorl	%r14d, %r14d
 	movq	%rax, %rdi
 	jmp	_base_GHCziShow_zdwshowSignedInt_info ## TAILCALL
-LBB48_2:                                ## %n59Z
+LBB32_2:                                ## %n4ry
 	movq	(%rbx), %rax
 	movq	%rcx, %rbp
 	jmpq	*%rax  # TAILCALL
 
 	.text
-	.align	3                       ## @s3Gk_info_itable
-_s3Gk_info_itable:
-	.quad	(_Main_main1_srt-_s3Gk_info)+8
+	.align	3                       ## @s3tb_info_itable
+_s3tb_info_itable:
+	.quad	(_Main_main1_srt-_s3tb_info)+8
 	.quad	2                       ## 0x2
-	.quad	416611827731            ## 0x6100000013
+	.quad	30064771091             ## 0x700000013
 
 	.text
 	.align	3, 0x90
-_s3Gk_info:                             ## @s3Gk_info
-## BB#0:                                ## %c5ci
+_s3tb_info:                             ## @s3tb_info
+## BB#0:                                ## %c4tR
 	movq	%r12, %rcx
 	leaq	-32(%rbp), %rax
 	cmpq	%r15, %rax
-	jae	LBB49_2
+	jae	LBB33_2
 ## BB#1:
 	movq	%rcx, %r12
 	movq	-16(%r13), %rax
 	jmpq	*%rax  # TAILCALL
-LBB49_2:                                ## %n5cq
+LBB33_2:                                ## %n4tZ
 	movq	%rcx, %r12
 	subq	$-128, %r12
 	cmpq	144(%r13), %r12
-	jbe	LBB49_5
-## BB#3:                                ## %c5cD
+	jbe	LBB33_5
+## BB#3:                                ## %c4uc
 	movq	$128, 192(%r13)
 	movq	-16(%r13), %rax
 	jmpq	*%rax  # TAILCALL
-LBB49_5:                                ## %n5cE
+LBB33_5:                                ## %n4ud
 	movq	_stg_upd_frame_info@GOTPCREL(%rip), %rdx
 	movq	%rdx, -16(%rbp)
 	movq	%rbx, -8(%rbp)
 	leaq	8(%rcx), %rdx
-	leaq	_s3An_info(%rip), %rsi
+	leaq	_s3pJ_info(%rip), %rsi
 	movq	%rsi, 8(%rcx)
 	movq	16(%rbx), %rsi
 	movq	%rsi, 24(%rcx)
 	leaq	32(%rcx), %rsi
-	leaq	_s3Az_info(%rip), %rdi
+	leaq	_s3pV_info(%rip), %rdi
 	movq	%rdi, 32(%rcx)
 	movq	24(%rbx), %rdi
 	movq	%rdi, 48(%rcx)
-	leaq	_s3AM_info(%rip), %rdi
+	leaq	_s3q8_info(%rip), %rdi
 	movq	%rdi, 56(%rcx)
 	movq	%rdx, 64(%rcx)
 	movq	_ghczmprim_GHCziTypes_ZC_con_info@GOTPCREL(%rip), %r8
@@ -2060,7 +1461,7 @@ LBB49_5:                                ## %n5cE
 	movq	_ghczmprim_GHCziTypes_ZMZN_closure@GOTPCREL(%rip), %rdi
 	incq	%rdi
 	movq	%rdi, 88(%rcx)
-	leaq	_s3AP_info(%rip), %rdx
+	leaq	_s3qb_info(%rip), %rdx
 	movq	%rdx, 96(%rcx)
 	movq	%rsi, 104(%rcx)
 	movq	%r8, 112(%rcx)
@@ -2076,16 +1477,16 @@ LBB49_5:                                ## %n5cE
 	jmp	_base_GHCziShow_showzutuple_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3GD_info_itable
-_s3GD_info_itable:
-	.quad	(_Main_main1_srt-_s3GD_info)+24
+	.align	3                       ## @s3tu_info_itable
+_s3tu_info_itable:
+	.quad	_Main_main1_srt-_s3tu_info
 	.quad	0                       ## 0x0
-	.quad	30064771104             ## 0x700000020
+	.quad	416611827744            ## 0x6100000020
 
 	.text
 	.align	3, 0x90
-_s3GD_info:                             ## @s3GD_info
-## BB#0:                                ## %c5eE
+_s3tu_info:                             ## @s3tu_info
+## BB#0:                                ## %c4wd
 	addq	$8, %rbp
 	movq	_ghczmprim_GHCziTypes_False_closure@GOTPCREL(%rip), %rdi
 	incq	%rdi
@@ -2094,61 +1495,61 @@ _s3GD_info:                             ## @s3GD_info
 	jmp	_base_GHCziIOziHandleziText_hPutStr2_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3GE_info_itable
-_s3GE_info_itable:
-	.quad	(_Main_main1_srt-_s3GE_info)+24
+	.align	3                       ## @s3tv_info_itable
+_s3tv_info_itable:
+	.quad	_Main_main1_srt-_s3tv_info
 	.quad	1                       ## 0x1
-	.quad	30064771104             ## 0x700000020
+	.quad	416611827744            ## 0x6100000020
 
 	.text
 	.align	3, 0x90
-_s3GE_info:                             ## @s3GE_info
-## BB#0:                                ## %c5fc
+_s3tv_info:                             ## @s3tv_info
+## BB#0:                                ## %c4wL
 	movq	8(%rbp), %rbx
-	leaq	_s3GD_info(%rip), %rax
+	leaq	_s3tu_info(%rip), %rax
 	movq	%rax, 8(%rbp)
 	leaq	8(%rbp), %rbp
 	jmp	_stg_ap_0_fast          ## TAILCALL
 
 	.text
-	.align	3                       ## @s3GF_info_itable
-_s3GF_info_itable:
-	.quad	(_Main_main1_srt-_s3GF_info)+24
+	.align	3                       ## @s3tw_info_itable
+_s3tw_info_itable:
+	.quad	_Main_main1_srt-_s3tw_info
 	.quad	2                       ## 0x2
-	.quad	30064771104             ## 0x700000020
+	.quad	416611827744            ## 0x6100000020
 
 	.text
 	.align	3, 0x90
-_s3GF_info:                             ## @s3GF_info
-## BB#0:                                ## %c5fK
+_s3tw_info:                             ## @s3tw_info
+## BB#0:                                ## %c4xj
 	movq	8(%rbp), %rbx
-	leaq	_s3GE_info(%rip), %rax
+	leaq	_s3tv_info(%rip), %rax
 	movq	%rax, 8(%rbp)
 	leaq	8(%rbp), %rbp
 	jmp	_stg_ap_0_fast          ## TAILCALL
 
 	.text
-	.align	3                       ## @s3Gu_info_itable
-_s3Gu_info_itable:
-	.quad	(_Main_main1_srt-_s3Gu_info)+8
+	.align	3                       ## @s3tl_info_itable
+_s3tl_info_itable:
+	.quad	_Main_main1_srt-_s3tl_info
 	.quad	1                       ## 0x1
-	.quad	545460846624            ## 0x7f00000020
+	.quad	476741369888            ## 0x6f00000020
 
 	.text
 	.align	3, 0x90
-_s3Gu_info:                             ## @s3Gu_info
-## BB#0:                                ## %c5hu
+_s3tl_info:                             ## @s3tl_info
+## BB#0:                                ## %c4z3
 	movq	%r12, %rax
 	leaq	104(%rax), %r12
 	cmpq	144(%r13), %r12
-	jbe	LBB53_1
-## BB#2:                                ## %c5hI
+	jbe	LBB37_1
+## BB#2:                                ## %c4zh
 	movq	$104, 192(%r13)
 	movq	$254, 64(%r13)
 	jmp	_stg_gc_ut              ## TAILCALL
-LBB53_1:                                ## %n5hJ
+LBB37_1:                                ## %n4zi
 	leaq	8(%rax), %rcx
-	leaq	_s3zZ_info(%rip), %rdx
+	leaq	_s3pl_info(%rip), %rdx
 	movq	%rdx, 8(%rax)
 	movq	8(%rbp), %rdx
 	movq	%rdx, 24(%rax)
@@ -2160,14 +1561,14 @@ LBB53_1:                                ## %n5hJ
 	movq	_stg_sel_0_upd_info@GOTPCREL(%rip), %rsi
 	movq	%rsi, 56(%rax)
 	movq	%rcx, 72(%rax)
-	leaq	_s3Gk_info(%rip), %rcx
+	leaq	_s3tb_info(%rip), %rcx
 	movq	%rcx, 80(%rax)
 	movq	%rdx, 96(%rax)
 	movq	%rdi, 104(%rax)
 	leaq	80(%rax), %rsi
 	movq	%rdi, (%rbp)
 	movq	%rdx, 8(%rbp)
-	leaq	_s3GF_info(%rip), %rax
+	leaq	_s3tw_info(%rip), %rax
 	movq	%rax, -8(%rbp)
 	addq	$-8, %rbp
 	movq	_ghczmprim_GHCziTypes_True_closure@GOTPCREL(%rip), %rdi
@@ -2176,35 +1577,35 @@ LBB53_1:                                ## %n5hJ
 	jmp	_base_GHCziIOziHandleziText_hPutStr2_info ## TAILCALL
 
 	.text
-	.align	3                       ## @s3Gr_info_itable
-_s3Gr_info_itable:
-	.quad	(_Main_main1_srt-_s3Gr_info)+8
+	.align	3                       ## @s3ti_info_itable
+_s3ti_info_itable:
+	.quad	_Main_main1_srt-_s3ti_info
 	.quad	0                       ## 0x0
-	.quad	1095216660512           ## 0xff00000020
+	.quad	545460846624            ## 0x7f00000020
 
 	.text
 	.align	3, 0x90
-_s3Gr_info:                             ## @s3Gr_info
-## BB#0:                                ## %c5k1
+_s3ti_info:                             ## @s3ti_info
+## BB#0:                                ## %c4BA
 	movq	%r12, %rax
 	leaq	48(%rax), %r12
 	cmpq	144(%r13), %r12
-	jbe	LBB54_1
-## BB#2:                                ## %c5kf
+	jbe	LBB38_1
+## BB#2:                                ## %c4BO
 	movq	$48, 192(%r13)
 	movq	$254, 64(%r13)
 	jmp	_stg_gc_ut              ## TAILCALL
-LBB54_1:                                ## %n5kg
+LBB38_1:                                ## %n4BP
 	leaq	8(%rax), %rcx
-	leaq	_s3zH_info(%rip), %rdx
+	leaq	_s3p3_info(%rip), %rdx
 	movq	%rdx, 8(%rax)
 	movq	%rbx, 24(%rax)
-	leaq	_s3Go_info(%rip), %rdx
+	leaq	_s3tf_info(%rip), %rdx
 	movq	%rdx, 32(%rax)
 	movq	%rcx, 48(%rax)
 	leaq	32(%rax), %rsi
 	movq	%rcx, (%rbp)
-	leaq	_s3Gu_info(%rip), %rax
+	leaq	_s3tl_info(%rip), %rax
 	movq	%rax, -8(%rbp)
 	addq	$-8, %rbp
 	movq	_ghczmprim_GHCziTypes_True_closure@GOTPCREL(%rip), %rdi
@@ -2219,22 +1620,22 @@ _Main_main1_info_itable:
 	.quad	_Main_main1_srt-_Main_main1_info
 	.quad	4294967299              ## 0x100000003
 	.quad	0                       ## 0x0
-	.quad	2194728288271           ## 0x1ff0000000f
+	.quad	1095216660495           ## 0xff0000000f
 
 	.text
 	.globl	_Main_main1_info
 	.align	3, 0x90
 _Main_main1_info:                       ## @Main_main1_info
-## BB#0:                                ## %c5lz
+## BB#0:                                ## %c4D8
 	leaq	-24(%rbp), %rax
 	cmpq	%r15, %rax
-	jae	LBB55_1
-## BB#2:                                ## %c5lG
+	jae	LBB39_1
+## BB#2:                                ## %c4Df
 	movq	-8(%r13), %rax
 	leaq	_Main_main1_closure(%rip), %rbx
 	jmpq	*%rax  # TAILCALL
-LBB55_1:                                ## %n5lH
-	leaq	_s3Gr_info(%rip), %rax
+LBB39_1:                                ## %n4Dg
+	leaq	_s3ti_info(%rip), %rax
 	movq	%rax, -8(%rbp)
 	addq	$-8, %rbp
 	jmp	_Common_getzusizze1_info ## TAILCALL
@@ -2252,16 +1653,16 @@ _Main_main_info_itable:
 	.globl	_Main_main_info
 	.align	3, 0x90
 _Main_main_info:                        ## @Main_main_info
-## BB#0:                                ## %c5me
+## BB#0:                                ## %c4DN
 	leaq	-24(%rbp), %rax
 	cmpq	%r15, %rax
-	jae	LBB56_1
-## BB#2:                                ## %c5lG.i
+	jae	LBB40_1
+## BB#2:                                ## %c4Df.i
 	movq	-8(%r13), %rax
 	leaq	_Main_main1_closure(%rip), %rbx
 	jmpq	*%rax  # TAILCALL
-LBB56_1:                                ## %n5lH.i
-	leaq	_s3Gr_info(%rip), %rax
+LBB40_1:                                ## %n4Dg.i
+	leaq	_s3ti_info(%rip), %rax
 	movq	%rax, -8(%rbp)
 	addq	$-8, %rbp
 	jmp	_Common_getzusizze1_info ## TAILCALL
@@ -2279,7 +1680,7 @@ _Main_main7_info_itable:
 	.globl	_Main_main7_info
 	.align	3, 0x90
 _Main_main7_info:                       ## @Main_main7_info
-## BB#0:                                ## %c5mw
+## BB#0:                                ## %c4E5
 	leaq	_Main_main1_closure+1(%rip), %r14
 	jmp	_base_GHCziTopHandler_runMainIO1_info ## TAILCALL
 
@@ -2292,63 +1693,47 @@ _ZCMain_main_info_itable:
 	.quad	0                       ## 0x0
 	.quad	4294967311              ## 0x10000000f
 
-	.no_dead_strip	_s3Gr_info_itable
-	.no_dead_strip	_s3Gu_info_itable
-	.no_dead_strip	_s3GF_info_itable
-	.no_dead_strip	_s3GE_info_itable
-	.no_dead_strip	_s3GD_info_itable
-	.no_dead_strip	_s3Gk_info_itable
-	.no_dead_strip	_s3AP_info_itable
-	.no_dead_strip	_s3GC_info_itable
-	.no_dead_strip	_s3AM_info_itable
-	.no_dead_strip	_s3GB_info_itable
-	.no_dead_strip	_s3Az_info_itable
-	.no_dead_strip	_s3GA_info_itable
-	.no_dead_strip	_s3An_info_itable
-	.no_dead_strip	_s3Gy_info_itable
-	.no_dead_strip	_s3zZ_info_itable
-	.no_dead_strip	_s3Go_info_itable
-	.no_dead_strip	_s3Gt_info_itable
-	.no_dead_strip	_s3zH_info_itable
-	.no_dead_strip	_s3Gq_info_itable
-	.no_dead_strip	_s3Gf_info_itable
-	.no_dead_strip	_s3Ga_info_itable
-	.no_dead_strip	_s3G5_info_itable
-	.no_dead_strip	_r3vP_info_itable
-	.no_dead_strip	_r3vN_info_itable
-	.no_dead_strip	_s3Bt_info_itable
-	.no_dead_strip	_s3By_info_itable
-	.no_dead_strip	_s3BK_info_itable
-	.no_dead_strip	_s3Bf_info_itable
-	.no_dead_strip	_s3Bx_info_itable
-	.no_dead_strip	_s3Bw_info_itable
-	.no_dead_strip	_s3yC_info_itable
-	.no_dead_strip	_s3BH_info_itable
-	.no_dead_strip	_s3BG_info_itable
-	.no_dead_strip	_s3yb_info_itable
-	.no_dead_strip	_s3BD_info_itable
-	.no_dead_strip	_s3BC_info_itable
-	.no_dead_strip	_s3y7_info_itable
-	.no_dead_strip	_s3y1_info_itable
-	.no_dead_strip	_s3xF_info_itable
-	.no_dead_strip	_s3xX_info_itable
-	.no_dead_strip	_s3xT_info_itable
-	.no_dead_strip	_s3xP_info_itable
-	.no_dead_strip	_s3xJ_info_itable
-	.no_dead_strip	_s3xi_info_itable
-	.no_dead_strip	_s3wT_info_itable
-	.no_dead_strip	_s3xd_info_itable
-	.no_dead_strip	_s3x9_info_itable
-	.no_dead_strip	_s3x4_info_itable
-	.no_dead_strip	_s3wZ_info_itable
-	.no_dead_strip	_s3wb_info_itable
+	.no_dead_strip	_s3ti_info_itable
+	.no_dead_strip	_s3tl_info_itable
+	.no_dead_strip	_s3tw_info_itable
+	.no_dead_strip	_s3tv_info_itable
+	.no_dead_strip	_s3tu_info_itable
+	.no_dead_strip	_s3tb_info_itable
+	.no_dead_strip	_s3qb_info_itable
+	.no_dead_strip	_s3tt_info_itable
+	.no_dead_strip	_s3q8_info_itable
+	.no_dead_strip	_s3ts_info_itable
+	.no_dead_strip	_s3pV_info_itable
+	.no_dead_strip	_s3tr_info_itable
+	.no_dead_strip	_s3pJ_info_itable
+	.no_dead_strip	_s3tp_info_itable
+	.no_dead_strip	_s3pl_info_itable
+	.no_dead_strip	_s3tf_info_itable
+	.no_dead_strip	_s3tk_info_itable
+	.no_dead_strip	_s3p3_info_itable
+	.no_dead_strip	_s3th_info_itable
+	.no_dead_strip	_s3t6_info_itable
+	.no_dead_strip	_s3t1_info_itable
+	.no_dead_strip	_s3sW_info_itable
+	.no_dead_strip	_r3mV_info_itable
+	.no_dead_strip	_r3mT_info_itable
+	.no_dead_strip	_s3qG_info_itable
+	.no_dead_strip	_s3qK_info_itable
+	.no_dead_strip	_s3qP_info_itable
+	.no_dead_strip	_s3qz_info_itable
+	.no_dead_strip	_s3qJ_info_itable
+	.no_dead_strip	_s3qI_info_itable
+	.no_dead_strip	_s3qO_info_itable
+	.no_dead_strip	_s3qN_info_itable
+	.no_dead_strip	_s3o3_info_itable
+	.no_dead_strip	_s3nt_info_itable
 
 .subsections_via_symbols
 	.text
 	.globl	_ZCMain_main_info
 	.align	3, 0x90
 _ZCMain_main_info:                      ## @ZCMain_main_info
-## BB#0:                                ## %c5mO
+## BB#0:                                ## %c4En
 	leaq	_Main_main1_closure+1(%rip), %r14
 	jmp	_base_GHCziTopHandler_runMainIO1_info ## TAILCALL
 
