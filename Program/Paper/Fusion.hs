@@ -140,8 +140,9 @@ addConstraints bigN g arcs ws _p trans
    , u `cmp` v
    , uT /= vT
    , Just (u',v') <- checkTy' u v
-   = do leq' ("Type:" ++ show u ++ ":" ++ show v ++ ":" ++ show u') (var $ mkSameCluster u' v) (var $ mkSameCluster u v)
-        leq' ("Type:" ++ show u ++ ":" ++ show v ++ ":" ++ show v') (var $ mkSameCluster u v') (var $ mkSameCluster u v)
+   = do leq' ("Type:" ++ show u ++ ":" ++ show v ++ ":" ++ show u') (var $ mkSameCluster v' v) (var $ mkSameCluster u v)
+        leq' ("Type:" ++ show u ++ ":" ++ show v ++ ":" ++ show v') (var $ mkSameCluster u' u) (var $ mkSameCluster u v)
+        leq' ("Type:" ++ show u ++ ":" ++ show v) (var $ mkSameCluster u' v') (var $ mkSameCluster u v)
    | otherwise
    = return ()
 
