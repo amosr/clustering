@@ -1,0 +1,16 @@
+param array xs
+
+as = filter {}  xs
+
+b  = reduce {}  as
+# as and cs cannot be fused together
+cs = filter {b} xs
+
+# can ds and es be fused together?
+# only if as and cs were fused together
+ds = reduce {} as
+es = reduce {} cs
+
+
+return ds
+return es
