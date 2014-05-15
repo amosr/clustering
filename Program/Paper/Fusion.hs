@@ -153,11 +153,19 @@ addConstraints bigN g arcs ws _p trans
    , uT == vT
    = Just (u,v)
    | NAId u'  <- u
-   , Just u'' <- trans u'
+   , Just u'' <- trans (Left u')
    , Just r   <- checkTy' (NAId u'') v
    = Just r
    | NAId v'  <- v
-   , Just v'' <- trans v'
+   , Just v'' <- trans (Left v')
+   , Just r   <- checkTy' u (NAId v'')
+   = Just r
+   | NSId u'  <- u
+   , Just u'' <- trans (Right u')
+   , Just r   <- checkTy' (NAId u'') v
+   = Just r
+   | NSId v'  <- v
+   , Just v'' <- trans (Right v')
    , Just r   <- checkTy' u (NAId v'')
    = Just r
    | otherwise
@@ -179,8 +187,13 @@ typeComparable g trans a b
     -> False
  where
   try (NAId x) y
-   | Just x' <- trans x
-   = typeComparable g trans (NAId x) y
+   | Just x' <- trans (Left x)
+   = typeComparable g trans (NAId x') y
+   | otherwise
+   = False
+  try (NSId x) y
+   | Just x' <- trans (Right x)
+   = typeComparable g trans (NAId x') y
    | otherwise
    = False
   -- externals can't be fused
@@ -288,7 +301,7 @@ solve_linear' p g (_,trans)
  = let opts'= mipDefaults { msgLev = MsgOff, brTech = DrTom, btTech = LocBound, cuts = [Cov] }
        res  = unsafePerformIO $ do
                 let pre = "lps/lp-" ++ (show $ length $ constraints lp') ++ "-"
-                writeLP (pre ++ "unopt.lp") lp'unopt
+                -- writeLP (pre ++ "unopt.lp") lp'unopt
                 writeLP (pre ++ "simp.lp") lp'simp
                 writeFile (pre ++ "prog.p") (prettyProgram p)
                 glpSolveVars opts' $ {-trace (pprLP lp')-} lp'
@@ -299,7 +312,7 @@ solve_linear' p g (_,trans)
          -> error (show res)
  where
   lp'simp  = lp p g trans True
-  lp'unopt  = lp p g trans False
+  -- lp'unopt  = lp p g trans False
   lp' = lp'simp
 
   fixMap m

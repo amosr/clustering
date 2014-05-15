@@ -98,6 +98,19 @@ bindOfA bs a
   go []
    = Nothing
 
+-- | Find binder of array. Or else.
+bindOfS :: [Bind] -> SId -> Maybe SExp
+bindOfS bs a
+ = go bs
+ where
+  go (SBind a' x:bs)
+   = if a' == a then Just x else go bs
+  go (_:bs)
+   = go bs
+  go []
+   = Nothing
+
+
 
 extOfA :: [Bind] -> AId -> Maybe ([AId],[SId])
 extOfA bs a

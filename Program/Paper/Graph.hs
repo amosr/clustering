@@ -11,6 +11,8 @@ import Graph
 import qualified Data.Map as Map
 import           Data.Map   (Map)
 
+import Debug.Trace
+
 
 data Name  
  = NAId AId
@@ -51,9 +53,9 @@ mkGraph p (tau, _trans)
    -- ++ [(NOut, Rate [])]
 
   getNode (ABind aid _)
-   = (NAId  aid, tau aid)
-  getNode (SBind sid (Reduce _ aid))
-   = (NSId  sid, tau aid)
+   = (NAId  aid, tau (Left aid))
+  getNode (SBind sid _)
+   = (NSId  sid, tau (Right sid))
   getNode (External (outA,outS) _)
    = (NExt outA outS, Nothing)
 

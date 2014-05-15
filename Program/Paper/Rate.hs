@@ -230,16 +230,23 @@ equivSet equivs n = go equivs
 
 
 
-type TransducerMap = AId -> Maybe AId
-type TauMap        = AId -> Maybe Tau
+type TransducerMap = Either AId SId -> Maybe AId
+type TauMap        = Either AId SId -> Maybe Tau
 
 transducers :: [Bind] -> TransducerMap
-transducers bs n
+transducers bs nm
+ | Left n <- nm
  = case bindOfA bs n of
    Just (Filter _ a)
     -> trans' a
    _
     -> trans' n
+ | Right n <- nm
+ = case bindOfS bs n of
+   Just (Reduce _ a)
+    -> trans' a
+   _
+    -> Nothing
  where
   trans' n
    = case bindOfA bs n of
@@ -264,14 +271,19 @@ transducers bs n
 
 
 taus        :: [Bind] -> EquivClass -> TauMap
-taus bs eqs n
+taus bs eqs nm
+ | Left n <- nm
  = case bindOfA bs n of
    Just (Filter _ a)
     -> Just (canon a)
    _
     -> Just (canon n)
-   --Nothing -- External
-   -- -> Nothing
+ | Right n <- nm
+ = case bindOfS bs n of
+   Just (Reduce _ aid)
+    -> Just (canon aid)
+   _
+    -> Nothing
 
  where
   canon = TK . Klok . canonName eqs
