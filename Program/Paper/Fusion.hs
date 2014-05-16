@@ -36,6 +36,7 @@ import Debug.Trace
 data GVar
  = Pi Name
  | SameCluster Name Name
+ | C Name
  deriving (Eq, Show, Ord)
 mkSameCluster :: Name -> Name -> GVar
 mkSameCluster m n
@@ -43,10 +44,11 @@ mkSameCluster m n
 
 -- | Minimise objective:
 -- \Sigma_i,j Weight(i,j) * SameCluster(i,j)
-gobjective :: [(Int,Name,Name)] -> LinFunc GVar Int
-gobjective ws
+gobjective :: [Name] -> [(Int,Name,Name)] -> LinFunc GVar Int
+gobjective ns ws
  =  linCombination
- $  map (\(w,i,j) -> (w, mkSameCluster i j)) ws
+ (  map (\(w,i,j) -> (w, mkSameCluster i j)) ws
+ ++ map (\n -> (length ns, C n)) ns)
 
 
 -- | Set variable types - Pi are integers, SameCluster are bools
@@ -58,6 +60,7 @@ setKinds ns ws
   setP n
    = do varGeq     (Pi n) 0
         setVarKind (Pi n) ContVar
+        setVarKind (C  n) BinVar
   setW (_,i,j)
    = do -- varGeq     (SameCluster i j) 0
         setVarKind (mkSameCluster i j) BinVar
@@ -101,11 +104,14 @@ addConstraints bigN g arcs ws _p trans
         leq x    pis
         -- pi(v) - pi(u)  <= n * x(u,v)
         leq pis (bigN *^ x)
+        leq x (var $ C u) 
 
    -- Non-fusible edge, or nodes are different types
    | otherwise
         -- pi(v) - pi(u) >= 1
-   = geqTo (var (Pi v) ^-^ var (Pi u)) 1
+   = do geqTo (var (Pi v) ^-^ var (Pi u)) 1
+        geqTo (var $ C u) 1
+        leqTo (var $ C u) 1
 
 
   -- Weights between other nodes:
@@ -267,7 +273,7 @@ lp :: Program -> Graph' -> TransducerMap -> Bool -> LP GVar Int
 lp p g trans simp
  = execLPM
  $ do   setDirection Min
-        setObjective $ gobjective weights
+        setObjective $ gobjective names weights
         addConstraints numNodes g arcs weights p trans
         setKinds names weights
  where
